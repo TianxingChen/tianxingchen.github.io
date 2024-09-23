@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html class="fontawesome-i2svg-active fontawesome-i2svg-complete"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta name="description" content="Articulated Object Manipulation using Online Axis Estimation with SAM2-Based Tracking">
+  <meta name="keywords" content="Robotics, Mobile Manipulation, Consistency Model">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Articulated Object Manipulation using Online Axis Estimation with SAM2-Based Tracking</title>
+
+  <style type="text/css">svg:not(:root).svg-inline--fa{overflow:visible}.svg-inline--fa{display:inline-block;font-size:inherit;height:1em;overflow:visible;vertical-align:-.125em}.svg-inline--fa.fa-lg{vertical-align:-.225em}.svg-inline--fa.fa-w-1{width:.0625em}.svg-inline--fa.fa-w-2{width:.125em}.svg-inline--fa.fa-w-3{width:.1875em}.svg-inline--fa.fa-w-4{width:.25em}.svg-inline--fa.fa-w-5{width:.3125em}.svg-inline--fa.fa-w-6{width:.375em}.svg-inline--fa.fa-w-7{width:.4375em}.svg-inline--fa.fa-w-8{width:.5em}.svg-inline--fa.fa-w-9{width:.5625em}.svg-inline--fa.fa-w-10{width:.625em}.svg-inline--fa.fa-w-11{width:.6875em}.svg-inline--fa.fa-w-12{width:.75em}.svg-inline--fa.fa-w-13{width:.8125em}.svg-inline--fa.fa-w-14{width:.875em}.svg-inline--fa.fa-w-15{width:.9375em}.svg-inline--fa.fa-w-16{width:1em}.svg-inline--fa.fa-w-17{width:1.0625em}.svg-inline--fa.fa-w-18{width:1.125em}.svg-inline--fa.fa-w-19{width:1.1875em}.svg-inline--fa.fa-w-20{width:1.25em}.svg-inline--fa.fa-pull-left{margin-right:.3em;width:auto}.svg-inline--fa.fa-pull-right{margin-left:.3em;width:auto}.svg-inline--fa.fa-border{height:1.5em}.svg-inline--fa.fa-li{width:2em}.svg-inline--fa.fa-fw{width:1.25em}.fa-layers svg.svg-inline--fa{bottom:0;left:0;margin:auto;position:absolute;right:0;top:0}.fa-layers{display:inline-block;height:1em;position:relative;text-align:center;vertical-align:-.125em;width:1em}.fa-layers svg.svg-inline--fa{-webkit-transform-origin:center center;transform-origin:center center}.fa-layers-counter,.fa-layers-text{display:inline-block;position:absolute;text-align:center}.fa-layers-text{left:50%;top:50%;-webkit-transform:translate(-50%,-50%);transform:translate(-50%,-50%);-webkit-transform-origin:center center;transform-origin:center center}.fa-layers-counter{background-color:#ff253a;border-radius:1em;-webkit-box-sizing:border-box;box-sizing:border-box;color:#fff;height:1.5em;line-height:1;max-width:5em;min-width:1.5em;overflow:hidden;padding:.25em;right:0;text-overflow:ellipsis;top:0;-webkit-transform:scale(.25);transform:scale(.25);-webkit-transform-origin:top right;transform-origin:top right}.fa-layers-bottom-right{bottom:0;right:0;top:auto;-webkit-transform:scale(.25);transform:scale(.25);-webkit-transform-origin:bottom right;transform-origin:bottom right}.fa-layers-bottom-left{bottom:0;left:0;right:auto;top:auto;-webkit-transform:scale(.25);transform:scale(.25);-webkit-transform-origin:bottom left;transform-origin:bottom left}.fa-layers-top-right{right:0;top:0;-webkit-transform:scale(.25);transform:scale(.25);-webkit-transform-origin:top right;transform-origin:top right}.fa-layers-top-left{left:0;right:auto;top:0;-webkit-transform:scale(.25);transform:scale(.25);-webkit-transform-origin:top left;transform-origin:top left}.fa-lg{font-size:1.3333333333em;line-height:.75em;vertical-align:-.0667em}.fa-xs{font-size:.75em}.fa-sm{font-size:.875em}.fa-1x{font-size:1em}.fa-2x{font-size:2em}.fa-3x{font-size:3em}.fa-4x{font-size:4em}.fa-5x{font-size:5em}.fa-6x{font-size:6em}.fa-7x{font-size:7em}.fa-8x{font-size:8em}.fa-9x{font-size:9em}.fa-10x{font-size:10em}.fa-fw{text-align:center;width:1.25em}.fa-ul{list-style-type:none;margin-left:2.5em;padding-left:0}.fa-ul>li{position:relative}.fa-li{left:-2em;position:absolute;text-align:center;width:2em;line-height:inherit}.fa-border{border:solid .08em #eee;border-radius:.1em;padding:.2em .25em .15em}.fa-pull-left{float:left}.fa-pull-right{float:right}.fa.fa-pull-left,.fab.fa-pull-left,.fal.fa-pull-left,.far.fa-pull-left,.fas.fa-pull-left{margin-right:.3em}.fa.fa-pull-right,.fab.fa-pull-right,.fal.fa-pull-right,.far.fa-pull-right,.fas.fa-pull-right{margin-left:.3em}.fa-spin{-webkit-animation:fa-spin 2s infinite linear;animation:fa-spin 2s infinite linear}.fa-pulse{-webkit-animation:fa-spin 1s infinite steps(8);animation:fa-spin 1s infinite steps(8)}@-webkit-keyframes fa-spin{0%{-webkit-transform:rotate(0);transform:rotate(0)}100%{-webkit-transform:rotate(360deg);transform:rotate(360deg)}}@keyframes fa-spin{0%{-webkit-transform:rotate(0);transform:rotate(0)}100%{-webkit-transform:rotate(360deg);transform:rotate(360deg)}}.fa-rotate-90{-webkit-transform:rotate(90deg);transform:rotate(90deg)}.fa-rotate-180{-webkit-transform:rotate(180deg);transform:rotate(180deg)}.fa-rotate-270{-webkit-transform:rotate(270deg);transform:rotate(270deg)}.fa-flip-horizontal{-webkit-transform:scale(-1,1);transform:scale(-1,1)}.fa-flip-vertical{-webkit-transform:scale(1,-1);transform:scale(1,-1)}.fa-flip-both,.fa-flip-horizontal.fa-flip-vertical{-webkit-transform:scale(-1,-1);transform:scale(-1,-1)}:root .fa-flip-both,:root .fa-flip-horizontal,:root .fa-flip-vertical,:root .fa-rotate-180,:root .fa-rotate-270,:root .fa-rotate-90{-webkit-filter:none;filter:none}.fa-stack{display:inline-block;height:2em;position:relative;width:2.5em}.fa-stack-1x,.fa-stack-2x{bottom:0;left:0;margin:auto;position:absolute;right:0;top:0}.svg-inline--fa.fa-stack-1x{height:1em;width:1.25em}.svg-inline--fa.fa-stack-2x{height:2em;width:2.5em}.fa-inverse{color:#fff}.sr-only{border:0;clip:rect(0,0,0,0);height:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;width:1px}.sr-only-focusable:active,.sr-only-focusable:focus{clip:auto;height:auto;margin:0;overflow:visible;position:static;width:auto}.svg-inline--fa .fa-primary{fill:var(--fa-primary-color,currentColor);opacity:1;opacity:var(--fa-primary-opacity,1)}.svg-inline--fa .fa-secondary{fill:var(--fa-secondary-color,currentColor);opacity:.4;opacity:var(--fa-secondary-opacity,.4)}.svg-inline--fa.fa-swap-opacity .fa-primary{opacity:.4;opacity:var(--fa-secondary-opacity,.4)}.svg-inline--fa.fa-swap-opacity .fa-secondary{opacity:1;opacity:var(--fa-primary-opacity,1)}.svg-inline--fa mask .fa-primary,.svg-inline--fa mask .fa-secondary{fill:#000}.fad.fa-inverse{color:#fff}</style><link href="./styles_and_functions/css" rel="stylesheet">
+  <style>
+  .video-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4列 */
+    grid-template-rows: repeat(2, auto); /* 2行，高度根据内容自动调整 */
+    gap: 10px; /* 网格项之间的间隙 */
+    width: 100%; /* 容器宽度，可根据需要调整 */
+    margin: auto; /* 居中显示 */
+    padding: 5px; /* 容器内边距 */
+    border: 2px dashed #333; /* 虚线边框 */
+    box-sizing: border-box; /* 边框计算在宽度内 */
+  }
+  .video-item {
+    width: 100%; /* 视频宽度 */
+    height: auto; /* 视频高度自适应 */
+    display: block; /* 显示视频 */
+  }
+  </style>
+  <link rel="stylesheet" href="./styles_and_functions/bulma.min.css">
+  <link rel="stylesheet" href="./styles_and_functions/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./styles_and_functions/bulma-slider.min.css">
+  <link rel="stylesheet" href="./styles_and_functions/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./styles_and_functions/index.css">
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" /> -->
+
+  <script type="text/javascript" id="www-widgetapi-script" src="./styles_and_functions/www-widgetapi.js" async=""></script><script src="./styles_and_functions/jquery.min.js"></script>
+  <script defer="" src="./styles_and_functions/fontawesome.all.min.js"></script>
+  <script src="./styles_and_functions/bulma-carousel.min.js"></script>
+  <script src="./styles_and_functions/bulma-slider.min.js"></script>
+  <script src="./styles_and_functions/index.js"></script>
+
+  <!-- <link rel="icon" href="./assets/icon.jpg"> -->
+
+  <script src="./styles_and_functions/iframe_api"></script>
+</head>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-two-thirds is-centered has-text-centered">
+          <!-- <h1 class="title is-1 publication-title">ManiCM</h1> -->
+          <h2 class="subtitle is-2 publication-subtitle">Articulated Object Manipulation using Online Axis Estimation with SAM2-Based Tracking</h2>
+          <div class="is-size-4 publication-authors">
+            <span class="author-block">
+                <!-- <a>Zifeng Gao</a><sup>1</sup>*&nbsp;&nbsp;&nbsp; -->
+              <a href="https://hytidel.github.io/">Xi Wang</a><sup>*, 2</sup>&nbsp;&nbsp;&nbsp;
+              <a href="https://tianxingchen.github.io/">Tianxing Chen</a><sup>*, 1, 2</sup>&nbsp;&nbsp;&nbsp;
+              <a href="#">Qiaojun Yu</a><sup>*, 3</sup>&nbsp;&nbsp;&nbsp;
+              <a href="#">Tianling Xu</a><sup>2</sup> &nbsp;&nbsp;&nbsp;
+              <br>
+              <a href="#">Zanxin Chen</a><sup>4</sup>&nbsp;&nbsp;&nbsp;
+              <a href="#">Yiting Fu</a><sup>2</sup>&nbsp;&nbsp;&nbsp;
+              <a href="https://www.mvig.org/">Cewu Lu</a><sup>3</sup>&nbsp;&nbsp;&nbsp;
+              <a href="https://yaomarkmu.github.io/">Yao Mu</a><sup>1, †</sup>
+              <a href="http://luoping.me/">Ping Luo</a><sup>1, †</sup>
+            </span>
+            <span class="author-block">
+              <sup>1</sup>University of Hong Kong
+              &nbsp;&nbsp;&nbsp
+              <sup>2</sup>Shenzhen University
+              <br>
+              <sup>3</sup>Shanghai Jiaotong University
+              &nbsp;&nbsp;
+              <sup>4</sup>Southern University of Science and Technology
+            </span>
+            <p style="font-size: medium; margin-top: 5px;"><sup>*</sup>Equal Contributions &nbsp;&nbsp;&nbsp <sup>†</sup>Corresponding author</p>
+          </div>
+        <div style="height: 20px;"></div>
+        <!-- <a href="https://hits.seeyoufarm.com"><img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fmanicm-fast.github.io&count_bg=%23953FB2&title_bg=%2340DFB3&icon=&icon_color=%23E7E7E7&title=ManiCM+Page+Viewers&edge_flat=false"/></a> -->
+        <body data-new-gr-c-s-check-loaded="14.1176.0" data-gr-ext-installed="">
+        <div style="height: 20px;"></div>
+          <div>
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="#" class="external-link button is-normal is-rounded is-dark" target="_blank">
+                  <span class="icon">
+                      <svg class="svg-inline--fa fa-file-pdf fa-w-12" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="file-pdf" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" data-fa-i2svg=""><path fill="currentColor" d="M181.9 256.1c-5-16-4.9-46.9-2-46.9 8.4 0 7.6 36.9 2 46.9zm-1.7 47.2c-7.7 20.2-17.3 43.3-28.4 62.7 18.3-7 39-17.2 62.9-21.9-12.7-9.6-24.9-23.4-34.5-40.8zM86.1 428.1c0 .8 13.2-5.4 34.9-40.2-6.7 6.3-29.1 24.5-34.9 40.2zM248 160h136v328c0 13.3-10.7 24-24 24H24c-13.3 0-24-10.7-24-24V24C0 10.7 10.7 0 24 0h200v136c0 13.2 10.8 24 24 24zm-8 171.8c-20-12.2-33.3-29-42.7-53.8 4.5-18.5 11.6-46.6 6.2-64.2-4.7-29.4-42.4-26.5-47.8-6.8-5 18.3-.4 44.1 8.1 77-11.6 27.6-28.7 64.6-40.8 85.8-.1 0-.1.1-.2.1-27.1 13.9-73.6 44.5-54.5 68 5.6 6.9 16 10 21.5 10 17.9 0 35.7-18 61.1-61.8 25.8-8.5 54.1-19.1 79-23.2 21.7 11.8 47.1 19.5 64 19.5 29.2 0 31.2-32 19.7-43.4-13.9-13.6-54.3-9.7-73.6-7.2zM377 105L279 7c-4.5-4.5-10.6-7-17-7h-6v128h128v-6.1c0-6.3-2.5-12.4-7-16.9zm-74.1 255.3c4.1-2.7-2.5-11.9-42.8-9 37.1 15.8 42.8 9 42.8 9z"></path></svg><!-- <i class="fas fa-file-pdf"></i> Font Awesome fontawesome.com -->
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <!-- arXiv Link. -->
+              <span class="link-block">
+                <a href="#" class="external-link button is-normal is-rounded is-dark" target="_blank">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- Video Link. -->
+              <span class="link-block">
+                <a href="https://www.bilibili.com/video/BV1dysSepEMD"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span>
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/TianxingChen/VideoTracking-For-AxisEst" class="external-link button is-normal is-rounded is-dark" target="_blank">
+                  <span class="icon">
+                      <svg class="svg-inline--fa fa-github fa-w-16" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="github" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512" data-fa-i2svg=""><path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg><!-- <i class="fab fa-github"></i> Font Awesome fontawesome.com -->
+                  </span>
+                  <span>Code</span>
+                </a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="margin-top: -60px">
+  <div class="content has-text-centered">
+    <video id="replay-video"
+          controls
+          muted
+          preload
+          playsinline
+          width="60%">
+      <!-- <source src="./assets/main_video.mp4" type="video/mp4"> -->
+      <source src="./assets/main_video.mp4" type="video/mp4">
+    </video>
+  </div>
+
+  <div class="container">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-two-thirds">
+        <h2 class="title is-2">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Articulated object manipulation requires precise object interaction, where the object's axis must be carefully considered. 
+            Previous research employed interactive perception for manipulating articulated objects, but typically, open-loop approaches often suffer from overlooking the interaction dynamics. 
+            To address this limitation, we present a closed-loop pipeline integrating interactive perception with online axis estimation from segmented 3D point clouds. 
+            Our method leverages any interactive perception technique as a foundation for interactive perception, inducing slight object movement to generate point cloud frames of the evolving dynamic scene. These point clouds are then segmented using Segment Anything Model 2 (SAM2), after which the moving part of the object is masked for accurate motion online axis estimation, guiding subsequent robotic actions. Our approach significantly enhances the precision and efficiency of manipulation tasks involving articulated objects. 
+            Experiments in simulated environments demonstrate that our method outperforms baseline approaches, especially in tasks that demand precise axis-based control.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<section class="section" style="margin-top: -60px">
+  <div class="container">
+    <h2 class="title is-2" style="text-align: center;">Our Pipeline</h2>
+
+    <div style="text-align: center; margin-top: 20px;">
+        <!-- <object data="./assets/pipeline.pdf" type="application/pdf" width="50%" height="50%"> -->
+           <img src="./assets/pipeline.png" style="width: 60%">
+    </div>
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-two-thirds">
+        <div class="content has-text-justified">
+          <p>
+            In our pipeline, an RGB-D camera captures the dynamic scene, which is induced by the slight movement from the Interactive Perception & Init-Manipulation Module. 
+            The captured scene is then processed by the Tracking & Segmentation Module, which tracks and segments the moving part of the articulated object at a 3D level. 
+            This segmented data is subsequently passed to the Axis Estimation & Manipulation Module. 
+            Here, the motion axis is explicitly calculated, providing informed guidance for the robot's manipulation policy.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  </div>
+</section>
+
+<section class="section" style="margin-top: -60px">
+  <div class="container">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-two-thirds">
+        <h2 class="title is-2">Results</h2>
+      </div>
+    </div>
+
+  <div class="container">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-two-thirds">
+        <div class="content has-text-justified" style="font-size: larger; font-weight: 800">
+        </div>
+        <div class="video-container" id="videoContainer">
+          <!-- 视频标签将通过JavaScript动态添加 -->
+        </div>
+
+        <script>
+          // 获取视频容器
+          var container = document.getElementById('videoContainer');
+        
+          // 创建视频元素并添加到容器
+          function createVideoElement(index) {
+            var video = document.createElement('video');
+            video.className = 'video-item';
+            video.setAttribute('controls', '');
+            video.setAttribute('autoplay', '');
+            video.setAttribute('loop', '');
+            video.muted = true; // 静音自动播放
+        
+            var source = document.createElement('source');
+            source.src = 'assets/example_videos/' + index + '.mp4';
+            source.type = 'video/mp4';
+        
+            video.appendChild(source);
+        
+            // 视频加载完成后自动播放
+            video.addEventListener('loadedmetadata', function() {
+              video.style.display = 'block';  // 显示视频
+              video.play();  // 播放视频
+            });
+        
+            return video;
+          }
+        
+          // 动态创建并添加 8 个视频到页面
+          for (var i = 1; i <= 8; i++) {
+            container.appendChild(createVideoElement(i));
+          }
+        </script>
+        
+        <div class="content has-text-justified" style="margin-top: 10px">
+          We conduct our experiments in the SAPIEN simulator. Tasks involve opening doors or drawers to different extents. 
+          <br><br>
+          We select an object from each category to visualize the manipulation process with online axis estimation refinement. 
+          The initial estimated axis is represented by a lighter shade of red, while the progressively refined axis is indicated by increasingly darker shades of red. 
+        </div>
+      </div>
+    </div>
+
+  <!-- <div class="container">
+    Abstract. 
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-two-thirds">
+        <div class="content has-text-justified" style="font-size: larger; font-weight: 800">
+          Comparisons on Runtime
+        </div>
+        <div style="text-align: center; margin-top: 20px;">
+          <img src="./styles_and_functions/result1.jpg" style="width: 80%">
+        </div>
+        <div class="content has-text-justified">
+          We evaluate 100 episodes on 31 challenging tasks from Adroit and Metaworld across 3 random seeds and report the time consumption per step (s) with standard deviation. The second results are underlined and the best results are bold. ‘∗’ denotes the reproduced version. The performance of our ManiCM in one-step inference surpasses all state-of-the-art models, providing ample evidence for the effectiveness of consistency distillation.
+        </div>
+      </div>
+    </div> -->
+
+  <!-- Results of Basis Tasks-->
+  <div class="container">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-two-thirds">
+        <div class="content has-text-justified" style="font-size: larger; font-weight: 800">
+          Success Rate for Basic Tasks
+        </div>
+        <div style="text-align: center; margin-top: 20px;">
+          <img src="./assets/table_1.png" style="width: 80%">
+        </div>
+        <div class="content has-text-justified">
+          For each task, we evaluate our methods compared with RGBManip and other baselines separately on RGBManip's training set and testing set. 
+          Success rates of the first 100 experiments are used as metrics for comparison respectively. 
+          <br>
+          <!-- <br> -->
+          Experimental results illustrate that, both our method and RGBManip almost outperform other baseline approaches while Ours consistently surpasses RGBManip in basic tasks. 
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Results of More Challenging Tasks-->
+  <div class="container">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-two-thirds">
+        <div class="content has-text-justified" style="font-size: larger; font-weight: 800">
+          Success Rate for More Challenging Tasks
+        </div>
+        <div style="text-align: center; margin-top: 20px;">
+          <img src="./assets/table_2.png" style="width: 80%">
+          <img src="./assets/table_3.png" style="width: 80%">
+        </div>
+        <div class="content has-text-justified">
+          Experimental results show that Ours consistently outperforms RGBManip with a significant enhancement in success rates. 
+          This clearly demonstrate the superiority of our online axis estimation approach over traditional methods, especially for tasks demands large-amplitute manipulation and precise axis-based control. 
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</section>
+
+<section class="section" style="margin-top: -60px">
+  <div class="container">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-two-thirds">
+        <h2 class="title is-2">Acknowledgements</h2>
+        <div class="content has-text-justified">
+          <p>
+            Our code is built upon 
+            <a href="https://github.com/hyperplane-lab/RGBManip" target="_blank">RGBManip</a>, 
+            <a href="https://github.com/IDEA-Research/GroundingDINO" target="_blank">GroundingDINO</a> and 
+            <a href="https://github.com/facebookresearch/segment-anything-2" target="_blank">SAM2</a>. 
+            We would like to thank the authors for their excellent works. 
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TODO: 换 arXiv: journal={arXiv preprint arXiv:2406.01586}, -->
+<section class="section" id="BibTeX" style="margin-top: -60px">
+  <div class="container content">
+    <h2 class="titile">BibTeX</h2>
+    <pre><code>Coming Soon</code></pre>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <p>Page template borrowed from <a href="https://nerfies.github.io/"><span class="dnerf">Nerfies</span></a> and <a href="https://robot-parkour.github.io/"><span class="dnerf">Robot-Parkour</span></a>.</p>
+    </div>
+  </div>
+</footer>
