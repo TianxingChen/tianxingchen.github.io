@@ -5,6 +5,13 @@ table#tlayout {
     border-collapse: separate;
     background: white;
 }
+img {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+}
 /*
 body {
 	background: white;
