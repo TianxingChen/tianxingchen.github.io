@@ -45,7 +45,7 @@
 			}
 			.research-hightlight {
 				display: grid;
-				grid-template-columns: repeat(2, 1fr); /* 5列 */
+				grid-template-columns: repeat(3, 1fr); /* 5列 */
 				/* grid-template-rows: repeat(4, 1fr);  */
 				gap: 10px; /* 网格项之间的间隙 */
 			}
@@ -308,7 +308,7 @@ I have won a silver medal in the <strong>ACM-ICPC</strong> regional competition 
 			<source src="./files/work/RoboTwin.mp4" type="video/mp4">
 			video error
 		  </video>
-		  <div style="text-align: center; margin-top: -10px; font-size: small;">RoboTwin<i>, CVPR 2025 Highlight & ECCV WS Best Paper</i></div>
+		  <div style="text-align: center; margin-top: 0px; font-size: small;">RoboTwin<i>, CVPR 2025 Highlight & ECCV WS Best Paper</i></div>
 	</div>
 	<div>
 		<video autoplay loop muted width="100%" height="auto" x5-video-player-fullscreen="true"
@@ -318,7 +318,17 @@ I have won a silver medal in the <strong>ACM-ICPC</strong> regional competition 
 			<source src="./files/work/G3Flow.mp4" type="video/mp4">
 			video error
 		  </video>
-		  <div style="text-align: center; margin-top: -10px; font-size: small;">G3Flow, <i>CVPR 2025</i></div>
+		  <div style="text-align: center; margin-top: 0px; font-size: small;">G3Flow, <i>CVPR 2025</i></div>
+	</div>
+	<div>
+		<video autoplay loop muted width="100%" height="auto" x5-video-player-fullscreen="true"
+		x5-playsinline
+		playsinline
+		webkit-playsinline>
+			<source src="./files/work/2025-robotwin2.0.mp4" type="video/mp4">
+			video error
+		  </video>
+		  <div style="text-align: center; margin-top: 0px; font-size: small;">RoboTwin 2.0, <i>arXiv 2025</i></div>
 	</div>
 </div>	
 
@@ -332,6 +342,38 @@ I have won a silver medal in the <strong>ACM-ICPC</strong> regional competition 
 	<p><b>First/Co-First Author:</b> CVPR × 2 (1 Highlight), ACL × 1, ECCV Workshop × 1 (1 Best Paper), ICLR Workshop × 1, High-Starred GitHub Projects × 2 (1 >4k Stars, 3 >500 Stars), <i>Under Review × 2</i></p>
 	<p><b>Co-author:</b> CVPR × 1, ACL × 1, RSS × 1, ICARM × 1, <i>Under Review × 1</i></p>
 </div>
+
+<table id="tbPublications" width="100%" cellspacing='0' style="background-color: #ffffdf;">
+	<tbody>
+	<!--########################-->
+	<tr style="width: 100%;">
+		<td width="20%" style="padding: 10px">
+			<div class="container">
+				<!-- <img src="./files/work/2024-G3Flow.gif" width="180px" style="box-shadow: 4px 4px 4px #888888; margin-left: 10px;"> -->
+				<!-- <div class="arxiv-label" style="margin-left: 10px; width: 80px;">Under Review</div> -->
+				<video autoplay loop muted width="180px" x5-video-player-fullscreen="true" x5-playsinline playsinline webkit-playsinline style="box-shadow: 4px 4px 4px #888888; margin-left: 10px;">
+			<source src="./files/work/2025-robotwin2.0.mp4" type="video/mp4">
+			video error
+		  </video>
+			</div>
+		</td>				
+		<td style="padding: 10px">
+			<!-- <div style="height: 10px"></div> -->
+			<b style="font-size: 15px; color: #456fc3;">RoboTwin 2.0: A Scalable Data Generator and Benchmark with Strong Domain Randomization for Robust Bimanual Robotic Manipulation <img alt="GitHub repo stars" src="https://img.shields.io/github/stars/RoboTwin-Platform/RoboTwin"></b>
+			<div style="height: 5px;"></div>
+			<div style="font-size: 12px"><b><u>Tianxing Chen</u><sup>*</sup></b>, Zanxin Chen<sup>*</sup>, Baijun Chen<sup>*</sup>, Zijian Cai<sup>*</sup>, Yibin Liu<sup>*</sup>, Qiwei Liang, Zixuan Li, Xianliang Lin, Yiheng Ge, Zhenyu Gu, Weiliang Deng, Yubin Guo, Tian Nian, Xuanbing Xie, Qiangyu Chen, Kailun Su, Tianling Xu, Guodong Liu, Mengkang Hu, Huan-ang Gao, Kaixuan Wang, Zhixuan Liang, Yusen Qin, Xiaokang Yang, Ping Luo<sup>†</sup>, Yao Mu<sup>†</sup></div>
+			<div style="height: 5px;"></div>
+			<div style="font-size: 12px"><div style="color: red; display: inline;"><b>CVPR 2025</b></div></div>
+			<div style="height: 5px;"></div>
+			<div style="font-size: 12px"><a href="https://tianxingchen.github.io/G3Flow" target="_blank">Project Page</a> / <a href="https://arxiv.org/pdf/2411.18369" target="_blank">Paper</a> / <a href="https://arxiv.org/abs/2411.18369" target="_blank">arXiv</a> / <a href="https://github.com/TianxingChen/G3Flow" target="_blank">Code</a> </div>
+			<!-- <div style="height: 5px;"></div>
+			<div style="font-size: 12px; color: gray;">We present G3Flow, a novel approach that leverages foundation models to generate and maintain 3D semantic flow for enhanced robotic manipulation.</div> -->
+			<!-- <div style="height: 10px"></div> -->
+		</td>
+	</tr>
+	</tbody>
+</table>
+
 <table id="tbPublications" width="100%" cellspacing='0'>
 	<tbody>
 	<!--########################-->
@@ -498,7 +540,7 @@ I have won a silver medal in the <strong>ACM-ICPC</strong> regional competition 
 		</td>				
 		<td style="padding: 10px">
 			<!-- <div style="height: 10px"></div> -->
-			<b style="font-size: 15px; color: #456fc3;">RoboTwin: Dual-Arm Robot Benchmark with Generative Digital Twins <img alt="GitHub repo stars" src="https://img.shields.io/github/stars/TianxingChen/RoboTwin"></b>
+			<b style="font-size: 15px; color: #456fc3;">RoboTwin: Dual-Arm Robot Benchmark with Generative Digital Twins <img alt="GitHub repo stars" src="https://img.shields.io/github/stars/RoboTwin-Platform/RoboTwin"></b>
 			<div style="height: 5px;"></div>
 			<div style="font-size: 12px">Yao Mu<sup>*</sup>, <b><u>Tianxing Chen</u><sup>*</sup></b>, Zanxin Chen<sup>*</sup>, Shijia Peng<sup>*</sup>, Zeyu Gao, Zhixuan Liang, Qiaojun Yu, Yude Zou, Mingkun Xu, Lunkai Lin, Zhiqiang Xie, Mingyu Ding and Ping Luo<sup>†</sup></div>
 			<div style="height: 5px;"></div>
