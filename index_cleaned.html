@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<link rel="shortcut icon" href="files/icon.jpg">
+	<meta name="keywords" content="Tianxing Chen, Chen Tianxing, 陈天行, SZU, Shenzhen University, tianxing chen, tianxingchen, Mario Chan, The University of Hong Kong, HKU, MMLab">
+	<meta name="description" content="Tianxing Chen's Home">
+	<meta name="google-site-verification" content="yy_3iiS_X6pJdegdwitJMrH0LRLHXwpjrV9RKLXxKjg">
+	<link rel="stylesheet" href="./files/jemdoc.css" type="text/css">
+	<title>Tianxing Chen (陈天行)</title>
+	
+	<style>
+		table {
+			border-collapse: collapse;
+		}
+
+		.smaller-image {
+			width: 20%;
+		}
+
+		.container {
+			position: relative;
+			display: inline-block;
+		}
+
+		.image {
+			display: block;
+			border-radius: 10px;
+			max-width: 100%;
+		}
+
+		.video-label {
+			position: absolute;
+			top: 5px;
+			left: 5px;
+			background-color: #ea3323;
+			color: white;
+			padding: 0px 10px;
+			border-radius: 3px;
+			font-weight: bold;
+			box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+			width: 40px;
+			height: 20px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			font-size: small;
+		}
+
+		.research-hightlight {
+			display: grid;
+			grid-template-columns: repeat(3, 1fr);
+			gap: 10px;
+		}
+
+		.arxiv-label {
+			position: absolute;
+			top: 10px;
+			left: -5px;
+			background-color: #a624a6;
+			color: white;
+			padding: 0px 10px;
+			border-radius: 3px;
+			font-weight: bold;
+			box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+			width: 40px;
+			height: 20px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			font-size: x-small;
+		}
+
+		.scroll-wrapper {
+			width: 100%;
+			overflow: hidden;
+			white-space: nowrap;
+			position: relative;
+		}
+
+		.scroll-content {
+			display: inline-block;
+			white-space: nowrap;
+			animation: scroll-left 40s linear infinite;
+		}
+
+		.scroll-content img,
+		.scroll-content .container {
+			display: inline-block;
+			vertical-align: top;
+			margin-right: 0px;
+		}
+
+		@keyframes scroll-left {
+			0% {
+				transform: translateX(0%);
+			}
+			100% {
+				transform: translateX(-50%);
+			}
+		}
+
+		.scroll-wrapper:hover .scroll-content {
+			animation-play-state: paused;
+		}
+
+		.github-corner:hover .octo-arm {
+			animation: octocat-wave 560ms ease-in-out;
+		}
+
+		@keyframes octocat-wave {
+			0%, 100% {
+				transform: rotate(0);
+			}
+			20%, 60% {
+				transform: rotate(-25deg);
+			}
+			40%, 80% {
+				transform: rotate(10deg);
+			}
+		}
+
+		@media (max-width:500px) {
+			.github-corner:hover .octo-arm {
+				animation: none;
+			}
+			.github-corner .octo-arm {
+				animation: octocat-wave 560ms ease-in-out;
+			}
+		}
+	</style>
+	
+	<script type="text/javascript" src="./files/jquery-1.12.4.min.js"></script>
+</head>
+
+<body data-new-gr-c-s-check-loaded="14.1163.0" data-gr-ext-installed>
+	<div id="layout-content" style="margin-top:25px">
+		<!-- GitHub Corner -->
+		<a href="https://github.com/tianxingchen" class="github-corner">
+			<svg width="80" height="80" viewBox="0 0 250 250" style="fill: #3f52b5; color:#fff; position: absolute; top: 0; border: 0; right: 0;">
+				<path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+				<path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+				<path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path>
+			</svg>
+		</a>
+
+		<!-- Main Content -->
+		<table>
+			<tbody>
+				<tr>
+					<td width="720">
+						<div id="toptitle">
+							<h1>Tianxing CHEN (陈天行)</h1>
+							<img src="./files/sign.jpg" alt="Signature" style="height: 60px;">
+							<img src="./files/institute/hku-mmlab4.png" alt="HKU MMLab" style="height: 60px; margin-left: 10px;">
+							<img src="./files/institute/lumina-logo.png" alt="Lumina" style="height: 60px; margin-left: 10px;">
+						</div>
+						
+						<h3 style="margin-top: -20px;">🎓 Year-1 PhD Student @ HKU-MMLab</h3>
+						<h3 style="margin-top: -10px;">🤖 Embodied AI & Robotics Researcher</h3>
+						<h3 style="margin-top: -10px;">🎙️ Co-Founder of Lumina Embodied AI Community</h3>
+						
+						<p style="margin-top: 20px;">
+							<a href="mailto:chentianxing2002@gmail.com" target="_blank">
+								<img src="./files/icon/email.png" height="32px" style="margin-bottom:-4px" alt="Email">
+							</a>&nbsp;
+							<a href="https://scholar.google.com/citations?hl=en&user=pvS8MH8AAAAJ&view_op=list_works&gmla=AOAOcb35IyZHtGmmYcpnDrJFmcsHLBXzjnq0ChbL0CXg4-PjM5UXRspLHuzXI4jgPc077WejF7RSsLUULIZ5ugIxcns6FURGdnTSpPi9JhAeKfhLVXsAIauozmPDdYzcku8VruOeRoapXM7nhkTlaNQ&iaan=Tianxing+Chen" target="_blank">
+								<img src="./files/icon/google_scholar.png" height="30px" style="margin-bottom:-3px" alt="Google Scholar">
+							</a>&nbsp;
+							<a href="https://github.com/tianxingchen" target="_blank">
+								<img src="./files/icon/github_s.jpg" height="30px" style="margin-bottom:-3px" alt="GitHub">
+							</a>&nbsp;
+							<a href="https://twitter.com/MarioChan2002" target="_blank">
+								<img src="./files/icon/X_icon.png" height="30px" style="margin-bottom:-3px" alt="Twitter">
+							</a>&nbsp;
+							<a href="./files/my_wechat.png" target="_blank">
+								<img src="./files/icon/wechat.png" height="30px" style="margin-bottom:-3px" alt="WeChat">
+							</a>&nbsp;
+							<a href="https://space.bilibili.com/520068753?spm_id_from=333.1007.0.0" target="_blank">
+								<img src="./files/icon/bilibili.png" height="30px" style="margin-bottom:-3px" alt="Bilibili">
+							</a>&nbsp;
+							<a href="https://www.zhihu.com/people/mario-chen-65" target="_blank">
+								<img src="./files/icon/zhihu.png" height="30px" style="margin-bottom:-3px" alt="Zhihu">
+							</a>&nbsp;
+							<a href="https://www.xiaohongshu.com/user/profile/618fe930000000001000afe7" target="_blank">
+								<img src="./files/icon/xiaohongshu.png" height="31px" style="margin-bottom:-4px" alt="Xiaohongshu">
+							</a>&nbsp;
+						</p>
+						
+						<p>
+							<a href="https://visitorbadge.io/status?path=https%3A%2F%2Ftianxingchen.github.io%2F">
+								<img src="https://api.visitorbadge.io/api/combined?path=https%3A%2F%2Ftianxingchen.github.io%2F&labelColor=%232ccce4&countColor=%230158f9" style="height: 20px;" alt="Visitor Badge">
+							</a>
+							<img alt="GitHub User's stars" src="https://img.shields.io/github/stars/TianxingChen" style="height: 20px;">
+							<img alt="GitHub followers" src="https://img.shields.io/github/followers/TianxingChen" style="height: 20px;">
+						</p>
+					</td>
+					<td>
+						<img src="./files/avatar/avatar14.jpg" border="0" width="250" alt="Profile Photo">
+					</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<!-- Biography Section -->
+		<h2 style="margin-top: -10px;">Biography</h2>
+		<div style="font-size: 15px">
+			<p>Hi! I am <b>Tianxing Chen (Chinese name: 陈天行)</b>, a first-year Ph.D. student at <a href="https://mmlab.hk/" target="_blank">MMLab@HKU</a> (since Sep. 2025), supervised by <a href="http://luoping.me">Prof. Ping Luo</a> and working closely with <a href="http://yaomarkmu.github.io">Dr. Yao Mu</a>. My research focuses on Embodied AI, including robotic foundation models, generalizable manipulation policies (e.g., VLA, diffusion policy), and robot data synthesizers.</p>
+
+			<p>I have published multiple papers at top venues such as CVPR, RSS, and ACL. My work received the <b>Best Paper Award</b> at the ECCV 2024 MAAS Workshop, an <b>Outstanding Poster Award</b> at ChinaSI, and a CVPR <b>Highlight</b> recognition. Beyond research, I have been honored with the CCF Elite Collegiate Award (99 nationwide) and the "Excellent Star of SZU", the highest undergraduate honor at Shenzhen University (ranked 2/30,000). I also won a silver medal in the ACM-ICPC regional competition and was national runner-up in the RAICOM robotics developer competition.</p>
+
+			<p>I am the co-founder of <a href="https://lumina-embodied.ai/">Lumina Embodied AI Community</a>, and have served as an organizer of the SIGGRAPH ASIA 2025 TriFusion Workshop, CVPR 2025 MEIS Workshop, the CVPR 2025 RoboTwin Dual-Arm Collaboration Challenge, and the Greater Bay Area Embodied AI Workshop. I am also a student committee member of the Autonomous Robotic Technology Seminar (ARTS). In addition, I share my thoughts on research and technology as a blogger and vlogger, with over 15k followers on Rednote 🎒@<a style="color: red" href="https://www.xiaohongshu.com/user/profile/618fe930000000001000afe7">TianxingChen (陈天行)</a>.</p>
+			
+			<details>
+				<summary>中文版个人简介</summary>
+				<p>Hi！我是<b>陈天行 (English name: Tianxing Chen)</b>，现在是香港大学<a href="https://mmlab.hk/" target="_blank">MMLab@HKU</a>的一年级博士生（始于2025年9月），师从<a href="http://luoping.me">罗平教授</a>，并且与<a href="http://yaomarkmu.github.io">穆尧博士</a>紧密合作。我的研究方向是具身智能，包括机器人通用操作策略、数据合成器、视觉基座模型等。</p>
+				<p>我在CVPR、RSS、ACL等学术顶会发表多篇论文，在ECCV 2024 MAAS Workshop上获得最佳论文奖，在ChinaSI中获得Outstanding Poster，获得CVPR Highlight等。我曾经获得CCF优秀大学生（全国年度99人）、荔园卓越之星（深圳大学本科生最高荣誉）等荣誉。竞赛上在ACM-ICPC国际大学生程序设计竞赛中获得银牌，在RAICOM机器人开发者大赛中获得赛道全国亚军。</p>
+				<p>我是<a href="https://lumina-embodied.ai/">Lumina具身智能社区</a>的联合创始人，也曾作为组织者举办SIGGRAPH ASIA 2025 TriFusion Workshop、CVPR 2025 MEIS Workshop、CVPR 2025 RoboTwin双臂协作竞赛、大湾区具身智能研讨会等。担任ARTS自主机器人技术研讨会的学生委员会成员。同时，我还在小红书拥有超15k粉丝🎒@<a style="color: red" href="https://www.xiaohongshu.com/user/profile/618fe930000000001000afe7">TianxingChen (陈天行)</a>。</p>
+			</details>
+		</div>
+
+		<!-- News Section -->
+		<h2>News</h2>
+		<div style="width: 100%; background-color: white;">
+			<div class="scroll-wrapper">
+				<div class="scroll-content">
+					<!-- First set of content -->
+					<img src="./files/photo/2025-cicc-lumina.jpg" style="height: 80px;" alt="CICC Lumina">
+					<img src="./files/award/2025-mit-technology-review.jpg" style="height: 80px;" alt="MIT Technology Review">
+					<img src="./files/photo/2025-graduation.jpg" style="height: 80px;" alt="Graduation">
+					<img src="./files/photo/highlight/2025-lz-2.jpg" style="height: 80px;" alt="Highlight 1">
+					<img src="./files/photo/highlight/2025-lz.jpg" style="height: 80px;" alt="Highlight 2">
+					<img src="./files/photo/2024-szu_open_day.jpg" style="height: 80px;" alt="SZU Open Day">
+
+					<div class="container">
+						<a href="https://www.bilibili.com/video/BV1idTAe1EeH/" target="_blank">
+							<img src="./files/photo/highlight/1.jpg" style="height: 80px;" alt="Video 1">
+							<div class="video-label">Video</div>
+						</a>
+					</div>
+
+					<div class="container">
+						<a href="https://www.bilibili.com/video/BV1MdTAetEiH/" target="_blank">
+							<img src="./files/photo/highlight/2.jpg" style="height: 80px;" alt="Video 2">
+							<div class="video-label">Video</div>
+						</a>
+					</div>
+
+					<div class="container">
+						<a href="https://www.bilibili.com/video/BV1hM4m167iz/" target="_blank">
+							<img src="./files/photo/highlight/3.jpg" style="height: 80px;" alt="Video 3">
+							<div class="video-label">Video</div>
+						</a>
+					</div>
+
+					<img src="./files/photo/2023-lyzf.jpg" style="height: 80px;" alt="LYZF">
+					<img src="./files/photo/CCF_youda.jpg" style="height: 80px;" alt="CCF">
+					<img src="./files/photo/CCF-ctx.jpg" style="height: 80px;" alt="CCF CTX">
+					<img src="./files/photo/highlight/gdcpc.jpg" style="height: 80px;" alt="GDCPC">
+
+					<!-- Duplicate content for seamless scrolling -->
+					<img src="./files/photo/2025-cicc-lumina.jpg" style="height: 80px;" alt="CICC Lumina">
+					<img src="./files/award/2025-mit-technology-review.jpg" style="height: 80px;" alt="MIT Technology Review">
+					<img src="./files/photo/2025-graduation.jpg" style="height: 80px;" alt="Graduation">
+					<img src="./files/photo/highlight/2025-lz-2.jpg" style="height: 80px;" alt="Highlight 1">
+					<img src="./files/photo/highlight/2025-lz.jpg" style="height: 80px;" alt="Highlight 2">
+					<img src="./files/photo/2024-szu_open_day.jpg" style="height: 80px;" alt="SZU Open Day">
+
+					<div class="container">
+						<a href="https://www.bilibili.com/video/BV1idTAe1EeH/" target="_blank">
+							<img src="./files/photo/highlight/1.jpg" style="height: 80px;" alt="Video 1">
+							<div class="video-label">Video</div>
+						</a>
+					</div>
+
+					<div class="container">
+						<a href="https://www.bilibili.com/video/BV1MdTAetEiH/" target="_blank">
+							<img src="./files/photo/highlight/2.jpg" style="height: 80px;" alt="Video 2">
+							<div class="video-label">Video</div>
+						</a>
+					</div>
+
+					<div class="container">
+						<a href="https://www.bilibili.com/video/BV1hM4m167iz/" target="_blank">
+							<img src="./files/photo/highlight/3.jpg" style="height: 80px;" alt="Video 3">
+							<div class="video-label">Video</div>
+						</a>
+					</div>
+
+					<img src="./files/photo/2023-lyzf.jpg" style="height: 80px;" alt="LYZF">
+					<img src="./files/photo/CCF_youda.jpg" style="height: 80px;" alt="CCF">
+					<img src="./files/photo/CCF-ctx.jpg" style="height: 80px;" alt="CCF CTX">
+					<img src="./files/photo/highlight/gdcpc.jpg" style="height: 80px;" alt="GDCPC">
+				</div>
+			</div>
+		</div>
+
+		<!-- News List -->
+		<div style="height: 200px; overflow: auto; font-size: 15px; margin-top: 20px;">
+			<ul>
+				<li>[<span style="color: red; white-space: nowrap;">01/2025</span>] 🎉 Two papers accepted to <b>CVPR 2025</b>! RoboTwin gets <b>Highlight</b> (top 13.5%) and G3Flow is accepted.</li>
+				<li>[<span style="color: red; white-space: nowrap;">01/2025</span>] 🎉 One paper accepted to <b>ACL 2025</b>!</li>
+				<li>[<span style="color: red; white-space: nowrap;">01/2025</span>] 🎉 One paper accepted to <b>RSS 2025</b>!</li>
+				<li>[<span style="color: red; white-space: nowrap;">12/2024</span>] 🎉 One paper accepted to <b>CoRL 2025 RINO Workshop</b>!</li>
+				<li>[<span style="color: red; white-space: nowrap;">09/2024</span>] 🎉 RoboTwin wins <b>Best Paper Award</b> at ECCV 2024 MAAS Workshop!</li>
+				<li>[<span style="color: red; white-space: nowrap;">09/2025</span>] 🎓 Started my PhD journey at HKU MMLab!</li>
+				<li>[<span style="color: red; white-space: nowrap;">07/2025</span>] 🎉 Graduated from Shenzhen University with highest honors!</li>
+				<li>[<span style="color: red; white-space: nowrap;">06/2025</span>] 🏆 Received "Excellent Star of SZU" nomination, the highest undergraduate honor!</li>
+				<li>[<span style="color: red; white-space: nowrap;">05/2025</span>] 🎙️ Co-founded Lumina Embodied AI Community!</li>
+				<li>[<span style="color: red; white-space: nowrap;">04/2025</span>] 🏅 Received CCF Elite Collegiate Award (99 nationwide)!</li>
+			</ul>
+		</div>
+		<div style="margin-top: 5px; font-size: small; margin-bottom: 20px;">⬆ scrollable</div>
+
+		<!-- Education Section -->
+		<h2>Education</h2>
+		<table id="tbEducation" width="100%" style="margin-top: 0px;">
+			<tbody>
+				<tr>
+					<td width="320">
+						<img src="./files/institute/hku-mmlab.png" width="220px" style="margin-left: 40px;" alt="HKU MMLab">
+					</td>
+					<td>
+						<p><b><a href="https://mmlab.hk/">MMLab</a>, The University of Hong Kong (HKU)</b><br>
+						<b style="font-size: 12px;">AI & Data Science Division (AI), <a href="https://www.cds.hku.hk/">School of Computing and Data Science (CDS)</a></b></p>
+						<div style="font-size: 12px">PhD. Student @ MMLab-HKU, supervised by Prof. <a href="http://luoping.me/">Ping Luo</a>.</div>
+						<div style="font-size: 12px">Sep. 2025 - Jun. 2029 (expected)</div>
+					</td>
+				</tr>
+				<tr>
+					<td width="320">
+						<img src="./files/institute/szu.jpg" width="220px" style="margin-left: 40px;" alt="Shenzhen University">
+					</td>
+					<td>
+						<p><b>Shenzhen University (SZU)</b><br>
+						<b style="font-size: 12px;"><a href="https://csse.szu.edu.cn/">College of Computer Science and Software Engineering (CSSE)</a></b></p>
+						<div style="font-size: 12px">B.Eng. in Computer Science and Technology (Outstanding Class)</div>
+						<div style="font-size: 12px"><i>GPA 90.0 / 100, Excellent Star of SZU (荔园卓越之星, <i style="color: red; display: inline;">top 0.0067%</i>)</i>, [<a href="./Acknowledgements/bachelor.html">Acknowledgements</a>]</div>
+						<div style="font-size: 12px">Sep. 2021 - Jul. 2025</div>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<!-- Publications Section -->
+		<h2>Publications | <a href="https://scholar.google.com/citations?hl=en&user=pvS8MH8AAAAJ&view_op=list_works&gmla=AOAOcb35IyZHtGmmYcpnDrJFmcsHLBXzjnq0ChbL0CXg4-PjM5UXRspLHuzXI4jgPc077WejF7RSsLUULIZ5ugIxcns6FURGdnTSpPi9JhAeKfhLVXsAIauozmPDdYzcku8VruOeRoapXM7nhkTlaNQ&iaan=Tianxing+Chen" target="_blank">[My Google Scholar]</a></h2>
+		
+		<div style="height: 10px;"></div>
+		<div style="text-align: center; position: relative; margin-bottom: 20px; margin-top: 0px;">
+			<span style="position: absolute; top: 50%; left: 0; right: 0; transform: translateY(-50%); background-color: rgba(128, 128, 128, 0.3); padding: 0 10px;">
+				<b>Recent Research Highlights</b>
+			</span>
+		</div>
+		
+		<div class="research-hightlight">
+			<div>
+				<video autoplay loop muted width="100%" height="auto" x5-video-player-fullscreen="true" x5-playsinline playsinline webkit-playsinline onloadedmetadata="this.playbackRate = 5;">
+					<source src="./files/work/2025-robotwin2.0.mp4" type="video/mp4">
+					Your browser does not support the video tag.
+				</video>
+				<div style="text-align: center; margin-top: 0px; font-size: small;">RoboTwin 2.0</div>
+			</div>
+			<div>
+				<video autoplay loop muted width="100%" height="auto" x5-video-player-fullscreen="true" x5-playsinline playsinline webkit-playsinline>
+					<source src="./files/work/RoboTwin.mp4" type="video/mp4">
+					Your browser does not support the video tag.
+				</video>
+				<div style="text-align: center; margin-top: 0px; font-size: small;">RoboTwin</div>
+			</div>
+			<div>
+				<video autoplay loop muted width="100%" height="auto" x5-video-player-fullscreen="true" x5-playsinline playsinline webkit-playsinline>
+					<source src="./files/work/G3Flow.mp4" type="video/mp4">
+					Your browser does not support the video tag.
+				</video>
+				<div style="text-align: center; margin-top: 0px; font-size: small;">G3Flow</div>
+			</div>
+		</div>
+
+		<div style="text-align: center; position: relative; margin-bottom: 50px; margin-top: 20px;">
+			<span style="position: absolute; top: 50%; left: 0; right: 0; transform: translateY(-50%); background-color: rgba(128, 128, 128, 0.3); padding: 0 10px;">
+				<b>Full List (Selected papers are highlighted)</b>
+			</span>
+		</div>
+
+		<!-- Publication List -->
+		<table id="tbPublications" width="100%" cellspacing='0'>
+			<tbody>
+				<!-- Selected Publications with Highlight Background -->
+				<tr style="width: 100%; background-color: #ffffdf;">
+					<td width="200px" style="padding-top: 10px; padding-bottom: 10px">
+						<div class="container">
+							<video autoplay loop muted width="180px" x5-video-player-fullscreen="true" x5-playsinline playsinline webkit-playsinline onloadedmetadata="this.playbackRate = 3;" style="box-shadow: 4px 4px 4px #888888; margin-left: 10px; margin-right: 10px;">
+								<source src="./files/work/2025-robotwin2.0.mp4" type="video/mp4">
+								Your browser does not support the video tag.
+							</video>
+						</div>
+					</td>
+					<td style="padding: 10px">
+						<b style="font-size: 15px; color: #054095;">RoboTwin 2.0: A Scalable Data Generator and Benchmark with Strong Domain Randomization for Robust Bimanual Robotic Manipulation 
+						<img alt="GitHub repo stars" src="https://img.shields.io/github/stars/RoboTwin-Platform/RoboTwin"></b>
+						<div style="height: 5px;"></div>
+						<div style="font-size: 12px"><b><u>Tianxing Chen</u><sup>*</sup></b>, Zanxin Chen<sup>*</sup>, Baijun Chen<sup>*</sup>, Zijian Cai<sup>*</sup>, Yibin Liu<sup>*</sup>, Qiwei Liang, Zixuan Li, Xianliang Lin, Yiheng Ge, Zhenyu Gu, Weiliang Deng, Yubin Guo, Tian Nian, Xuanbing Xie, Qiangyu Chen, Kailun Su, Tianling Xu, Guodong Liu, Mengkang Hu, Huan-ang Gao, Kaixuan Wang, Zhixuan Liang, Yusen Qin, Xiaokang Yang, Ping Luo<sup>†</sup>, Yao Mu<sup>†</sup></div>
+						<div style="height: 5px;"></div>
+						<div style="font-size: 12px">Under Review</div>
+						<div style="height: 5px;"></div>
+						<div style="font-size: 12px">
+							<a href="https://RoboTwin-Platform.github.io/" target="_blank">Project Page</a> / 
+							<a href="https://arxiv.org/pdf/2506.18088" target="_blank">Paper</a> / 
+							<a href="https://arxiv.org/abs/2506.18088" target="_blank">arXiv</a> /
+							<a href="https://github.com/RoboTwin-Platform/RoboTWin" target="_blank">Code</a> /
+							<a href="https://RoboTwin-Platform.github.io/doc" target="_blank">Document</a> / 
+							<a href="https://mp.weixin.qq.com/s/SwORezmol2Qd9YdrGYchEA">机器之心</a>
+						</div>
+					</td>
+				</tr>
+
+				<tr style="width: 100%; background-color: #ffffdf;">
+					<td width="200px" style="padding-top: 10px; padding-bottom: 10px">
+						<div class="container">
+							<img src="./files/work/2024-G3Flow.gif" width="180px" style="box-shadow: 4px 4px 4px #888888; margin-left: 10px; margin-right: 10px;" alt="G3Flow">
+						</div>
+					</td>
+					<td style="padding: 10px">
+						<b style="font-size: 15px; color: #054095;">G3Flow: Generative 3D Semantic Flow for Pose-aware and Generalizable Object Manipulation 
+						<img alt="GitHub repo stars" src="https://img.shields.io/github/stars/TianxingChen/G3Flow"></b>
+						<div style="height: 5px;"></div>
+						<div style="font-size: 12px"><b><u>Tianxing Chen</u><sup>*</sup></b>, Yao Mu<sup>*</sup>, Zhixuan Liang<sup>*</sup>, Zanxin Chen, Shijia Peng, Qiangyu Chen, Mingkun Xu, Ruizhen Hu, Hongyuan Zhang, Xuelong Li, Ping Luo<sup>†</sup></div>
+						<div style="height: 5px;"></div>
+						<div style="font-size: 12px">
+							<div style="color: red; display: inline;"><b>CVPR 2025</b></div>
+						</div>
+						<div style="height: 5px;"></div>
+						<div style="font-size: 12px">
+							<a href="https://tianxingchen.github.io/G3Flow" target="_blank">Project Page</a> / 
+							<a href="https://arxiv.org/pdf/2411.18369" target="_blank">Paper</a> / 
+							<a href="https://arxiv.org/abs/2411.18369" target="_blank">arXiv</a> /
+							<a href="https://github.com/TianxingChen/G3Flow" target="_blank">Code</a>
+						</div>
+					</td>
+				</tr>
+
+				<tr style="width: 100%; background-color: #ffffdf;">
+					<td width="200px" style="padding-top: 10px; padding-bottom: 10px">
+						<div class="container">
+							<img src="./files/work/2024-RoboTwin.gif" width="180px" style="box-shadow: 4px 4px 4px #888888; margin-left: 10px; margin-right: 10px;" alt="RoboTwin">
+						</div>
+					</td>
+					<td style="padding: 10px">
+						<b style="font-size: 15px; color: #054095;">RoboTwin: Dual-Arm Robot Benchmark with Generative Digital Twins 
+						<img alt="GitHub repo stars" src="https://img.shields.io/github/stars/RoboTwin-Platform/RoboTwin"></b>
+						<div style="height: 5px;"></div>
+						<div style="font-size: 12px">Yao Mu<sup>*</sup>, <b><u>Tianxing Chen</u><sup>*</sup></b>, Zanxin Chen<sup>*</sup>, Shijia Peng<sup>*</sup>, Zeyu Gao, Zhixuan Liang, Qiaojun Yu, Yude Zou, Mingkun Xu, Lunkai Lin, Zhiqiang Xie, Mingyu Ding and Ping Luo<sup>†</sup></div>
+						<div style="height: 5px;"></div>
+						<div style="font-size: 12px">
+							<div style="color: red; display: inline;"><b>CVPR 2025 (Highlight, top 13.5%)</b></div>
+						</div>
+						<div style="height: 5px;"></div>
+						<div style="font-size: 12px">
+							<a href="https://robotwin-benchmark.github.io/" target="_blank">Project Page</a> / 
+							<a href="https://arxiv.org/pdf/2504.13059" target="_blank">Paper</a> / 
+							<a href="https://arxiv.org/abs/2504.13059" target="_blank">arXiv</a> /
+							<a href="https://github.com/TianxingChen/RoboTwin" target="_blank">Code</a> / 
+							<a href="https://mp.weixin.qq.com/s/8anfW4rp8PyG9FslEeBexg" target="_blank">具身智能之心</a>
+						</div>
+					</td>
+				</tr>
+
+				<!-- Additional publications would continue here... -->
+				<!-- For brevity, I'm including just a few key publications -->
+				
+			</tbody>
+		</table>
+
+		<!-- Awards Section -->
+		<h2>Awards & Honors</h2>
+		<div style="text-align: center; position: relative; margin-bottom: 40px; margin-top: 20px;">
+			<span style="position: absolute; top: 50%; left: 0; right: 0; transform: translateY(-50%); background-color: rgba(128, 128, 128, 0.3); padding: 0 10px;">
+				<b>Selected Awards</b>
+			</span>
+		</div>
+
+		<table style="border-spacing:2px; font-size: 15px;">
+			<tbody>
+				<tr>
+					<td width="270px">
+						<img src="./files/photo/highlight/2025-lz-2.jpg" width="170px" style="box-shadow: 4px 4px 8px #888; margin-left: 50px; margin-top: 0px;" alt="Excellent Star Award">
+					</td>
+					<td>
+						<b>Excellent Star of Shenzhen University (Nominated), 荔园卓越之星提名奖 (2024)</b>
+						<div style="height: 5px;"></div>
+						<div style="height: 8px;"></div>
+						<div>- The highest honor for undergraduate students at Shenzhen University<br>- Ranked 1st among the nominated undergraduates in the school<br>- <i style="color: red; display: inline;">CNY 30,000</i></div>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<div style="text-align: center; position: relative; margin-bottom: 40px; margin-top: 20px;">
+			<span style="position: absolute; top: 50%; left: 0; right: 0; transform: translateY(-50%); background-color: rgba(128, 128, 128, 0.3); padding: 0 10px;">
+				<b>Others</b>
+			</span>
+		</div>
+
+		<div style="height: 200px; overflow: auto; font-size: 15px;">
+			<ul>
+				<li>[2024] Excellent Star of SZU (Nominated), the highest honor for undergraduate students at Shenzhen University, CNY 30,000</li>
+				<li>[2024] Liyuan Star Scholarship, the highest honor for college-level undergraduates, CNY 20,000</li>
+				<li>[2024] First Prize of Scholarship for Top Innovative Talents, ranked first in the selection, CNY 12,000</li>
+				<li>[2023] First Prize of Innovation & Entrepreneurship Star (Individual), CNY 3,000</li>
+				<li>[2024] First Prize of Innovation & Entrepreneurship Star (Team), CNY 3,000</li>
+				<li>[2024] Second Prize for Outstanding Student Leaders, CNY 2,000</li>
+				<li>[2022] Second Prize of Study Star, CNY 2,000</li>
+				<li>[2023] Liyuan Star Scholarship, the highest honor for college-level undergraduates, CNY 20,000</li>
+				<li>[2023] Pengcheng Scholarship, 71 students selected from 30,000 undergraduate students, CNY 10,000</li>
+				<li>[2023] Outstanding Student Leader of Shenzhen University</li>
+				<li>[2023] First Prize of Scholarship for Top Innovative Talents, ranked first in the selection, CNY 12,000</li>
+				<li>[2023] First Prize for Outstanding Student Leaders, the only class leader among the first prize, CNY 3,000</li>
+				<li>[2023] First Prize of Innovation & Entrepreneurship Star (Individual), CNY 3,000</li>
+				<li>[2023] Second Prize of Charity Star, CNY 2,000</li>
+				<li>[2023] Second Prize of Study Star, CNY 2,000</li>
+				<li>[2023] First Prize of Innovation & Entrepreneurship Star (Team), CNY 3,000</li>
+				<li>[2023] Third Prize of Cultural and Sports Star (Team), CNY 2,000</li>
+				<li>[2023] Advanced class collective, ranked first in grade (served as monitor), CNY 1,000</li>
+				<li>[2022] Liyuan Star Scholarship, the highest honor for college-level undergraduates, CNY 20,000</li>
+				<li>[2022] First Prize of Scholarship for Top Innovative Talents, ranked first in the selection, CNY 12,000</li>
+				<li>[2022] First Prize of Innovation & Entrepreneurship Star (Individual), CNY 3,000</li>
+				<li>[2022] Second Prize of Study Star, CNY 2,000</li>
+				<li>[2022] Advanced class collective, ranked first in grade (served as monitor), CNY 1,000</li>
+				<li>[2021] Full tuition scholarship for top innovative talents, CNY 6,000</li>
+			</ul>
+		</div>
+		<div style="margin-top: 5px; font-size: small; margin-bottom: 0px;">⬆ scrollable</div>
+
+		<!-- Competition Awards Section -->
+		<h2>Competition Awards (Selected)</h2>
+		<table style="border-spacing:2px">
+			<tbody>
+				<tr>
+					<td width="280px">
+						<img src="./files/photo/highlight/icpc.jpg" width="200px" style="box-shadow: 4px 4px 8px #888; margin-left: 32px; margin-top: 0px;" alt="ICPC">
+					</td>
+					<td style="font-size: 15px;">
+						<b>(ACM-ICPC) International Collegiate Programming Contest Regional Contest</b>
+						<p><i style="color: red; display: inline;"><b>Silver Medal</b></i> 🥈</p>
+						<div style="font-size: 15px">With Yuanjie He, Yifei Liu. Supervised by <a href="https://szudseg.cn/people/">Prof. Jianbin Qin.</a></div>
+						<div style="font-size: 15px">Team: SZU_Tencent</div>
+					</td>
+				</tr>
+				<tr>
+					<td width="280px">
+						<img src="./files/photo/highlight/robocom-2024.png" width="200px" style="box-shadow: 4px 4px 8px #888; margin-left: 32px; margin-top: 0px;" alt="RoboCom">
+					</td>
+					<td style="font-size: 15px;">
+						<b>RoboCom Robot Development Competition (RAICOM)</b>
+						<p><i style="color: red; display: inline;"><b>National Runner-up</b></i> 🏆</p>
+						<div style="font-size: 15px">With Weili Li, Jiaxuan Li. Supervised by <a href="https://csse.szu.edu.cn/pages/user/index?id=1130">Dr. Jie Chen</a>.</div>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<!-- Footer -->
+		<div style="margin: -20pt;"></div>
+		<div id="footer">
+			<div id="footer-text"></div>
+		</div>
+		<p>
+			<center>
+				<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+				<a style="color: black; font-size: small;"><i>Latest updated in Aug. 2025</i></a>
+				<p></p>
+				<center>© Tianxing Chen</center>
+				<p></p>
+			</center>
+		</p>
+	</div>
+
+	<div class="jvectormap-tip"></div>
+	<grammarly-desktop-integration data-grammarly-shadow-root="true">
+		<template shadowrootmode="open">
+			<style>
+				div.grammarly-desktop-integration {
+					position: absolute;
+					width: 1px;
+					height: 1px;
+					padding: 0;
+					margin: -1px;
+					overflow: hidden;
+					clip: rect(0, 0, 0, 0);
+					white-space: nowrap;
+					border: 0;
+					-moz-user-select: none;
+					-webkit-user-select: none;
+					-ms-user-select: none;
+					user-select: none;
+				}
+
+				div.grammarly-desktop-integration:before {
+					content: attr(data-content);
+				}
+			</style>
+			<div aria-label="grammarly-integration" role="group" tabindex="-1" class="grammarly-desktop-integration" data-content="{&quot;mode&quot;:&quot;full&quot;,&quot;isActive&quot;:true,&quot;isUserDisabled&quot;:false}"></div>
+		</template>
+	</grammarly-desktop-integration>
+</body>
+</html>
