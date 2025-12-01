@@ -2,7 +2,10 @@
 <html lang="zh">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
 <title>本科致谢</title>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Noto+Sans+SC:wght@300;400;500;600&display=swap" rel="stylesheet">
 
@@ -11,31 +14,46 @@
     margin: 0;
     padding: 0;
     font-family: "Inter", "Noto Sans SC", sans-serif;
-    background: #ffffff;
+    background: #fff;
     color: #111;
+    -webkit-font-smoothing: antialiased;
   }
+
+  /* 自动根据屏幕调整排版宽度 */
   .container {
-    width: min(680px, 90%);
-    margin: 60px auto 120px auto;
+    width: 100%;
+    max-width: 680px;
+    padding: 5vw;
+    margin: 0 auto 100px auto;
+    box-sizing: border-box;
   }
+
   a { color:#111; text-decoration:none; }
+
   .back {
     font-size: 14px;
     color:#666;
   }
-  .back:hover {
-    text-decoration: underline;
-  }
+  .back:hover { text-decoration: underline; }
+
+  /* 标题在手机上自动变小 */
   h1 {
     margin-top: 28px;
-    font-size: 30px;
     font-weight: 600;
     line-height: 1.4;
+    font-size: clamp(24px, 6vw, 32px);
   }
+
+  /* 正文自适应字体 & 行高 */
   p {
-    font-size: 17px;
+    font-size: clamp(15px, 4.2vw, 18px);
     line-height: 1.8;
-    margin: 20px 0;
+    margin: 18px 0;
+  }
+
+  /* 让断行更漂亮 */
+  p + p {
+    margin-top: 16px;
   }
 </style>
 </head>
