@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>本科升学回忆帖</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --text: #222;
+    --subtext: #666;
+    --bg: #fff;
+    --line: #e6e6e6;
+    --blue-gray-grad: linear-gradient(135deg, #5b7fa6 0%, #3c5a7a 50%, #1f3247 100%);
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: "Inter", "Noto Sans SC", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .container {
+    width: 100%;
+    max-width: 720px;
+    padding: 5vw;
+    margin: 0 auto 120px auto;
+    box-sizing: border-box;
+  }
+
+  a { text-decoration:none; color:var(--subtext); }
+  .back { font-size:14px; }
+  .back:hover { text-decoration:underline; }
+
+  /* 主标题 */
+  h1 {
+    margin-top: 28px;
+    font-weight: 700;
+    line-height: 1.35;
+    font-size: clamp(26px, 6.2vw, 38px);
+    background: var(--blue-gray-grad);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: -0.5px;
+  }
+
+  /* 小标题 */
+  h2 {
+    margin-top: 32px;
+    margin-bottom: 8px;
+    font-size: 20px;
+    font-weight: 600;
+    color: #111;
+  }
+
+  h3 {
+    margin-top: 24px;
+    margin-bottom: 6px;
+    font-size: 18px;
+    font-weight: 600;
+    color: #222;
+  }
+
+  /* 日期轻量化 */
+  .date {
+    display: block;
+    margin-top: 6px;
+    font-size: 14px;
+    color: var(--subtext);
+  }
+
+  /* 正文：更舒适的阅读排版 */
+  p {
+    font-size: clamp(16px, 4.2vw, 19px);
+    line-height: 1.88;
+    margin: 18px 0;
+    color: #333;
+    font-weight: 400;
+  }
+
+  strong {
+    font-weight: 600;
+    color: #111;
+  }
+
+  p + p { margin-top: 14px; }
+
+  /* 表格样式 */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0 10px 0;
+    font-size: 15px;
+  }
+  th, td {
+    border-bottom: 1px solid var(--line);
+    padding: 8px 4px;
+    text-align: left;
+  }
+  th {
+    font-weight: 600;
+    color: #111;
+  }
+
+  /* 深色模式 */
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --text: #eee;
+      --subtext: #aaa;
+      --bg: #111;
+      --line: #2a2a2a;
+    }
+    p { color: #ddd; }
+    strong { color: #fff; }
+    th, td { border-bottom-color: #333; }
+  }
+</style>
+</head>
+
+<body>
+<div class="container">
+  <a href="../index.html" class="back">← 返回首页</a>
+
+  <h1>
+    本科升学回忆帖
+  </h1>
+  <span class="date">2025-04-10</span>
+
+  <h2>背景</h2>
+
+  <p>
+    <strong>GPA:</strong><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;等级制: 4.16 / 4.5, 百分制: 91.00 / 100, 专业排名: 4 / 156
+  </p>
+
+  <p>
+    <strong>竞赛:</strong><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;- ACM-ICPC国际大学生程序竞赛亚洲区域赛银牌<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;- RAICOM睿抗机器人开发者大赛全国亚军<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;- 蓝桥杯全国总决赛全国一等奖<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;- 中国高校计算机大赛 —— 团体程序设计天梯赛全国金奖团队
+  </p>
+
+  <p>
+    <strong>科研:</strong><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;- CVPR一作+共一2+四作<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;- ECCV Workshop Best Paper共一2<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;- ICARM三作<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;- ACL共一+二作在投<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;- RSS在投<br>
+  </p>
+
+  <p>
+    <strong>实习:</strong><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;- 上海人工智能实验室, 研究实习生<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;- 国家大数据工程实验室 (深圳大学), 研究实习生<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;- 香港大学MMLab, 访问学生
+  </p>
+
+  <p>
+    <strong>个人荣誉:</strong><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;- CCF优秀大学生 (全国99人, 2023)<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;- 荔园卓越之星 (2023)<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;- 荔园之星 (2022, 2023)<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;- 鹏程奖学金 (2023)<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;- 拔尖创新人才奖学金 (2022, 2023)<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;- 优秀学生干部一等奖 (2022, 2023)<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;- 双创之星一等奖 (2022, 2023)<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;- 学习之星、公益之星、文体之星、拔尖创新人才全额学费奖学金等，累计18项
+  </p>
+
+  <p>
+    <strong>项目:</strong><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;电商平台前端开发，微信小程序开发大赛华南二等奖
+  </p>
+
+  <p>
+    <strong>个人责任:</strong><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;ACM算法集训队队长, 广东省百千万工程负责人
+  </p>
+
+  <h2>申请情况</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>申请项目</th>
+        <th>结果</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>港大PhD</td>
+        <td>✅</td>
+      </tr>
+      <tr>
+        <td>北大本部RA 1</td>
+        <td>❌</td>
+      </tr>
+      <tr>
+        <td>北大本部RA 2</td>
+        <td>✅ (offer, 未去)</td>
+      </tr>
+      <tr>
+        <td>清华叉院PhD</td>
+        <td>❌ (邮件联系无回复)</td>
+      </tr>
+      <tr>
+        <td>北大本部PhD</td>
+        <td>⭕️ (仅意向，因有offer，后续未跟进)</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p><strong>最终去向:</strong> 港大MMLab直博, 研究方向为具身智能</p>
+
+  <h2>经历分享</h2>
+
+  <h3>申请季前</h3>
+  <p>
+    我的大学生涯前两年大概都在打竞赛 (ACM为主，拿到了ACM银等编程奖项, 以及机器人比赛的亚军，其实很水)，轻量刷GPA (90+) 以及培养综合能力 (如演讲)，未真正接触科研。可能本着对学科以及钻研的热爱，在大三开始前便决定要读PhD，不必要是直博。这便是申请季前的基础配置。
+  </p>
+
+  <h3>申请季前期</h3>
+  <p>
+    从大三上开始意识到科研对学术向研究生申请最为重要, 于是从9月开始正式投入科研 (我认为深大申请学术向研究生: 科研&gt;GPA&gt;竞赛, GPA太低可能别人完全不看你)。参与了本校的一个科研项目，期间在备赛ACM的最后一个赛季，因此科研进展比较缓慢，同时在提升申请认知 (大量吸收知乎、绿群、PhD申请群的信息)。
+  </p>
+  <p>
+    在12月，在本校做的科研项目接近收尾，于是开始大胆向外 (仅清北交) 联系RA，意图通过RA锁定保研机会。联系方式包括: 直接给老师投邮件、翻组内学生联系方式等。由于一开始心气高 (投递老师较强) + 未有论文产出，故邮件均无回复。
+  </p>
+
+  <h3>北大RA1</h3>
+  <p>
+    转折来自于一名学长通过了我的好友申请并和我进行细致交谈，并给予了我内推机会 (北大本部强AP)。于是顺利拿到北大的RA面试，这是我的第一次考核。
+  </p>
+  <p>
+    考核内容非常难，需要你在一周时间内完成:<br>
+    1. 基于他们组的框架替换某扩散模型论文实现的大部分内容，完成实验并撰写技术报告<br>
+    2. 撰写关于某AI安全方向的简介<br>
+    3. 开放话题 (GPT等)<br>
+  </p>
+  <p>
+    由于当时水平较差 + 考试交错 + 并没有接触过相关知识，故并没有通过考核。
+  </p>
+
+  <h3>过渡 (YM+北大RA2)</h3>
+  <p>
+    还是那名学长，虽然北大考核没有过，但是我完成的很认真，这名学长依然非常看好我 (简直是贵人)，于是给我推荐了上海AILab实习，跟着一位学长 (以下称YM) 做具身智能。YM跟我开了个会，了解了我的情况，并表示愿意培养，非常真诚，故答应。
+  </p>
+  <p>
+    答应YM的第二天，北大本部另一位强AP约面试，对我很满意，但要求线下实习且并不保证offer，经调研得知该组有较多RA，转正难度大，故婉拒，专一追随YM。
+  </p>
+
+  <h3>上海AILab实习+清华叉院、北大申请</h3>
+  <p>
+    考完期末考后为过年时间，还无法前往上海AILab入职，故先前往YM的博士组访问 (香港大学)，期间第一次与导师有了会面。了解到组内背景普遍较强 (直博清一色C9 rk1)，故未设定为目标，但与导师交谈甚欢，算是刷了个脸熟。
+  </p>
+  <p>
+    访问结束后，2月末前往上海AILab，正式开始具身智能科研生涯，此时科研仍未有产出，但YM表示认真做，会陆续推荐清华深圳、北大本部，事实也确实支持了 (贵人)。
+  </p>
+  <p>
+    4月面试了北大本部老师，届时已有一定科研成果，准备充分。老师人非常非常好，有insight、人品好，聊的非常愉快。可惜最后因为学院性质，只能保证入营，仍然需要笔试。由于后续拿到心仪offer，故无跟进。
+  </p>
+  <p>
+    4月投递了清华叉院，国内最强项目。叉院比较需要提前connect，比如提前一年RA，加上背景超强。当时并没有提前联系，加上未有好的科研成果，遂挂。
+  </p>
+
+  <h3>港大</h3>
+  <p>
+    后续不断完善科研工作，并与4月与港大老师细致交谈，迷迷糊糊拿下了口头offer，还需要过学院、学校面试，不过基本是走形式，申请季就结束了 (结束的有点莫名其妙)。主要成功的原因我认为是面谈的过程中比较积极，沟通顺畅，所以留下了好印象。
+  </p>
+
+  <h2>总结</h2>
+  <p>
+    * 需要敢于联系老师，不要担心自己够不上bar，积极才能争取到机会。<br>
+    * 敢于表达自己，提前培养自己的表达、演讲以及临时反应能力，抱着真诚、平等的心态交流。<br>
+    * 学会取舍，分清楚申请季什么才是最重要的，果断断舍离。
+  </p>
+
+</div>
+</body>
+</html>
