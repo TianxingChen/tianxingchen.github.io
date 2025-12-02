@@ -3,23 +3,28 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
-<title>My Blog</title>
+<title>Tianxing Blog</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Noto+Sans+SC:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 <style>
+  :root {
+    --text: #111;
+    --subtext: #666;
+    --bg: #fff;
+    --line: #e6e6e6;
+    --blue-gray-grad: linear-gradient(135deg, #5b7fa6 0%, #3c5a7a 50%, #1f3247 100%);
+  }
+
   body {
     margin: 0;
     padding: 0;
     font-family: "Inter", "Noto Sans SC", sans-serif;
-    background: #fff;
-    color: #111;
-    -webkit-font-smoothing: antialiased;
+    background: var(--bg);
+    color: var(--text);
   }
 
-  /* 容器：左右随屏幕变化 */
   .container {
     width: 100%;
     max-width: 720px;
@@ -28,40 +33,53 @@
     box-sizing: border-box;
   }
 
-  /* 标题自适应 */
+  /* 顶部博客标题 */
   .title {
-    font-size: clamp(28px, 7vw, 42px);
-    font-weight: 600;
+    font-size: clamp(30px, 7vw, 46px);
+    font-weight: 700;
     margin-bottom: 40px;
-    line-height: 1.3;
+
+    background: var(--blue-gray-grad);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
 
-  /* 每一篇文章作为一个极简条目 */
+  /* 文章列表条目 */
   .post {
     padding: 24px 0;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid var(--line);
+    transition: 0.25s ease;
+  }
+
+  .post:hover {
+    transform: translateX(4px);
   }
 
   .post-title {
-    font-size: clamp(17px, 4.5vw, 20px);
-    font-weight: 500;
-    margin: 0 0 6px 0;
-    color:#111;
-    line-height: 1.5;
-  }
-
-  .post-title:hover {
-    text-decoration: underline;
+    font-size: clamp(18px, 4.5vw, 22px);
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: var(--text);
   }
 
   .date {
     font-size: clamp(13px, 3.5vw, 14px);
-    color:#777;
+    color: var(--subtext);
   }
 
   a {
     text-decoration: none;
     color: inherit;
+  }
+
+  /* 深色模式 */
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --text: #eee;
+      --subtext: #aaa;
+      --bg: #111;
+      --line: #2a2a2a;
+    }
   }
 </style>
 </head>
@@ -71,7 +89,16 @@
 
   <div class="title">Tianxing Chen's Blog</div>
 
-  <a href="posts/2025-beng-acknowledgement.html">
+  <div>记录一些思想与认知的成长</div>
+
+  <!-- <a href="posts/2025-beng-acknowledgement.html">
+    <div class="post">
+      <div class="post-title">博士升学季回顾</div>
+      <div class="date">2025-04-27</div>
+    </div>
+  </a> -->
+
+  <a href="posts/2025-bachelor-acknowledgement.html">
     <div class="post">
       <div class="post-title">本科毕业致谢</div>
       <div class="date">2025-04-27</div>
@@ -85,7 +112,13 @@
     </div>
   </a>
 
-  <!-- 新文章继续往下加即可 -->
+  <!-- 新文章继续添加即可 -->
+   <p style="margin-top: 20px;">
+        <center>
+          <a href="https://visitorbadge.io/status?path=https%3A%2F%2Ftianxingchen.github.io%2Fblog"><img src="https://api.visitorbadge.io/api/visitors?path=https%3A%2F%2Ftianxingchen.github.io%2Fblog&label=Tianxing's%20Blog&countColor=%23263759" /></a>            
+            <center> © Tianxing Chen</center>
+        </center>
+    </p>
 
 </div>
 </body>
