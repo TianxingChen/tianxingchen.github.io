@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ACM-ICPC香港站银牌小记</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --text: #222;
+    --subtext: #666;
+    --bg: #fff;
+    --line: #e6e6e6;
+    --blue-gray-grad: linear-gradient(135deg, #5b7fa6 0%, #3c5a7a 50%, #1f3247 100%);
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: "Inter", "Noto Sans SC", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .container {
+    width: 100%;
+    max-width: 720px;
+    padding: 5vw;
+    margin: 0 auto 120px auto;
+    box-sizing: border-box;
+  }
+
+  a { text-decoration:none; color:var(--subtext); }
+  .back { font-size:14px; }
+  .back:hover { text-decoration:underline; }
+
+  /* 标题：更现代、柔和、科技感 */
+  h1 {
+    margin-top: 28px;
+    font-weight: 700;
+    line-height: 1.35;
+    font-size: clamp(26px, 6.2vw, 38px);
+    background: var(--blue-gray-grad);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: -0.5px;
+  }
+
+  /* 日期轻量化 */
+  .date {
+    display: block;
+    margin-top: 6px;
+    font-size: 14px;
+    color: var(--subtext);
+  }
+
+  /* 正文：更舒适的阅读排版 */
+  p {
+    font-size: clamp(16px, 4.2vw, 19px);
+    line-height: 1.88;
+    margin: 18px 0;
+    color: #333;
+    font-weight: 400;
+  }
+
+  strong {
+    font-weight: 600;
+    color: #111;
+  }
+
+  /* 优雅的段落间隔 */
+  p + p { margin-top: 14px; }
+
+  /* 深色模式 */
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --text: #eee;
+      --subtext: #aaa;
+      --bg: #111;
+      --line: #2a2a2a;
+    }
+    p { color: #ddd; }
+    strong { color: #fff; }
+  }
+</style>
+</head>
+
+<body>
+<div class="container">
+  <a href="../index.html" class="back">← 返回首页</a>
+
+  <h1>ACM-ICPC香港站银牌小记</h1>
+  <span class="date">2023-01-14</span>
+
+  <p>说说今天香港战绩：rk25/117，拿到了期待已久的银牌🥈！！！</p>
+
+  <p>首先需要感谢郭泽森愿意当我们的志愿者者，感谢队友heyuanjie和l1f带飞[爱心]。</p>
+
+  <p>QQ动态挂着“压力大得喘不过气”整整一个半月…</p>
+
+  <p>继作为非正式选手参加西安rk银，杭州rk铜首后，我们对12月第一场正式赛——南京站充满信心，熬过了疫情的极大变化和各种压力后，南京站状态极差差40dirt遗憾打铁给我们沉重的打击，作为队长我对两人反复做着思想工作，但是大家心里都清楚，接下来的香港站意味着什么——本赛季一无所获，还是翻盘…</p>
+
+  <p>所幸队伍里虽然都顶着很大的压力，但是大家都坚持了下来，特别是heyuanjie，在学校一个人困在实验室学了20天，cf rating也从1700打到接近2100。</p>
+
+  <p>无论怎么样，相信是南京把坏运气用完了，这一两月的努力也弥足珍贵。</p>
+
+  <p>不过过程过于惊险，接下来来点复盘传统艺能：</p>
+
+  <p>上来跟榜开了H，代码只有短短五行，三个人反复确认确认无误之后非常开心地获得首交即wa的成绩。反复查看后发现把“k*((l+b-1)/b)”写成了“k*(l+b-1)/b”，典中点了属于是。然后再次检查后继续交，喜提签到2wa。到了30min才A，此时rk来到100附近。</p>
+
+  <p>在A完签到后，heyuanjie和l1f也口胡完了K，上来就敲，这时候不知道他们在说什么的我爬去看A。</p>
+
+  <p>做完阅读理解后，手推了一下感觉就是个裸的不能再裸的树形dp，鉴于他们两个还在磨K，我选择花时间思考一下这道题为什么这么简单。</p>
+
+  <p>很快他们交了K，喜提wa，然后反复交K，反复wa，最后wa完三发后终于过了，此时place 82，罚时垫底。</p>
+
+  <p>反复琢磨这个看起来那么简单的A，然后发现真的那么简单，上来就和heyuanjie口胡了一下题意，然后直接开敲，1A，此时place 40，Time 89。</p>
+
+  <p>这个时候heyuanjie由于手上没题了，我就和他口胡了F，发现是个3^k且k&lt;=6的情况数，然后heyuanjie否决了我的想法，声称是个O(n^2),n&lt;=2e5的solution。</p>
+
+  <p>“我测，我是傻逼，你说的对”，然后成功被带偏，乐，此时决定他们两个搞E，我想想F。</p>
+
+  <p>这时候heyuanjie只用了几分钟就敲定了E是扫描线，我帮忙敲了快读后其上来就开敲，md真猛。敲了1h发现反复wa，此时顶着极高的dirt，终于还是确定了题数至上的策略。此时heyuanjie反复乱交E。经过30min的乱试，最后还是因为数组开小了…此时由于封榜，只知道place 42，时间来到最后半小时。</p>
+
+  <p>然后发现我的F时间复杂度应该是对的，同时heyuanjie说C就是典型的div2 C，最后两个人交替tle和wa，期间也爆出了各种“他让我过我就能过”的金句，最后交了一发后结束了，也不知道过没过，长舒一口气…</p>
+
+  <p>19:00，和heyuanjie看完激动人心的滚榜，得知silver medal后大家一起从凳子上跳起来，抱在一起…[苦涩][苦涩]呜呜我的捷宝</p>
+
+  <p>从21年10月开始学dp，到22年10月开始准备本赛季，到23年1.14，不管怎么说一起都是值得的。</p>
+
+  <p>看起来和香港🇭🇰很有缘诶，那希望不久之后缘分能继续吧！</p>
+
+</div>
+</body>
+</html>
