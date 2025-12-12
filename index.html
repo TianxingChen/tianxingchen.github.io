@@ -18,6 +18,44 @@
 			line-height: 1.6;
 			color: #333;
 		} */
+        .award-grid{
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* 一行3个 = 33.3333% */
+            gap: 18px;                             /* 卡片间距 */
+        }
+
+        .award-card{
+            width: 100%;
+            text-align: center;                    /* 文字居中 */
+            display: flex;                         /* 图片+文字垂直居中排 */
+            flex-direction: column;
+            align-items: center;                   /* 横向居中 */
+            justify-content: center;               /* 纵向居中（可选） */
+        }
+
+        .award-card img{
+            height: 140px;                         /* 你原来的高度 */
+            width: auto;
+            display: block;
+            /* 右 + 下 阴影：x=10px(右), y=10px(下) */
+            box-shadow: 2px 2px 2px rgba(0,0,0,0.25);
+        }
+
+        .award-text{
+            margin-top: 10px;
+            font-size: 15px;
+            line-height: 1.35;
+            max-width: 90%;                        /* 防止文字太长顶满 */
+        }
+        
+        @media (max-width: 900px){
+        .award-grid{ grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 520px){
+        .award-grid{ grid-template-columns: 1fr; }
+        }
+
+
         table {
         			border-collapse: collapse;
         		}
@@ -237,14 +275,14 @@
 
         <p>I am the founder of <a href="https://lumina-embodied.ai/">Lumina
 							Embodied AI Community</a>, and have served as an organizer of the SIGGRAPH ASIA 2025 TriFusion Workshop, CVPR 2025 MEIS Workshop, the CVPR 2025 RoboTwin Dual-Arm Collaboration Challenge, and the Greater Bay Area Embodied AI Workshop. I am also
-            a student committee member of the Autonomous Robotic Technology Seminar (ARTS). In addition, I share my thoughts on research and technology as a blogger and vlogger, with over 15k followers on Rednote 🎒@<a style="color: red" href="https://www.xiaohongshu.com/user/profile/618fe930000000001000afe7">TianxingChen
+            a student committee member of the Autonomous Robotic Technology Seminar (ARTS). In addition, I share my thoughts on research and technology as a blogger and vlogger, with over 18k followers on Rednote 🎒@<a style="color: red" href="https://www.xiaohongshu.com/user/profile/618fe930000000001000afe7">TianxingChen
 							(陈天行)</a>.</p>
         <details>
             <summary>中文版个人简介</summary>
             <p>Hi！我是<b>陈天行 (English name: Tianxing Chen)</b>，现在是香港大学<a href="https://mmlab.hk/" target="_blank">MMLab@HKU</a>的一年级博士生（始于2025年9月），师从<a href="http://luoping.me">罗平教授</a>。我的研究方向是具身智能，包括机器人通用操作策略、数据合成器、视觉基座模型等。我正在字节跳动Seed Edge团队担任研究实习生。</p>
-            <p>我在CVPR、RSS、ACL等学术顶会发表多篇论文，Github上获得超一万星标，在Huggingface上获得超十万下载量。在ECCV 2024 MAAS Workshop上获得最佳论文奖，获得NeurIPS 2025 MARS操作赛冠军，IROS 2025 AgiBot World操作赛季军，在IROS 2025 RoMaDo、RoDGE、AIR4S Workshop与ChinaSI 2025上获得最佳海报奖，获得CVPR Highlight等。我曾经获得CCF优秀大学生（全国年度99人）、荔园卓越之星（深圳大学本科生最高荣誉）等荣誉。竞赛上获得ACM-ICPC国际大学生程序设计竞赛银牌，在RAICOM机器人开发者大赛中获得赛道全国亚军。
+            <p>我在CVPR、RSS、ACL等学术顶会发表多篇论文，Github上获得超一万星标，在Huggingface上获得超十万下载量。在ECCV 2024 MAAS Workshop上获得最佳论文奖，获得NeurIPS 2025 MARS操作赛冠军，IROS 2025 AgiBot World操作赛季军，在IROS 2025 RoMaDo、RoDGE、AIR4S Workshop与ChinaSI 2025上获得最佳海报奖，获得CVPR Highlight等。我曾经获得CCF优秀大学生（全国年度99人）、荔园卓越之星（深圳大学本科生最高荣誉）等荣誉。竞赛上获得ACM-ICPC国际大学生程序设计竞赛银牌，在RAICOM机器人开发者大赛中获得赛道全国亚军等。
             </p>
-            <p>我是<a href="https://lumina-embodied.ai/">Lumina具身智能社区</a>的创始人，也曾作为组织者举办SIGGRAPH ASIA 2025 TriFusion Workshop、CVPR 2025 MEIS Workshop、CVPR 2025 RoboTwin双臂协作竞赛、大湾区具身智能研讨会等。担任ARTS自主机器人技术研讨会的学生委员会成员。同时，我还在小红书拥有超15k粉丝🎒@
+            <p>我是<a href="https://lumina-embodied.ai/">Lumina具身智能社区</a>的创始人，也曾作为组织者举办SIGGRAPH ASIA 2025 TriFusion Workshop、CVPR 2025 MEIS Workshop、CVPR 2025 RoboTwin双臂协作竞赛、大湾区具身智能研讨会等。担任ARTS自主机器人技术研讨会的学生委员会成员。同时，我还在小红书拥有超18k粉丝🎒@
                 <a style="color: red" href="https://www.xiaohongshu.com/user/profile/618fe930000000001000afe7">TianxingChen
 								(陈天行)</a>。</p>
         </details>
@@ -1061,10 +1099,70 @@
     <i style="font-size: 12px"><b>*</b> Equal contribution. <b>†</b> Corresponding author.</i>
 
     <h2>Honors & Academic Awards</h2>
-    <div class="scroll-wrapper">
-        <div class="scroll-content" style="font-size: 15px;">
-            <!-- 内容重复两次以实现无缝滚动 -->
-            <!-- 第一次内容 -->
+    <div class="award-grid">
+        <div class="award-card">
+            <img src="./files/award/2025-neurips-mars-champion.jpg" alt="">
+            <div class="award-text">NeurIPS 2025 MARS Challenge Control Track Champion</div>
+        </div>
+
+        <div class="award-card">
+            <img src="./files/award/2024-eccv_best_paper.png" alt="">
+            <div class="award-text">ECCV 2024 MAAS Workshop Best Paper Award</div>
+        </div>
+
+        <div class="award-card">
+            <img src="./files/award/2025-robotwin_best_poster.jpg" alt="">
+            <div class="award-text">IEEE IROS 2025 RoDGE Workshop Best Poster Award</div>
+        </div>
+
+        <!-- <div class="award-card">
+            <img src="./files/award/2025-d-robotics-developer-star.jpg" alt="">
+            <div class="award-text">D-Robotics Developer Star 2025</div>
+        </div> -->
+
+        <div class="award-card">
+            <img src="./files/award/2025-agibotworld-challenge.jpg" alt="">
+            <div class="award-text">IEEE IROS 2025 AgiBot World Challenge Third-Runnerup</div>
+        </div>
+
+        <div class="award-card">
+            <img src="./files/award/2025-autobio-best-poster.png" alt="">
+            <div class="award-text">IEEE IROS 2025 AIR4S Workshop Best Poster Award</div>
+        </div>
+
+        <div class="award-card">
+            <img src="./files/award/2025-lehome_best_poster.jpg" alt="">
+            <div class="award-text">IEEE IROS 2025 RoMaDo Workshop Best Poster Award</div>
+        </div>
+
+        <div class="award-card">
+            <img src="./files/award/2025-chinasi-best-poster.jpg" alt="">
+            <div class="award-text">ChinaSI 2025 Outstanding Poster Award (rk 1/61)</div>
+        </div>
+
+        <div class="award-card">
+            <img src="./files/photo/2023-CCF_award.jpg" alt="">
+            <div class="award-text">CCF Elite Collegiate Award (top 99 nationwide)</div>
+        </div>
+
+        <div class="award-card">
+            <img src="./files/photo/2023-lyzf.jpg" alt="">
+            <div class="award-text">Excellet Star of SZU 2023-2024 (highest honor for undgraduate students)</div>
+        </div>
+
+        <div class="award-card">
+            <img src="./files/photo/highlight/2025-lz-2.jpg" alt="">
+            <div class="award-text">Excellet Star of SZU 2023-2024 (nominated)</div>
+        </div>
+
+        <!-- <div class="award-card">
+            <img src="./files/award/2023-icpc.jpg" alt="">
+            <div class="award-text">ACM-ICPC Hong Kong Regional Contest Silver Medal</div>
+        </div> -->
+
+
+    </div>
+<!-- 
              <img src="./files/award/2025-neurips-mars-champion.jpg" style="height: 100px;">
             <img src="./files/award/2025-robotwin_best_poster.jpg" style="height: 100px;">
             <img src="./files/award/2025-d-robotics-developer-star.jpg" style="height: 100px;">
@@ -1076,7 +1174,6 @@
             <img src="./files/photo/2023-CCF_award.jpg" style="height: 100px;">
             <img src="./files/photo/2023-lyzf.jpg" style="height: 100px;">
             <img src="./files/photo/highlight/2025-lz-2.jpg" style="height: 100px;">
-            <!-- 第二次内容 -->
             <img src="./files/award/2025-neurips-mars-champion.jpg" style="height: 100px;">
             <img src="./files/award/2025-robotwin_best_poster.jpg" style="height: 100px;">
             <img src="./files/award/2025-d-robotics-developer-star.jpg" style="height: 100px;">
@@ -1117,7 +1214,7 @@
             <li> [2023] CCF Elite Collegiate Award (Awarded by China Computer Federation, top 99 nationwide)</li>
 			<div style="margin-top: -5px;"></div>
             <li> [2023] Excellent Star of Shenzhen University (2022-2023, highest honor for undergraduate students at SZU, top 0.0067%)</li>
-	</ul>
+	</ul> -->
 
     <div style="text-align: center; position: relative; margin-bottom: 40px; margin-top: 30px;">
         <span style="position: absolute; top: 50%; left: 0; right: 0; transform: translateY(-50%); background-color: rgba(128, 128, 128, 0.3); padding: 0 10px;">
