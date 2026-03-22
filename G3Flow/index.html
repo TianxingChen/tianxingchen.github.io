@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html">
+  <style>
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr); /* 5列 */
+      grid-template-rows: repeat(4, 1fr); /* 4行 */
+      gap: 10px; /* 网格项之间的间隙 */
+    }
+
+    .grid-item {
+      border: 1px solid #ccc; /* 边框，可以根据需要调整 */
+      padding: 10px; /* 内边距，可以根据需要调整 */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* 可以根据视频类型添加不同的样式 */
+    .type1 { background-color: lightblue; }
+    .type2 { background-color: lightcoral; }
+    .type3 { background-color: lightgreen; }
+    .type4 { background-color: lightyellow; }
+    .type5 { background-color: lightpink; }
+    .video-container {
+        display: flex; /* 使用Flexbox布局 */
+        justify-content: center; /* 水平居中 */
+        margin-bottom: 20px;
+    }
+      .task-title {
+          text-align: center;
+          margin: 20px 0;
+      }
+    .container {
+      width: 90%;
+      padding: 1; /* 去除左右内边距 */
+      margin: 20px 0; /* 水平居中 */
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+    }
+
+    .thumbnail-container {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 15px;
+    }
+  
+    .thumbnail-container .viewer {
+      /* width: 100%; */
+      aspect-ratio: 1; /* 强制保持正方形比例 */
+      background: #ccc; /* 灰色背景 */
+      position: relative;
+      border: 2px solid transparent;
+      transition: border-color 0.3s;
+    }
+  
+    .thumbnail-container .viewer.selected {
+      border-color: black;
+    }
+  
+    #interactive-container {
+      display: none; /* 默认隐藏 */
+      justify-content: space-between;
+    }
+
+    #interactive-viewer, #info-box {
+      width: 50%;
+      aspect-ratio: 1; /* 强制保持正方形比例 */
+      background: #ccc;
+      margin: 20px 0; /* 顶部和底部的间距 */
+      float: left; /* 左对齐 */
+      position: relative;
+    }
+
+    #info-box {
+      background: #f0f0f0; /* 更浅的背景颜色区分内容 */
+      margin: 20px 0; /* 顶部和底部的间距 */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 10px;
+      box-sizing: border-box;
+    }
+  
+    </style>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="description"
+      content="G3Flow: Generative 3D Semantic Flow for Pose-aware and Generalizable Object Manipulation."
+    />
+    <meta name="keywords" content="Diffusion Model, Skill Discovery, Trajectory Generation, Multitask Learning" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>
+      G3Flow: Generative 3D Semantic Flow for Pose-aware and Generalizable Object Manipulation
+    </title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link href="./public/index.css" rel="stylesheet" />
+    <link href="./public/media.css" rel="stylesheet" />
+    <link href="./public/sidebars.css" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="./public/js/base.js"></script>
+  </head>
+
+  <body>
+    <div class="sidebarsWrapper">
+      <div class="sidebars">
+        <a class="barWrapper" clear href="#abstract-a" id="bar2"
+          ><span>Abstract</span>
+          <div class="bar"></div
+        ></a>
+        <a class="barWrapper" clear href="#pipeline" id="bar3"
+          ><span>Pipeline of G3Flow</span>
+          <div class="bar"></div
+        ></a>
+        <a class="barWrapper" clear href="#visualization" id="bar4"
+          ><span>Visualization of G3Flow</span>
+          <div class="bar"></div
+        ></a>
+        <a class="barWrapper" clear href="#experiment" id="bar8"
+          ><span>Experiment</span>
+          <div class="bar"></div
+        ></a>
+        <a class="barWrapper" clear href="#Bibtex" id="bar9"
+          ><span>Bibtex</span>
+          <div class="bar"></div
+        ></a>
+        <a class="barWrapper" clear href="#acknowledgements" id="bar9"
+          ><span>Acknowledgements</span>
+          <div class="bar"></div
+        ></a>
+      </div>
+    </div>
+
+    <!-- \definecolor{hku_color}{HTML}{13A983} % 注意HTML颜色代码是大写的
+\definecolor{szu_color}{HTML}{84193E} % 同上 -->
+    <main class="content">
+      <section class="heading" style="text-align: center!important;">
+        <h1 class="title">
+          <a style="color: #84193E">G</a>3<a style="color: #13A983">F</a>low: <a style="color: #84193E">G</a>enerative 3D Semantic <a style="color: #13A983">F</a>low for Pose-aware and Generalizable Object Manipulation<br>
+          <!-- <img src="files/institute.png" style="width: 100%; height: auto;">  -->
+        </h1>
+        
+        <section class="authors">
+          <ul>
+            <li>
+              <span
+                ><a
+                  href="https://tianxingchen.github.io/"
+                  rel="noreferrer"
+                  target="_blank"
+              >Tianxing Chen</a
+                > <sup>*</sup></span
+              >,
+              <span
+                ><a
+                  href="https://yaomarkmu.github.io/"
+                  rel="noreferrer"
+                  target="_blank"
+              >Yao Mu</a
+                > <sup>* &#8224;</sup></span
+              >,
+              <span
+                ><a
+                  href="https://liang-zx.github.io/"
+                  rel="noreferrer"
+                  target="_blank"
+              >Zhixuan Liang</a
+                > <sup>*</sup></span
+              >,
+              <span
+                >Zanxin Chen</span
+              >,
+
+            <span
+                >Shijia Peng</span
+              >,
+              <br>
+              <span
+              >Qiangyu Chen</span
+            >,
+            <span
+                >Mingkun Xu</span
+              >,
+              <span
+                >Ruizhen Hu</span
+              >,
+            <span
+              >Hongyuan Zhang</span
+            >,
+
+            <span
+              >Xuelong Li</span
+            >,            
+            <span
+              ><a
+                href="http://luoping.me/"
+                rel="noreferrer"
+                target="_blank"
+            >Ping Luo</a
+              ><sup>&#8224;</span
+            >
+            
+            </li>
+        </section>
+        <section class="affiliations">
+          <ul>
+            <li><sup>1</sup> The University of Hong Kong,</li>
+            <li><sup>2</sup> Institute of Artificial Intelligence (TeleAI), China Telecom,</li><br>
+            <li><sup>3</sup> Shenzhen University,</li>
+            <li><sup>4</sup> AgileX Robotics,</li>
+            <li><sup>5</sup> GDIIST</li>
+          </ul>
+        </section>
+        <section class="corresponding">
+          <p>
+            <sup>*</sup>Equal Contribution, <sup>&#8224;</sup>Corresponding authors
+          </p>
+          <!-- <a href="https://hits.seeyoufarm.com"><img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Ftianxingchen.github.io%2FG3Flow&count_bg=%23388FD7&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=Viewers&edge_flat=false"/></a> -->
+        </section>
+        <section class="conference">
+          <h3>
+          Accepted to <i style="color: red">CVPR 2025</i>
+          </h3>
+        </section>
+        <section class="links">
+          <ul>
+            <a href="https://arxiv.org/abs/2411.18369" rel="noreferrer" target="_blank">
+              <li>
+                <span class="icon"> <img src="./public/paper.svg" /> </span
+                ><span>arXiv</span>
+              </li>
+            </a>
+            <a
+              href="https://arxiv.org/pdf/2411.18369"
+              rel="noreferrer"
+              target="_blank"
+            >
+              <li>
+                <span class="icon"> <img src="./public/poster.svg" style="width: 120%;filter: invert(100%); stroke-width: 200%"/> </span
+                ><span>PDF</span>
+              </li>
+            </a>
+            <a
+              href="https://github.com/TianxingChen/G3Flow"
+              rel="noreferrer"
+              target="_blank"
+            >
+              <li>
+                <span class="icon">
+                  <img src="./public/github.svg" />
+                </span>
+                <span>Code</span>
+              </li>
+            </a>
+            <!-- <a
+              href="https://www.youtube.com/watch?v=veQI1iuvYZA"
+              rel="noreferrer"
+              target="_blank"
+             >
+               <li><span class="icon"> <img src="./public/video.svg"/> </span
+                ><span>Video</span>
+               </li>
+             </a> -->
+            <!-- <a
+              href="https://huggingface.co/datasets/YaoMarkMu/robotwin_dataset/tree/main"
+              rel="noreferrer"
+              target="_blank"
+            >
+              <li>
+                <span class="icon"> <img src="./public/database2.svg" style="width: 100%;filter: invert(100%); stroke-width: 200%; padding-bottom:2.5px"/> </span
+                ><span>Dataset</span>
+              </li>
+            </a> -->
+            
+          </ul>
+        </section>
+        <a class="anchor" id="abstract-a"></a>
+        <!-- <img src="./files/d-robotics.jpg" style="width: 10%"> -->
+        <h2>Abstract</h2>
+        <p class="abstract" style="font-family: 'Times New Roman', Arial; text-align: justify">
+          Recent advances in imitation learning for 3D robotic manipulation have shown promising results with diffusion-based policies. However, achieving human-level dexterity requires seamless integration of geometric precision and semantic understanding. We present G3Flow, a novel framework that constructs real-time semantic flow, a dynamic, object-centric 3D semantic representation by leveraging foundation models. Our approach uniquely combines 3D generative models for digital twin creation, vision foundation models for semantic feature extraction, and robust pose tracking for continuous semantic flow updates. This integration enables complete semantic understanding even under occlusions while eliminating manual annotation requirements. By incorporating semantic flow into diffusion policies, we demonstrate significant improvements in both terminal-constrained manipulation and cross-object generalization. Extensive experiments across five simulation tasks show that G3Flow consistently outperforms existing approaches, achieving up to 68.3% and 50.1% average success rates on terminal-constrained manipulation and cross-object generalization tasks respectively. Our results demonstrate the effectiveness of G3Flow in enhancing real-time dynamic semantic feature understanding for robotic manipulation policies.
+        </p>
+      </section>
+
+      <a class="anchor" id="pipeline"></a>
+      <section class="details" style="text-align: justify;">
+        <div style="display: flex; flex-direction: column; align-items: center; width: 100%; height: 100%;">
+          <h2>Pipeline of G3Flow</h2>
+        </div>
+        <div style="display: flex; margin: auto; width: 100%; height: auto; align-content: center; align-items: center;  justify-content: center;">
+          <img
+          style="width: 90%; height: auto"
+          src="files/main.png"
+          />
+        </div>
+        <br />
+        <p style="font-family: 'Times New Roman',serif"> <strong>Pipeline of G3Flow.</strong> Our framework consists of (top) an initialization phase that generates comprehensive 3D representation (surface normals, wireframe, and geometry) through object-centric exploration and digital twin generation, which enables rich semantic field extraction, and (bottom) a control execution phase where real-time pose tracking maintains dynamic semantic fields to guide diffusion-based manipulation actions for pose-aware and generalizable manipulation.
+        </p>
+        <!-- ----------------------------- -->
+        <a class="anchor" id="tasks-a"></a>
+
+        
+        <a class="anchor" id="visualization"></a>
+        <div style="display: flex; flex-direction: column; align-items: center; width: 100%; height: 100%;">
+          <h2>Visualization of G3Flow</h2>
+        </div>
+        <div style="display: flex; margin: auto; width: 100%; height: auto; align-content: center; align-items: center;  justify-content: center;">
+          <img
+          style="width: 80%; height: auto"
+          src="files/vis_5Task.png"
+          />
+        </div>
+        <p style="font-family: 'Times New Roman',serif">We present a video compilation demonstrating the four types of observations (G3Flow combined with the original point cloud, original RGB, G3Flow, and original point cloud) for the five tasks as follows:</p>
+
+
+        
+        <div class="grid-container">
+          <!-- 视频类型1 -->
+          <video autoplay loop muted width="100%" height="auto">
+            <source src="./video/bottle_adjust/G3Flow+raw_pcd.mp4" type="video/mp4">
+            error
+          </video>
+          <video autoplay loop muted width="100%" height="auto">
+            <source src="./video/shoe_place/G3Flow+raw_pcd.mp4" type="video/mp4">
+            error
+          </video>
+          <video autoplay loop muted width="100%" height="auto">
+            <source src="./video/dual_shoes_place/G3Flow+raw_pcd.mp4" type="video/mp4">
+            error
+          </video>
+          <video autoplay loop muted width="100%" height="auto">
+            <source src="./video/diverse_bottles_pick/G3Flow+raw_pcd.mp4" type="video/mp4">
+            error
+          </video>
+          <video autoplay loop muted width="100%" height="auto">
+            <source src="./video/tool_adjust/G3Flow+raw_pcd.mp4" type="video/mp4">
+            error
+          </video>
+          <!--  -->
+          <video autoplay loop muted width="100%" height="auto">
+            <source src="./video/bottle_adjust/rgb.mp4" type="video/mp4">
+            error
+          </video>
+          <video autoplay loop muted width="100%" height="auto">
+            <source src="./video/shoe_place/rgb.mp4" type="video/mp4">
+            error
+          </video>
+          <video autoplay loop muted width="100%" height="auto">
+            <source src="./video/dual_shoes_place/rgb.mp4" type="video/mp4">
+            error
+          </video>
+          <video autoplay loop muted width="100%" height="auto">
+            <source src="./video/diverse_bottles_pick/rgb.mp4" type="video/mp4">
+            error
+          </video>
+          <video autoplay loop muted width="100%" height="auto">
+            <source src="./video/tool_adjust/rgb.mp4" type="video/mp4">
+            error
+          </video>
+          <!--  -->
+          <video autoplay loop muted width="100%" height="auto">
+            <source src="./video/bottle_adjust/G3Flow.mp4" type="video/mp4">
+            error
+          </video>
+          <video autoplay loop muted width="100%" height="auto">
+            <source src="./video/shoe_place/G3Flow.mp4" type="video/mp4">
+            error
+          </video>
+          <video autoplay loop muted width="100%" height="auto">
+            <source src="./video/dual_shoes_place/G3Flow.mp4" type="video/mp4">
+            error
+          </video>
+          <video autoplay loop muted width="100%" height="auto">
+            <source src="./video/diverse_bottles_pick/G3Flow.mp4" type="video/mp4">
+            error
+          </video>
+          <video autoplay loop muted width="100%" height="auto">
+            <source src="./video/tool_adjust/G3Flow.mp4" type="video/mp4">
+            error
+          </video>
+          <!--  -->
+          <video autoplay loop muted width="100%" height="auto">
+            <source src="./video/bottle_adjust/raw_pcd.mp4" type="video/mp4">
+            error
+          </video>
+          <video autoplay loop muted width="100%" height="auto">
+            <source src="./video/shoe_place/raw_pcd.mp4" type="video/mp4">
+            error
+          </video>
+          <video autoplay loop muted width="100%" height="auto">
+            <source src="./video/dual_shoes_place/raw_pcd.mp4" type="video/mp4">
+            error
+          </video>
+          <video autoplay loop muted width="100%" height="auto">
+            <source src="./video/diverse_bottles_pick/raw_pcd.mp4" type="video/mp4">
+            error
+          </video>
+          <video autoplay loop muted width="100%" height="auto">
+            <source src="./video/tool_adjust/raw_pcd.mp4" type="video/mp4">
+            error
+          </video>
+        </div>
+        
+
+
+        
+        <br><br>
+      <a class="anchor" id="experiment" style="margin-top: -2em"></a>
+      <section class="details" style="text-align: justify;">
+        <div style="display: flex; flex-direction: column; align-items: center; width: 100%; height: 100%;">
+          <h2>Experiment</h2>
+        </div>
+        <p style="font-family: 'Times New Roman'"> We conduct extensive experiments to evaluate G3Flow's effectiveness in enhancing policy performance across two key aspects: terminal constraint satisfaction and cross-object generalization.</p>
+        
+        <div style="display: flex; margin: auto; width: 100%; height: auto; align-content: center; align-items: center;  justify-content: center;">
+          <img
+          style="width: 100%; height: auto"
+          src="files/main_experiment.png"
+          />
+        </div>
+        <br />
+        <br><br>
+        <a class="anchor" id="experiment" style="margin-top: -2em"></a>
+        <section class="details" style="text-align: justify;">
+          <div style="display: flex; flex-direction: column; align-items: center; width: 100%; height: 100%;">
+            <h2>Ablation Study</h2>
+          </div>
+
+        <p>To explore the advantages of our complete, dynamic, object-level semantic flow representation, we conduct the ablation study with conventional scene-level feature clouds. We selected the <i>Shoe Place</i> and <i>Dual Shoes Place (T)</i> tasks for comparison because they require adjustments to the orientation of the shoe throughout the entire trajectory, which rely more on long-term semantic understanding. Additionally, object occlusions are designed into the tasks, posing a greater challenge for semantic comprehension.</p>
+        <div style="display: flex; margin: auto; width: 100%; height: auto; align-content: center; align-items: center;  justify-content: center;">
+          <img
+          style="width: 100%; height: auto"
+          src="files/ablation.png"
+          />
+        </div>
+        <!-- <h3>Evaluation on Pose-Aware Manipulation Tasks</h3>
+        <p>To investigate the ability of our method to provide semantic information that enhances the policy's understanding of the semantics of the manipulated object parts, we selected <i>Shoe Place</i>, <i>Dual Shoes Place</i>, <i>Tool Adjust</i>, and <i>Bottle Adjust</i> as test tasks, requiring the robotic arm to meet pose-aware requirements. We chose objects that are geometrically similar to the training set for testing, to reduce the examination of the model's generalization ability. We chose unseen objects as the test set to avoid the situation that the policy memorizes training objects, which cheats the performance results.</p>
+    
+        <p><b>Ours</b> consistently outperforms baseline methods in achieving pose-aware requirements across all four tasks. Our method achieves over 25% higher success rates in the <i>Shoe Place (T)</i> task for correct orientation and in the <i>Bottle Adjust (T)</i> task, we achieved a success rate that exceeded the average of the baselines by over 38% for upright pick. This demonstrates that the semantic understanding provided by <b>ours</b> helps the policy better comprehend and execute pose-aware requirements.</p>
+    
+        <p>The performance gain is particularly notable in tasks requiring precise object orientation, such as <i>Dual Shoes Place (T)</i>. While baseline methods occasionally achieve correct positioning, they struggle with maintaining consistent orientation accuracy. <b>Ours</b> nearly doubles the success rate compared to the strongest baseline, suggesting that our semantic representations effectively encode spatial relationships and object orientations.</p>
+    
+        <h3>Evaluation on Generalization Performance</h3>
+        <p>To investigate the generalization capability of our method in providing semantic information for manipulating objects, we have selected <i>Shoe Place</i>, <i>Dual Shoes Place</i>, <i>Tool Adjust</i>, and <i>Diverse Bottles Pick</i> as test tasks. Unlike tasks that require the satisfaction of terminal constraints, we choose as few and similar visible objects as possible for the training set and select objects that are as geometrically distinct as possible from the training set for the test set, as shown in Figure~<i>task_for_generalization</i>. This requires the policy to correctly manipulate objects that are geometrically different from those it has seen with only a limited exposure, focusing on assessing the policy's generalization ability.</p>
+    
+        <p>Our method achieves an average success rate across the four tasks that are 18.4% higher than that of the strongest baseline algorithm, exhibiting strong generalization capabilities across different object categories and variations, as shown in Table~<i>generalization</i>:</p>
+    
+        <ul class="itemize">
+            <li><strong>Intra-class Generalization</strong>: In tasks involving geometrically distinct unseen instances of the same object category (<i>Shoe Place (G)</i>, <i>Dual Shoes Place (G)</i>, <i>Diverse Bottles Pick (G)</i>), our method maintains optimal performance, indicating that <b>ours</b> encompasses a genuine semantic understanding of objects, enabling effective operation generalization even when faced with geometrically diverse instances within the same category.</li>
+            <li><strong>Cross-category Generalization</strong>: For the <i>Tool Adjust (G)</i> task, which necessitates dealing with objects that are semantically similar but belong to different categories, our method must learn to grasp positions akin to a handle on the objects while also fulfilling the pick-upright condition. <b>Ours</b> achieved a success rate of <strong>70.7%</strong> on previously unseen tool categories, which is <strong>13.4%</strong> higher than the best baseline. This result confirms the capability of our method to transfer learned operational skills across different object categories.</li>
+            <li><strong>Scale Variation</strong>: In the <i>Diverse Bottles Pick (G)</i> task, <b>ours</b> successfully generalizes to bottles of varying sizes, maintaining a consistent grasp success rate of <strong>51.3%</strong> across size variations. This indicates robust handling of geometric variations while preserving semantic understanding.</li>
+        </ul> -->
+        
+        
+        <!-- ----------------------------- -->
+        
+
+        <a class="anchor" id="Bibtex"></a>
+
+      <section class="citation" style="text-align: justify;">
+        <div style="display: flex; flex-direction: column; align-items: center; width: 100%; height: 100%;">
+          <h2>Bibtex</h2>
+        </div>
+        <pre>
+      <code>
+@InProceedings{Chen_2025_CVPR,
+  author    = {Chen, Tianxing and Mu, Yao and Liang, Zhixuan and Chen, Zanxin and Peng, Shijia and Chen, Qiangyu and Xu, Mingkun and Hu, Ruizhen and Zhang, Hongyuan and Li, Xuelong and Luo, Ping},
+  title     = {G3Flow: Generative 3D Semantic Flow for Pose-aware and Generalizable Object Manipulation},
+  booktitle = {Proceedings of the Computer Vision and Pattern Recognition Conference (CVPR)},
+  month     = {June},
+  year      = {2025},
+  pages     = {1735-1744}
+}
+      </code></pre>
+      </section>
+      <br/>
+
+
+
+      <script type="importmap">
+        {
+          "imports": {
+            "three": "https://cdn.jsdelivr.net/npm/three@0.150.1/build/three.module.js",
+            "OrbitControls": "https://cdn.jsdelivr.net/npm/three@0.150.1/examples/jsm/controls/OrbitControls.js",
+            "OBJLoader": "https://cdn.jsdelivr.net/npm/three@0.150.1/examples/jsm/loaders/OBJLoader.js",
+            "GLTFLoader": "https://cdn.jsdelivr.net/npm/three@0.150.1/examples/jsm/loaders/GLTFLoader.js",
+            "MTLLoader": "https://cdn.jsdelivr.net/npm/three@0.150.1/examples/jsm/loaders/MTLLoader.js"
+          }
+        }
+      </script>
+    
+      <script type="module">
+        import * as THREE from 'three';
+        import { OrbitControls } from 'OrbitControls';
+        import { OBJLoader } from 'OBJLoader';
+        import { GLTFLoader } from 'GLTFLoader';
+        import { MTLLoader } from 'MTLLoader';
+    
+        document.addEventListener("DOMContentLoaded", function () {
+          const models = ['024_brush', '028_dustpan', '019_coaste', '022_cup'];
+          const scalesize = ["0.7", "1.2", "1.2", "1", "1", "0.5", "0.5", "1"];
+          const container = document.getElementById("3d-models");
+          const interactiveViewer = document.getElementById("interactive-viewer");
+          const infoBox = document.getElementById("info-box");
+    
+          let currentModel = models[0];
+          let interactiveRenderer = null;
+    
+          models.forEach((model, index) => {
+            const viewerDiv = document.createElement("div");
+            viewerDiv.className = "viewer";
+            viewerDiv.dataset.model = model;
+            // viewerDiv.addEventListener("click", () => updateInteractiveViewer(model, index, viewerDiv));
+            container.appendChild(viewerDiv);
+            if (index < 5)
+              loadModel_mtl(model, index, viewerDiv);
+            else loadModel_glb(model, index, viewerDiv);
+            // loadModel_glb(model, index, viewerDiv);
+            // if (index === 0) {
+            //   viewerDiv.click();
+            //   updateInfoBox(model, index);
+            // }
+          });
+    
+          function updateInteractiveViewer(model, index, selectedViewer) {
+            document.getElementById('interactive-container').style.display = 'block';
+            currentModel = model;
+            const previousSelected = container.querySelector(".viewer.selected");
+            if (previousSelected) {
+              previousSelected.classList.remove("selected");
+            }
+            selectedViewer.classList.add("selected");
+            if (index < 5)
+            loadInteractiveModel_mtl(model, index, interactiveViewer);
+            else loadInteractiveModel_glb(model, index, interactiveViewer);
+            // loadInteractiveModel_glb(model, index, interactiveViewer);
+            updateInfoBox(model, index);
+          }
+    
+          function updateInfoBox(model) {
+            infoBox.innerHTML = `<p>Model: ${model} <br> Size: (H, W, L) <br> Real Object Purchase Link: <a href="https://tianxingchen.github.io">link</a> <br> Files Download link: <a href="https://tianxingchen.github.io">link</a> </p>`;
+          }
+    
+          function loadModel_mtl(model, index, viewer) {
+            const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera(50, viewer.offsetWidth / viewer.offsetHeight, 0.1, 1000);
+            const renderer = new THREE.WebGLRenderer({ antialias: true });
+            renderer.setSize(viewer.offsetWidth, viewer.offsetHeight);
+            viewer.appendChild(renderer.domElement);
+            renderer.setClearColor(0xCCCCCC);
+    
+            const ambientLight = new THREE.AmbientLight(0x404040, 8);
+            scene.add(ambientLight);
+    
+            const directionalLight = new THREE.DirectionalLight(0xffffff, 8);
+            directionalLight.position.set(0, 1, 1).normalize();
+            scene.add(directionalLight);
+    
+            const mtlLoader = new MTLLoader();
+            mtlLoader.setPath(`files/obj/${model}/`);
+            mtlLoader.load('base.mtl', (materials) => {
+              materials.preload();
+              const objLoader = new OBJLoader();
+              objLoader.setMaterials(materials);
+              objLoader.setPath(`files/obj/${model}/`);
+              objLoader.load('textured.obj', function (object) {
+                scene.add(object);
+                object.position.set(0, 0, 0);
+    
+                const box = new THREE.Box3().setFromObject(object);
+                const center = box.getCenter(new THREE.Vector3());
+                const size = box.getSize(new THREE.Vector3());
+    
+                const maxDim = Math.max(size.x, size.y, size.z);
+                const scale = 1 / maxDim;
+                object.scale.set(scalesize[index], scalesize[index], scalesize[index]);
+    
+                camera.position.set(center.x, center.y + size.z * 2, size.z * 2);
+                camera.lookAt(center);
+    
+                function animate() {
+                  requestAnimationFrame(animate);
+                  object.rotation.y += 0.01;
+                  renderer.render(scene, camera);
+                }
+                animate();
+              }, undefined, function (error) {
+                console.error(`Error loading OBJ file: ${error}`);
+              });
+            }, undefined, function (error) {
+              console.error(`Error loading MTL file: ${error}`);
+            });
+    
+            camera.position.z = 2;
+          }
+    
+          function loadModel_glb(model, index, viewer) {
+            const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera(50, viewer.offsetWidth / viewer.offsetHeight, 0.1, 1000);
+            const renderer = new THREE.WebGLRenderer({ antialias: true });
+            renderer.setSize(viewer.offsetWidth, viewer.offsetHeight);
+            renderer.outputEncoding = THREE.sRGBEncoding;
+            viewer.appendChild(renderer.domElement);
+            renderer.setClearColor(0xCCCCCC);
+    
+            const ambientLight = new THREE.AmbientLight(0x404040, 5);
+            scene.add(ambientLight);
+    
+            const directionalLight = new THREE.DirectionalLight(0xffffff, 2);
+            directionalLight.position.set(0, 1, 1).normalize();
+            scene.add(directionalLight);
+    
+            const gltfLoader = new GLTFLoader();
+            gltfLoader.load(`files/glb/${model}/base.glb`, function (gltf) {
+              const object = gltf.scene;
+              scene.add(object);
+              object.position.set(0, 0, 0);
+              object.traverse((node) => {
+                if (node.isMesh) {
+                  node.material = new THREE.MeshStandardMaterial({
+                    map: node.material.map,
+                    roughness: node.material.roughness,
+                    metalness: node.material.metalness,
+                  });
+                }
+              });
+              const box = new THREE.Box3().setFromObject(object);
+              const center = box.getCenter(new THREE.Vector3());
+              const size = box.getSize(new THREE.Vector3());
+    
+              const maxDim = Math.max(size.x, size.y, size.z);
+              const scale = 1 / maxDim;
+              object.scale.set(scalesize[index], scalesize[index], scalesize[index]);
+    
+              camera.position.set(center.x, center.y + size.z * 2, size.z * 2);
+              camera.lookAt(center);
+    
+              function animate() {
+                requestAnimationFrame(animate);
+                object.rotation.y += 0.01;
+                renderer.render(scene, camera);
+              }
+              animate();
+            }, undefined, function (error) {
+              console.error(`Error loading GLB file: ${error}`);
+            });
+    
+            camera.position.z = 2;
+          }
+    
+          function loadInteractiveModel_mtl(model, index, viewer) {
+            while (viewer.firstChild) {
+              viewer.removeChild(viewer.firstChild);
+            }
+    
+            if (interactiveRenderer) {
+              interactiveRenderer.dispose();
+              interactiveRenderer.forceContextLoss();
+              interactiveRenderer = null;
+            }
+    
+            const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera(50, viewer.offsetWidth / viewer.offsetHeight, 0.1, 1000);
+            interactiveRenderer = new THREE.WebGLRenderer({ antialias: true });
+            interactiveRenderer.setSize(viewer.offsetWidth, viewer.offsetHeight);
+            viewer.appendChild(interactiveRenderer.domElement);
+    
+            interactiveRenderer.setClearColor(0xCCCCCC);
+    
+            const controls = new OrbitControls(camera, interactiveRenderer.domElement);
+            controls.enableDamping = true;
+            controls.dampingFactor = 0.25;
+            controls.screenSpacePanning = false;
+            controls.minDistance = 1;
+            controls.maxDistance = 1000;
+    
+            const ambientLight = new THREE.AmbientLight(0x404040, 8);
+            scene.add(ambientLight);
+    
+            const directionalLight = new THREE.DirectionalLight(0xffffff, 8);
+            directionalLight.position.set(0, 1, 1).normalize();
+            scene.add(directionalLight);
+    
+            const mtlLoader = new MTLLoader();
+            mtlLoader.setPath(`files/obj/${model}/`);
+            mtlLoader.load('base.mtl', (materials) => {
+              materials.preload();
+              const objLoader = new OBJLoader();
+              objLoader.setMaterials(materials);
+              objLoader.setPath(`files/obj/${model}/`);
+              objLoader.load('textured.obj', function (object) {
+                scene.add(object);
+                object.position.set(0, 0, 0);
+    
+                const box = new THREE.Box3().setFromObject(object);
+                const center = box.getCenter(new THREE.Vector3());
+                const size = box.getSize(new THREE.Vector3());
+    
+                const maxDim = Math.max(size.x, size.y, size.z);
+                const scale = 1 / maxDim;
+                
+                if (index == 1 || index == 4){
+                  object.scale.set(7, 7, 7);
+                }
+                  
+                camera.position.set(center.x, center.y, size.z * 2);
+                camera.lookAt(center);
+    
+                function animate() {
+                  requestAnimationFrame(animate);
+                  controls.update();
+                  directionalLight.position.copy(camera.position).add(new THREE.Vector3(0, 1, 1));
+                  interactiveRenderer.render(scene, camera);
+                }
+                animate();
+              }, undefined, function (error) {
+                console.error(`Error loading OBJ file: ${error}`);
+              });
+            }, undefined, function (error) {
+              console.error(`Error loading MTL file: ${error}`);
+            });
+    
+            camera.position.z = 2;
+          }
+    
+          function loadInteractiveModel_glb(model, index, viewer) {
+            while (viewer.firstChild) {
+              viewer.removeChild(viewer.firstChild);
+            }
+    
+            if (interactiveRenderer) {
+              interactiveRenderer.dispose();
+              interactiveRenderer.forceContextLoss();
+              interactiveRenderer = null;
+            }
+    
+            const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera(50, viewer.offsetWidth / viewer.offsetHeight, 0.1, 1000);
+            interactiveRenderer = new THREE.WebGLRenderer({ antialias: true });
+            interactiveRenderer.setSize(viewer.offsetWidth, viewer.offsetHeight);
+            interactiveRenderer.outputEncoding = THREE.sRGBEncoding;
+            viewer.appendChild(interactiveRenderer.domElement);
+    
+            interactiveRenderer.setClearColor(0xCCCCCC);
+    
+            const controls = new OrbitControls(camera, interactiveRenderer.domElement);
+            controls.enableDamping = true;
+            controls.dampingFactor = 0.25;
+            controls.screenSpacePanning = false;
+            controls.minDistance = 1;
+            controls.maxDistance = 1000;
+    
+            const ambientLight = new THREE.AmbientLight(0x404040, 6);
+            scene.add(ambientLight);
+    
+            const directionalLight = new THREE.DirectionalLight(0xffffff, 2);
+            directionalLight.position.set(0, 1, 1).normalize();
+            scene.add(directionalLight);
+    
+            const gltfLoader = new GLTFLoader();
+            gltfLoader.load(`files/glb/${model}/base.glb`, function (gltf) {
+              const object = gltf.scene;
+              scene.add(object);
+              object.position.set(0, 0, 0);
+              object.traverse((node) => {
+                if (node.isMesh) {
+                  node.material = new THREE.MeshStandardMaterial({
+                    map: node.material.map,
+                    roughness: node.material.roughness,
+                    metalness: node.material.metalness,
+                  });
+                }
+              });
+              const box = new THREE.Box3().setFromObject(object);
+              const center = box.getCenter(new THREE.Vector3());
+              const size = box.getSize(new THREE.Vector3());
+    
+              const maxDim = Math.max(size.x, size.y, size.z);
+              const scale = 1 / maxDim;
+              // object.scale.set(scalesize[index], scalesize[index], scalesize[index]);
+    
+              camera.position.set(center.x, center.y, size.z * 2);
+              camera.lookAt(center);
+    
+              function animate() {
+                requestAnimationFrame(animate);
+                controls.update();
+                directionalLight.position.copy(camera.position).add(new THREE.Vector3(0, 1, 1));
+                interactiveRenderer.render(scene, camera);
+              }
+              animate();
+            }, undefined, function (error) {
+              console.error(`Error loading GLB file: ${error}`);
+            });
+    
+            camera.position.z = 2;
+          }
+    
+        });
+      </script>
+     <section class="acknowledgements">
+       <h2>Acknowledgements</h2>
+       <p style="font-family: 'Times New Roman', Arial;">
+        The authors extend their profound gratitude to <strong>D-robotics</strong> for their invaluable support in supplying the necessary cloud computing resources that facilitated the execution of this research. Furthermore, our sincere appreciation is extended to Deeoms for their contribution in providing essential model support, which was pivotal to the successful completion of this study.
+        </p> 
+      </section>
+    </main>
+  </body>
+</html>
