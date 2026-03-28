@@ -156,7 +156,7 @@ hr.unseen-section-divider { border: none; margin: 28px 0; }
   display: grid;
   grid-template-columns: 100px 1fr;
   gap: 0 18px;
-  padding: 13px 0;
+  padding: 10px 0;
   border-bottom: 1px solid var(--border);
   font-size: .93rem;
 }
@@ -361,6 +361,7 @@ hr.unseen-section-divider { border: none; margin: 28px 0; }
   object-position: top center; /* 从顶部开始裁，保留证书标题 */
   display: block;
   border-bottom: 1px solid var(--border);
+  padding: 5px;
 }
 
 .honor-card-body { padding: 11px 14px; }
