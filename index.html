@@ -69,7 +69,7 @@
   }
   .nav-blur {
     position: absolute; top: 0; left: 0; right: 0;
-    height: calc(var(--nav-h) + 28px); z-index: -1; pointer-events: none;
+    height: calc(var(--nav-h) + 52px); z-index: -1; pointer-events: none;
     overflow: hidden;
   }
   .nav-blur-layer {
@@ -81,42 +81,40 @@
     -webkit-mask-repeat: no-repeat; -webkit-mask-size: 100% 100%;
   }
   .nav-blur-layer--1 {
-    --nav-blur: 4px;
-    mask-image: linear-gradient(to bottom, transparent 0%, transparent 40%, #000 60%, #000 80%, transparent 100%);
-    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, transparent 40%, #000 60%, #000 80%, transparent 100%);
+    --nav-blur: 3px;
+    mask-image: linear-gradient(to bottom, transparent 0%, transparent 38%, #000 58%, #000 70%, transparent 88%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, transparent 38%, #000 58%, #000 70%, transparent 88%, transparent 100%);
   }
   .nav-blur-layer--2 {
     --nav-blur: 6px;
-    mask-image: linear-gradient(to bottom, transparent 0%, transparent 20%, #000 40%, #000 60%, transparent 80%, transparent 100%);
-    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, transparent 20%, #000 40%, #000 60%, transparent 80%, transparent 100%);
+    mask-image: linear-gradient(to bottom, transparent 0%, transparent 18%, #000 36%, #000 52%, transparent 74%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, transparent 18%, #000 36%, #000 52%, transparent 74%, transparent 100%);
   }
   .nav-blur-layer--3 {
     --nav-blur: 10px;
-    mask-image: linear-gradient(to bottom, transparent 0%, #000 20%, #000 40%, transparent 60%, transparent 100%);
-    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 20%, #000 40%, transparent 60%, transparent 100%);
+    mask-image: linear-gradient(to bottom, #000 0%, #000 28%, transparent 58%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 28%, transparent 58%, transparent 100%);
   }
   .nav-blur-layer--4 {
-    --nav-blur: 18px;
-    mask-image: linear-gradient(to bottom, #000 0%, #000 20%, transparent 40%, transparent 100%);
-    -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 20%, transparent 40%, transparent 100%);
+    --nav-blur: 16px;
+    mask-image: linear-gradient(to bottom, #000 0%, #000 16%, transparent 42%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 16%, transparent 42%, transparent 100%);
   }
   .nav-blur-layer--5 {
-    --nav-blur: 34px;
-    mask-image: linear-gradient(to bottom, #000 0%, transparent 20%, transparent 100%);
-    -webkit-mask-image: linear-gradient(to bottom, #000 0%, transparent 20%, transparent 100%);
+    --nav-blur: 22px;
+    mask-image: linear-gradient(to bottom, #000 0%, transparent 22%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, #000 0%, transparent 22%, transparent 100%);
   }
   .nav-blur-fade {
-    position: absolute; inset: -16px 0;
-    height: calc(100% + 16px);
+    position: absolute; inset: 0;
     pointer-events: none;
-    filter: blur(10px);
     background: linear-gradient(
       to bottom,
-      rgba(255,255,255,1) 0%,
-      rgba(255,255,255,.88) 28%,
-      rgba(255,255,255,.5) 58%,
-      rgba(255,255,255,.18) 82%,
-      transparent 100%
+      rgba(255,255,255,.9) 0%,
+      rgba(255,255,255,.55) 28%,
+      rgba(255,255,255,.18) 52%,
+      rgba(255,255,255,0) 78%,
+      rgba(255,255,255,0) 100%
     );
   }
   .nav-inner {
@@ -183,15 +181,53 @@
   .intro {
     padding: calc(var(--nav-h) + 44px) 0 56px;
     position: relative;
+    overflow: hidden;
   }
-  .intro::before {
+  .intro-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: auto;
+    width: min(70%, 1040px);
+    height: 82svh;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
+    display: flex;
+    align-items: stretch;
+    justify-content: flex-start;
+  }
+  .intro-bg img {
+    height: 100%;
+    width: auto;
+    max-width: none;
+    object-fit: contain;
+    object-position: left center;
+    transform: none;
+    filter: blur(2.5px) saturate(.8) brightness(1.12);
+    opacity: .46;
+    -webkit-mask-image: linear-gradient(to right, #000 42%, transparent 88%);
+    mask-image: linear-gradient(to right, #000 42%, transparent 88%);
+  }
+  .intro-bg::after {
     content: '';
-    position: absolute; inset: 0 0 auto 0; height: min(70vh, 560px);
-    pointer-events: none; z-index: -1;
+    position: absolute;
+    inset: 0;
     background:
-      radial-gradient(70% 55% at 12% 0%, rgba(11,87,208,.06), transparent 60%),
-      radial-gradient(50% 45% at 88% 8%, rgba(18,19,23,.035), transparent 55%);
+      linear-gradient(to right,
+        rgba(255,255,255,.22) 0%,
+        rgba(255,255,255,.14) 36%,
+        rgba(255,255,255,.32) 70%,
+        rgba(255,255,255,.78) 90%,
+        #fff 100%),
+      linear-gradient(to bottom,
+        rgba(255,255,255,.28) 0%,
+        rgba(255,255,255,.1) 18%,
+        rgba(255,255,255,.06) 55%,
+        rgba(255,255,255,.38) 82%,
+        #fff 100%);
   }
+  .intro .wrap { position: relative; z-index: 1; }
   .intro-grid {
     display: grid;
     grid-template-columns: minmax(0, 1fr) minmax(260px, 34%);
@@ -204,10 +240,6 @@
     min-width: 0;
     min-height: 100%;
   }
-  .intro-eyebrow {
-    font-size: 11.5px; font-weight: 500;
-    letter-spacing: .16em; text-transform: uppercase; color: var(--ink-faint);
-  }
   .intro h1 {
     margin-top: 10px;
     font-size: clamp(38px, 4.8vw, 56px);
@@ -218,48 +250,60 @@
     letter-spacing: .02em; color: var(--ink-faint);
   }
   .intro-roles {
-    margin-top: 14px;
-    display: flex; flex-wrap: wrap; gap: 6px 0;
-    font-size: 14.5px; line-height: 1.45; color: var(--ink);
+    margin-top: 18px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    gap: 0;
   }
-  .intro-roles .role a { color: var(--accent); font-weight: 500; }
-  .intro-roles .role a:hover { text-decoration: underline; text-underline-offset: 3px; }
-  .intro-roles .sep {
-    margin: 0 10px; color: var(--line); font-weight: 400;
+  .intro-roles .role {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    padding: 0 18px;
+    border-left: 1px solid var(--line);
+    min-width: 0;
   }
-  .intro-lead {
-    margin-top: 14px;
-    font-size: 16px; line-height: 1.5; color: var(--ink);
+  .intro-roles .role:first-child {
+    padding-left: 0;
+    border-left: none;
+  }
+  .intro-roles .role-title {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    line-height: 1.3;
+  }
+  .intro-roles .role a {
+    font-size: 14.5px;
+    font-weight: 500;
+    color: var(--ink);
     letter-spacing: -.015em;
+    line-height: 1.3;
+  }
+  .intro-roles .role a:hover { color: var(--accent); text-decoration: none; }
+  .intro-lead {
+    margin-top: 36px;
+    margin-bottom: 22px;
+    text-align: center;
+    font-size: clamp(22px, 2.8vw, 32px);
+    font-weight: 300;
+    letter-spacing: -.025em;
+    line-height: 1.25;
+    color: var(--ink);
+  }
+  .intro-lead em {
+    font-style: normal;
+    font-weight: 500;
   }
   .intro-bio {
-    margin-top: 10px;
+    margin-top: 0;
     font-size: 14px; line-height: 1.65; color: var(--ink-soft);
   }
   .intro-bio a { color: var(--accent); }
   .intro-bio strong { color: var(--ink); font-weight: 600; }
-
-  .intro-metrics {
-    margin-top: auto;
-    padding-top: 22px;
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 12px 20px;
-    border-top: 1px solid var(--line);
-  }
-  .intro-metrics a {
-    color: inherit; text-decoration: none;
-    display: flex; flex-direction: column; gap: 4px;
-  }
-  .intro-metrics a:hover strong { color: var(--accent); }
-  .intro-metrics span {
-    font-size: 11px; font-weight: 500;
-    letter-spacing: .08em; text-transform: uppercase; color: var(--ink-faint);
-  }
-  .intro-metrics strong {
-    font-size: 20px; font-weight: 500;
-    letter-spacing: -.02em; color: var(--ink); line-height: 1.1;
-  }
 
   .intro-side {
     display: flex;
@@ -691,7 +735,7 @@
   }
   .pub-featured-item { display: flex; flex-direction: column; gap: 12px; }
   .pub-featured-media {
-    border: none; border-radius: var(--radius-lg);
+    border: none; border-radius: 16px;
     overflow: hidden; background: #121317; cursor: pointer;
     padding: 0; position: relative; width: 100%; height: auto;
     transition: transform .45s cubic-bezier(.2,.7,.3,1), box-shadow .45s;
@@ -819,6 +863,29 @@
   .pub-group--others.is-expanded .pub-group-toggle {
     border-bottom-color: var(--ink);
   }
+  .pub-others-peek {
+    position: relative;
+    cursor: pointer;
+  }
+  .pub-group--others:not(.is-expanded) .pub-others-peek {
+    max-height: 220px;
+    overflow: hidden;
+  }
+  .pub-group--others:not(.is-expanded) .pub-others-peek::after {
+    content: '';
+    position: absolute;
+    left: 0; right: 0; bottom: 0;
+    height: 72px;
+    background: linear-gradient(to bottom, rgba(255,255,255,0), var(--bg) 78%);
+    pointer-events: none;
+  }
+  .pub-group--others:not(.is-expanded) #pub-others-list {
+    pointer-events: none;
+  }
+  .pub-group--others.is-expanded .pub-others-peek {
+    max-height: none;
+    cursor: default;
+  }
 
   .pub-list { list-style: none; border-top: none; }
   .pub-item {
@@ -837,7 +904,7 @@
   }
   .pub-thumb {
     width: 140px; flex-shrink: 0; align-self: center;
-    border: none; border-radius: var(--radius-md);
+    border: none; border-radius: 10px;
     overflow: hidden; background: var(--bg-soft);
     box-shadow: 0 0 0 1px var(--line);
   }
@@ -887,6 +954,10 @@
     font-size: 11px; font-weight: 600;
     letter-spacing: .05em; text-transform: uppercase; color: var(--accent);
     background: transparent; padding: 0; border-radius: 0;
+  }
+  .venue-rank {
+    font-size: 11px; font-weight: 600;
+    letter-spacing: .04em; color: var(--ink-faint);
   }
   .pub-award { font-size: 12.5px; color: var(--ink); margin-top: 3px; font-weight: 500; line-height: 1.35; }
   .pub-award .award-hl, .pub-venue .award-hl { color: #c62828; }
@@ -971,59 +1042,68 @@
 
   /* ============ PROG COMPETITIONS ============ */
   .prog-list {
-    list-style: none;
     display: flex;
     flex-direction: column;
-    border-top: 1px solid var(--line);
-    margin-bottom: 8px;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+  .prog-row {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
   }
   .prog-item {
-    display: grid;
-    grid-template-columns: auto minmax(0, 1fr) auto;
-    column-gap: 24px;
-    align-items: center;
-    padding: 16px 0;
+    flex: 1 1 0;
+    max-width: calc((100% - 20px) / 3);
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
     border: none;
-    border-bottom: 1px solid var(--line-soft);
     background: transparent;
     box-shadow: none;
+    transition: transform .35s cubic-bezier(.2,.7,.3,1);
   }
-  .prog-item:last-child { border-bottom: none; }
+  .prog-item:hover { transform: translateY(-2px); }
   .prog-logo-box {
-    width: 168px;
-    height: auto;
-    flex-shrink: 0;
-    border: none; border-radius: var(--radius-md); overflow: hidden;
-    background: var(--bg-soft); box-shadow: 0 0 0 1px var(--line);
+    width: 100%;
+    height: 168px;
+    padding: 6px 8px;
+    box-sizing: border-box;
+    border: none; border-radius: 10px; overflow: hidden;
+    background: #fff; box-shadow: 0 0 0 1px var(--line);
   }
   .prog-logo-box img {
-    width: 100%; height: auto;
+    width: 100%; height: 100%;
+    object-fit: contain; object-position: center;
     display: block;
   }
   .prog-content {
-    display: flex; flex-direction: column; gap: 4px; min-width: 0;
+    display: flex; flex-direction: column; gap: 2px;
+    padding: 8px 2px 0; min-width: 0;
   }
   .comp-name {
     margin: 0;
-    font-size: 16px; font-weight: 500;
+    font-size: 13.5px; font-weight: 500;
     letter-spacing: -.015em; line-height: 1.35; color: var(--ink);
   }
   .comp-detail {
     margin: 0;
-    font-size: 13px; color: var(--ink-soft); line-height: 1.5;
+    font-size: 12px; color: var(--ink-soft); line-height: 1.4;
   }
   .prog-side {
-    display: flex; flex-direction: column; align-items: flex-end; gap: 4px;
-    text-align: right; justify-self: end;
+    display: flex; flex-direction: row; align-items: baseline;
+    justify-content: space-between; gap: 8px;
+    padding: 4px 2px 0; text-align: left;
   }
   .comp-year {
     margin: 0;
-    font-size: 12.5px; font-weight: 500;
+    font-size: 12px; font-weight: 500;
     letter-spacing: .04em; color: var(--ink-faint); white-space: nowrap;
   }
   .comp-result {
     margin: 0;
-    font-size: 13px; color: var(--accent); font-weight: 500; white-space: nowrap;
+    font-size: 13px; color: var(--accent); font-weight: 500;
   }
   .prog-more { list-style: none; border-top: 1px solid var(--line); margin-top: 8px; }
   .prog-more li {
@@ -1037,7 +1117,7 @@
   .oss-list {
     list-style: none;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(3, 1fr);
     gap: 0;
     border-top: 1px solid var(--line);
   }
@@ -1061,10 +1141,11 @@
     display: flex; align-items: center; justify-content: flex-start;
     background: transparent; overflow: visible;
   }
-  .oss-thumb img {
+  .oss-thumb img, .oss-thumb video {
     width: auto; max-width: 100%; height: 52px;
     object-fit: contain; object-position: left center; display: block;
   }
+  .oss-thumb video { border-radius: 6px; }
   .oss-body { padding: 0; }
   .proj-name { font-size: 15.5px; font-weight: 500; letter-spacing: -.015em; }
   .proj-name a { color: var(--ink); }
@@ -1356,13 +1437,12 @@
     .wrap { padding: 0 22px; }
     .nav-inner { padding: 0 22px; }
     .intro-grid { grid-template-columns: minmax(0, 1fr) minmax(200px, 32%); gap: 22px 24px; }
-    .intro-metrics strong { font-size: 18px; }
     .intro h1 { font-size: clamp(32px, 5.5vw, 44px); }
     .honors-grid { grid-template-columns: repeat(3, 1fr); gap: 10px; }
     .pub-spotlight-list--grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .pub-spotlight-list--awards { grid-template-columns: 1fr; }
     .pub-featured { grid-template-columns: repeat(2, 1fr); gap: 14px; }
-    .prog-logo-box { width: 132px; }
+    .prog-row { gap: 10px; }
     .svc-list { grid-template-columns: 1fr; }
     .oss-list { grid-template-columns: 1fr; }
     .oss-item + .oss-item {
@@ -1415,6 +1495,15 @@
       padding: calc(var(--nav-h) + 28px) 0 36px;
       padding-bottom: max(36px, env(safe-area-inset-bottom));
     }
+    .intro-bg {
+      width: 100%;
+    }
+    .intro-bg img {
+      filter: blur(2px) saturate(.78) brightness(1.12);
+      opacity: .36;
+      -webkit-mask-image: linear-gradient(to bottom, #000 35%, transparent 82%);
+      mask-image: linear-gradient(to bottom, #000 35%, transparent 82%);
+    }
     .intro-grid { grid-template-columns: 1fr; gap: 18px; }
     .intro-side {
       order: -1;
@@ -1425,10 +1514,13 @@
     .intro-portrait { border-radius: 14px; }
     .intro-copy { min-height: 0; }
     .intro h1 { font-size: clamp(30px, 9vw, 38px); margin-top: 8px; text-align: center; }
-    .intro-eyebrow { text-align: center; }
-    .intro-roles { justify-content: center; text-align: center; margin-top: 12px; font-size: 13.5px; }
-    .intro-roles .sep { margin: 0 6px; }
-    .intro-lead { font-size: 15px; text-align: center; }
+    .intro-roles { justify-content: center; margin-top: 14px; gap: 12px 0; }
+    .intro-roles .role {
+      align-items: center;
+      padding: 0 14px;
+    }
+    .intro-roles .role:first-child { padding-left: 14px; }
+    .intro-lead { margin-top: 28px; margin-bottom: 18px; }
     .intro-bio { font-size: 13.5px; text-align: center; }
     .intro-actions {
       justify-content: center;
@@ -1437,13 +1529,6 @@
     }
     .intro-actions a { font-size: 12.5px; }
     .intro-actions a img { width: 15px; height: 15px; }
-    .intro-metrics {
-      margin-top: 20px;
-      padding-top: 16px;
-      gap: 10px 12px;
-    }
-    .intro-metrics strong { font-size: 17px; }
-    .intro-metrics span { font-size: 10px; letter-spacing: .06em; }
     details summary { text-align: center; }
     .bio-detail { font-size: 13.5px; }
 
@@ -1571,35 +1656,10 @@
     .news-item { grid-template-columns: 56px 1fr; gap: 10px; font-size: 13.5px; }
     .news-date { font-size: 12px; }
 
-    .prog-item {
-      display: grid;
-      grid-template-columns: 84px minmax(0, 1fr);
-      grid-template-areas:
-        "logo side"
-        "logo content";
-      column-gap: 12px;
-      row-gap: 4px;
-      align-items: start;
-      padding: 12px 0;
-    }
-    .prog-logo-box {
-      grid-area: logo;
-      width: 84px;
-      height: auto;
-      align-self: start;
-      border-radius: 10px;
-    }
-    .prog-logo-box img { width: 100%; height: auto; }
-    .prog-side {
-      grid-area: side;
-      flex-direction: row;
-      align-items: baseline;
-      gap: 8px;
-      text-align: left;
-      justify-self: start;
-    }
-    .prog-content { grid-area: content; }
-    .comp-name { font-size: 14.5px; }
+    .prog-row { flex-wrap: wrap; gap: 12px 10px; }
+    .prog-item { flex: 1 1 calc(50% - 5px); max-width: none; }
+    .prog-logo-box { height: 140px; }
+    .comp-name { font-size: 13px; }
     .comp-detail { font-size: 12px; }
     .prog-more li {
       grid-template-columns: 40px 1fr;
@@ -1643,10 +1703,7 @@
     .honor-card-media { height: 100px; }
     .pub-item { grid-template-columns: 80px minmax(0, 1fr); gap: 10px; padding: 10px 0; }
     .pub-thumb, .pub-thumb img, .pub-thumb video, .pub-thumb-placeholder { width: 80px; }
-    .intro-metrics { grid-template-columns: 1fr; gap: 10px; }
-    .intro-metrics a { flex-direction: row; align-items: baseline; gap: 8px; }
-    .prog-item { grid-template-columns: 72px minmax(0, 1fr); }
-    .prog-logo-box { width: 72px; }
+    .prog-logo-box { height: 120px; }
     .svc-item { grid-template-columns: 64px minmax(0, 1fr); }
     .svc-thumb-box, .svc-thumb-box img { width: 64px; }
   }
@@ -1680,34 +1737,47 @@
       <a href="#hiring">Hiring</a>
       <a href="#publications">Publications</a>
       <a href="#honors">Honors</a>
-      <a href="#services">Services</a>
       <a href="#talks">Talks</a>
+      <a href="#services">Services</a>
     </div>
   </div>
 </nav>
 
 <!-- ================= INTRO ================= -->
 <header class="intro" id="about">
+  <div class="intro-bg" aria-hidden="true">
+    <img src="assets/files/photo/background.jpg" alt="" />
+  </div>
   <div class="wrap">
     <div class="intro-grid">
       <div class="intro-copy">
-        <div class="intro-eyebrow reveal">Embodied AI · Robot Learning</div>
         <h1 class="reveal reveal-d1">Tianxing Chen <span class="cn">(陈天行)</span></h1>
 
         <p class="intro-roles reveal reveal-d2">
-          <span class="role">Co-Founder &amp; CTO, <a href="https://xsparkai.com/" target="_blank">Xspark AI</a></span><span class="sep">·</span>
-          <span class="role">PhD Student, <a href="https://mmlab.hk/" target="_blank">MMLab@HKU</a></span><span class="sep">·</span>
-          <span class="role">Founder, <a href="https://lumina-embodied.ai/" target="_blank">Lumina EAI</a></span>
+          <span class="role">
+            <span class="role-title">Co-Founder &amp; CTO</span>
+            <a href="https://xsparkai.com/" target="_blank">Xspark AI</a>
+          </span>
+          <span class="role">
+            <span class="role-title">PhD Student</span>
+            <a href="https://mmlab.hk/" target="_blank">MMLab@HKU</a>
+          </span>
+          <span class="role">
+            <span class="role-title">Founder</span>
+            <a href="https://lumina-embodied.ai/" target="_blank">Lumina EAI Community</a>
+          </span>
         </p>
 
         <p class="intro-lead reveal reveal-d2">
-          Building infrastructure for trustworthy embodied intelligence — models, data, and evaluation.
+          To Bring <em>1B+</em> General Robots Home
         </p>
 
         <p class="intro-bio reveal reveal-d3">
-          Supervised by <a href="https://luoping.me/" target="_blank">Prof. Ping Luo</a>.
-          Research on Embodied AI Infra, including robotic foundation models, data generators, and evaluation.
-          Selected as an <strong>AI25</strong> honoree by HongShan China and MIT Technology Review China.
+          PhD student at <a href="https://mmlab.hk/" target="_blank">MMLab@HKU</a>, supervised by <a href="https://luoping.me/" target="_blank">Prof. Ping Luo</a>.
+          Research on Embodied AI, including robotic foundation models, infra, and evaluation.
+          Recipient of multiple <strong>Best Paper Awards</strong> and championships at top-conference competitions.
+          Selected as an <strong>AI25</strong> honoree, <strong>CCF Elite Collegiate Award</strong> recipient, among other honors.
+          Open-source work has reached nearly <strong>20k GitHub stars</strong> and over <strong>1 million Hugging Face downloads</strong>.
         </p>
 
         <div class="intro-actions reveal reveal-d3">
@@ -1770,12 +1840,6 @@
               同时，我还在小红书拥有超20k粉丝 @<a href="https://www.xiaohongshu.com/user/profile/618fe930000000001000afe7" target="_blank">TianxingChen (陈天行)</a>。</p>
           </div>
         </details>
-
-        <p class="intro-metrics reveal reveal-d3">
-          <a href="https://github.com/TianxingChen" target="_blank" rel="noopener noreferrer"><span>GitHub stars</span><strong id="metric-github-stars">18.7k</strong></a>
-          <a href="https://scholar.google.com/citations?user=pvS8MH8AAAAJ&hl=en" target="_blank" rel="noopener noreferrer"><span>Citations</span><strong id="metric-citations">1,406</strong></a>
-          <a href="https://www.xiaohongshu.com/user/profile/618fe930000000001000afe7" target="_blank" rel="noopener noreferrer"><span>Rednote</span><strong>20k+</strong></a>
-        </p>
       </div>
 
       <aside class="intro-side reveal reveal-d2">
@@ -1796,6 +1860,10 @@
       <h2 class="sec-title">News</h2>
     </div>
     <ul class="news-list reveal" id="news-list">
+      <li class="news-item">
+        <span class="news-date">07/2026</span>
+        <span class="news-content">We released <a href="https://robodojo-benchmark.com/" target="_blank">RoboDojo</a> !</span>
+      </li>
       <li class="news-item">
         <span class="news-date">07/2026</span>
         <span class="news-content">Selected as <strong>AI25</strong> (Under 25 AI Innovation Pioneer) by HongShan China and MIT Technology Review China !</span>
@@ -2249,6 +2317,7 @@
                 <div class="pub-venue"><span class="venue-name">Under Review</span></div>
                 <div class="pub-links">
                   <a class="pub-link" href="https://robodojo-benchmark.com/" target="_blank">Project Page</a>
+                  <a class="pub-link" href="https://robodojo-benchmark.com/LeaderBoard" target="_blank">Leaderboard</a>
                   <a class="pub-link" href="https://arxiv.org/pdf/2607.04434" target="_blank">Paper</a>
                   <a class="pub-link" href="https://arxiv.org/abs/2607.04434" target="_blank">arXiv</a>
                   <a class="pub-link" href="https://mp.weixin.qq.com/s/GzF9cX8uIJr_YlO9GTX7bQ" target="_blank">量子位</a>
@@ -2284,10 +2353,11 @@
               <div class="pub-body">
                 <div class="pub-title">RoboTwin 2.0: A Scalable Data Generator and Benchmark with Strong Domain Randomization for Robust Bimanual Robotic Manipulation</div>
                 <div class="pub-authors"><span class="self">Tianxing Chen*</span>, Zanxin Chen*, Baijun Chen*, Zijian Cai*, Yibin Liu*, Zixuan Li*, Qiwei Liang, Xianliang Lin, Yiheng Ge, Zhenyu Gu, Weiliang Deng, Yubin Guo, Tian Nian, Xuanbing Xie, Qiangyu Chen, Kailun Su, Tianling Xu, Guodong Liu, Mengkang Hu, Huan-ang Gao, Kaixuan Wang, Zhixuan Liang, Yusen Qin, Xiaokang Yang, Ping Luo†, Yao Mu†</div>
-                <div class="pub-venue"><span class="venue-name">ICML 2026</span></div>
+                <div class="pub-venue"><span class="venue-name">ICML 2026</span> <span class="venue-rank">CCF-A</span></div>
                 <div class="pub-award">ModelScope <span class="award-hl">Top 10 Open-Source Project</span> of 2025 · IROS 2025 RoboGen Workshop <span class="award-hl">Best Paper Finalist</span> · RoDGE Workshop <span class="award-hl">Best Poster Award</span></div>
                 <div class="pub-links">
                   <a class="pub-link" href="https://RoboTwin-Platform.github.io/" target="_blank">Project Page</a>
+                  <a class="pub-link" href="https://robotwin-platform.github.io/leaderboard" target="_blank">Leaderboard</a>
                   <a class="pub-link" href="https://arxiv.org/pdf/2506.18088" target="_blank">Paper</a>
                   <a class="pub-link" href="https://arxiv.org/abs/2506.18088" target="_blank">arXiv</a>
                   <a class="pub-link" href="https://github.com/RoboTwin-Platform/RoboTWin" target="_blank">Code</a>
@@ -2322,7 +2392,7 @@
               <div class="pub-body">
                 <div class="pub-title">RoboTwin: Dual-Arm Robot Benchmark with Generative Digital Twins</div>
                 <div class="pub-authors">Yao Mu*, <span class="self">Tianxing Chen*</span>, Zanxin Chen*, Shijia Peng*, Zeyu Gao, Zhixuan Liang, Qiaojun Yu, Yude Zou, Mingkun Xu, Lunkai Lin, Zhiqiang Xie, Mingyu Ding and Ping Luo†</div>
-                <div class="pub-venue"><span class="venue-name">CVPR 2025</span> (Highlight, top 13.5%)</div>
+                <div class="pub-venue"><span class="venue-name">CVPR 2025</span> (Highlight, top 13.5%) <span class="venue-rank">CCF-A</span></div>
                 <div class="pub-award">ECCV 2024 MAAS Workshop <span class="award-hl">Best Paper Award</span></div>
                 <div class="pub-links">
                   <a class="pub-link" href="https://robotwin-benchmark.github.io/" target="_blank">Project Page</a>
@@ -2341,7 +2411,7 @@
               <div class="pub-body">
                 <div class="pub-title">AutoBio: A Simulation and Benchmark for Robotic Automation in Digital Biology Laboratory</div>
                 <div class="pub-authors">Zhiqian Lan, Yuxuan Jiang, Ruiqi Wang, Xuanbing Xie, Rongkui Zhang, Yicheng Zhu, Peihang Li, Tianshuo Yang, <span class="self">Tianxing Chen</span>, Haoyu Gao, Xiaokang Yang, Xuelong Li, Hongyuan Zhang, Yao Mu†, Ping Luo†</div>
-                <div class="pub-venue"><span class="venue-name">ICLR 2026</span></div>
+                <div class="pub-venue"><span class="venue-name">ICLR 2026</span> <span class="venue-rank">CCF-A</span></div>
                 <div class="pub-links">
                   <a class="pub-link" href="https://arxiv.org/pdf/2505.14030" target="_blank">Paper</a>
                   <a class="pub-link" href="https://arxiv.org/abs/2505.14030" target="_blank">arXiv</a>
@@ -2359,7 +2429,7 @@
               <div class="pub-body">
                 <div class="pub-title">LeHome: A Simulation Environment for Deformable Object Manipulation in Household Scenarios</div>
                 <div class="pub-authors">Zeyi Li, Yushi Yang, Shawn Xie, Jingkai Xu, <span class="self">Tianxing Chen</span>, Yuran Wang, Zhenhao Shen, Yan Shen, Yue Chen, Wenjun Li, Yukun Zheng, Chaorui Zhang, Siyi Lin, Fei Teng, Hongjun Yang, Ming Chen, Steve Xie, Ruihai Wu†</div>
-                <div class="pub-venue"><span class="venue-name">IEEE ICRA 2026</span></div>
+                <div class="pub-venue"><span class="venue-name">IEEE ICRA 2026</span> <span class="venue-rank">CCF-B</span></div>
                 <div class="pub-award">IROS 2025 RoMaDo Workshop <span class="award-hl">Best Poster Award</span></div>
                 <div class="pub-links">
                   <a class="pub-link" href="https://lehome-web.github.io/" target="_blank">Project Page</a>
@@ -2414,13 +2484,12 @@
 <!-- SimpleVLA-RL -->
             <li class="pub-item">
               <div class="pub-thumb">
-                <img src="assets/files/work/2025-SimpleVLA-RL.png" alt="SimpleVLA-RL"
-                     onerror="this.outerHTML='<div class=pub-thumb-placeholder>SimpleVLA-RL</div>'" />
+                <video src="./assets/files/work/2025-simplevla-rl.mp4" autoplay loop muted playsinline onloadedmetadata="this.playbackRate=3.0"></video>
               </div>
               <div class="pub-body">
                 <div class="pub-title">SimpleVLA-RL: Scaling VLA Training via Reinforcement Learning</div>
                 <div class="pub-authors">Haozhan Li*, Yuxin Zuo*, Jiale Yu*, Yuhao Zhang*, Zhaohui Yang, Kaiyan Zhang, Xuekai Zhu, Yuchen Zhang, <span class="self">Tianxing Chen</span>, Ganqu Cui, Dehui Wang, Dingxiang Luo, Yuchen Fan, Youbang Sun, Jia Zeng, Jiangmiao Pang, Shanghang Zhang, Yu Wang, Yao Mu, Bowen Zhou†, Ning Ding†</div>
-                <div class="pub-venue"><span class="venue-name">ICLR 2026</span></div>
+                <div class="pub-venue"><span class="venue-name">ICLR 2026</span> <span class="venue-rank">CCF-A</span></div>
                 <div class="pub-links">
                   <a class="pub-link" href="https://arxiv.org/pdf/2509.09674" target="_blank">Paper</a>
                   <a class="pub-link" href="https://arxiv.org/abs/2509.09674" target="_blank">arXiv</a>
@@ -2437,7 +2506,7 @@
               <div class="pub-body">
                 <div class="pub-title">CordViP: Correspondence-based Visuomotor Policy for Dexterous Manipulation in Real-World</div>
                 <div class="pub-authors">Yankai Fu*, Qiuxuan Feng*, Ning Chen*, ZiChen Zhou, Mengzhen Liu, Mingdong Wu, <span class="self">Tianxing Chen</span>, Shanyu Rong, Jiaming Liu, Hao Dong and Shanghang Zhang†</div>
-                <div class="pub-venue"><span class="venue-name">RSS 2025</span></div>
+                <div class="pub-venue"><span class="venue-name">RSS 2025</span> <span class="venue-rank">Top Conference</span></div>
                 <div class="pub-links">
                   <a class="pub-link" href="https://aureleopku.github.io/CordViP/" target="_blank">Project Page</a>
                   <a class="pub-link" href="https://www.arxiv.org/pdf/2502.08449" target="_blank">Paper</a>
@@ -2453,7 +2522,7 @@
               <div class="pub-body">
                 <div class="pub-title">G3Flow: Generative 3D Semantic Flow for Pose-aware and Generalizable Object Manipulation</div>
                 <div class="pub-authors"><span class="self">Tianxing Chen*</span>, Yao Mu*, Zhixuan Liang*, Zanxin Chen, Shijia Peng, Qiangyu Chen, Mingkun Xu, Ruizhen Hu, Hongyuan Zhang, Xuelong Li, Ping Luo†</div>
-                <div class="pub-venue"><span class="venue-name">CVPR 2025</span></div>
+                <div class="pub-venue"><span class="venue-name">CVPR 2025</span> <span class="venue-rank">CCF-A</span></div>
                 <div class="pub-links">
                   <a class="pub-link" href="https://tianxingchen.github.io/G3Flow" target="_blank">Project Page</a>
                   <a class="pub-link" href="https://arxiv.org/pdf/2411.18369" target="_blank">Paper</a>
@@ -2471,7 +2540,7 @@
               <div class="pub-body">
                 <div class="pub-title">DexHandDiff: Interaction-aware Diffusion Planning for Adaptive Dexterous Manipulation</div>
                 <div class="pub-authors">Zhixuan Liang, Yao Mu, Yixiao Wang, <span class="self">Tianxing Chen</span>, Wenqi Shao, Wei Zhan, Masayoshi Tomizuka, Ping Luo† and Mingyu Ding</div>
-                <div class="pub-venue"><span class="venue-name">CVPR 2025</span></div>
+                <div class="pub-venue"><span class="venue-name">CVPR 2025</span> <span class="venue-rank">CCF-A</span></div>
                 <div class="pub-links">
                   <a class="pub-link" href="https://dexdiffuser.github.io/" target="_blank">Project Page</a>
                   <a class="pub-link" href="https://arxiv.org/pdf/2411.18562" target="_blank">Paper</a>
@@ -2506,7 +2575,7 @@
               <div class="pub-body">
                 <div class="pub-title">AVR: Active Vision-Driven Robotic Precision Manipulation with Viewpoint and Focal Length Optimization</div>
                 <div class="pub-authors">Yushan Liu*, Shilong Mu*, Xintao Chao, Zizhen Li, Yao Mu, <span class="self">Tianxing Chen</span>, Shoujie Li, Chuqiao Lyu, Xiao-Ping Zhang, Fellow, IEEE, Wenbo Ding†</div>
-                <div class="pub-venue"><span class="venue-name">IEEE ICRA 2026</span></div>
+                <div class="pub-venue"><span class="venue-name">IEEE ICRA 2026</span> <span class="venue-rank">CCF-B</span></div>
                 <div class="pub-links">
                   <a class="pub-link" href="https://arxiv.org/pdf/2503.01439" target="_blank">Paper</a>
                   <a class="pub-link" href="https://arxiv.org/abs/2503.01439" target="_blank">arXiv</a>
@@ -2521,7 +2590,7 @@
               <div class="pub-body">
                 <div class="pub-title">GarmentPile++: Affordance-Driven Cluttered Garments Retrieval with Vision-Language Reasoning</div>
                 <div class="pub-authors">Mingleyang Li, Yuran Wang, Yue Chen, <span class="self">Tianxing Chen</span>, Jiaqi Liang, Zishun Shen, Haoran Lu, Ruihai Wu†, Hao Dong†</div>
-                <div class="pub-venue"><span class="venue-name">IEEE ICRA 2026</span></div>
+                <div class="pub-venue"><span class="venue-name">IEEE ICRA 2026</span> <span class="venue-rank">CCF-B</span></div>
                 <div class="pub-links">
                   <a class="pub-link" href="https://garmentpile2.github.io/" target="_blank">Project Page</a>
                   <a class="pub-link" href="https://arxiv.org/pdf/2603.04158" target="_blank">Paper</a>
@@ -2588,7 +2657,7 @@
               <div class="pub-body">
                 <div class="pub-title">CubeBench: Diagnosing Interactive, Long-Horizon Spatial Reasoning Under Partial Observations</div>
                 <div class="pub-authors">Huan-ang Gao, Zikang Zhang, Tianwei Luo, Kaisen Yang, Xinzhe Juan, Jiahao Qiu, <span class="self">Tianxing Chen</span>, Bingxiang He, Hao Zhao, Hao Zhou, Shilong Liu, Mengdi Wang†</div>
-                <div class="pub-venue"><span class="venue-name">ICLR 2026</span></div>
+                <div class="pub-venue"><span class="venue-name">ICLR 2026</span> <span class="venue-rank">CCF-A</span></div>
                 <div class="pub-links">
                   <a class="pub-link" href="https://cubebench.c7w.tech/" target="_blank">Project Page</a>
                   <a class="pub-link" href="https://arxiv.org/pdf/2512.23328" target="_blank">Paper</a>
@@ -2607,7 +2676,7 @@
               <div class="pub-body">
                 <div class="pub-title">Text2World: Benchmarking Large Language Models for Symbolic World Model Generation</div>
                 <div class="pub-authors">Mengkang Hu*, <span class="self">Tianxing Chen*</span>, Yude Zou*, Yuheng Lei, Ming Li, Qiguang Chen, Hongyuan Zhang, Wenqi Shao, Ping Luo†</div>
-                <div class="pub-venue"><span class="venue-name">ACL 2025</span> (findings)</div>
+                <div class="pub-venue"><span class="venue-name">ACL 2025</span> (findings) <span class="venue-rank">CCF-A</span></div>
                 <div class="pub-links">
                   <a class="pub-link" href="https://text-to-world.github.io/" target="_blank">Project Page</a>
                   <a class="pub-link" href="https://arxiv.org/pdf/2502.13092" target="_blank">Paper</a>
@@ -2626,7 +2695,7 @@
               <div class="pub-body">
                 <div class="pub-title">HiAgent: Hierarchical Working Memory Management for Solving Long-Horizon Agent Tasks with Large Language Model</div>
                 <div class="pub-authors">Mengkang Hu, <span class="self">Tianxing Chen</span>, Qiguang Chen, Yao Mu, Wenqi Shao and Ping Luo†</div>
-                <div class="pub-venue"><span class="venue-name">ACL 2025</span> (main)</div>
+                <div class="pub-venue"><span class="venue-name">ACL 2025</span> (main) <span class="venue-rank">CCF-A</span></div>
                 <div class="pub-links">
                   <a class="pub-link" href="https://arxiv.org/pdf/2408.09559" target="_blank">Paper</a>
                   <a class="pub-link" href="https://arxiv.org/abs/2408.09559" target="_blank">arXiv</a>
@@ -2654,6 +2723,8 @@
                 <div class="pub-venue"><span class="venue-name">Under Review</span></div>
                 <div class="pub-links">
                   <a class="pub-link" href="https://xsparkai.com/sparklab/humantouch/" target="_blank">Project Page</a>
+                  <a class="pub-link" href="https://www.modelscope.cn/datasets/chuqiaoLyu/Xspark-HumanTouch" target="_blank">Dataset (ModelScope)</a>
+                  <a class="pub-link" href="https://huggingface.co/datasets/chuqiaoLyu/Xspark-HumanTouch" target="_blank">Dataset (Huggingface)</a>
                 </div>
               </div>
             </li>
@@ -2731,6 +2802,7 @@
                   <a class="pub-link" href="https://xsparkai.com/sparklab/towards-trustworthy-eai/" target="_blank">Project Page</a>
                   <a class="pub-link" href="https://arxiv.org/pdf/2607.26121" target="_blank">Paper</a>
                   <a class="pub-link" href="https://arxiv.org/abs/2607.26121" target="_blank">arXiv</a>
+                  <a class="pub-link" href="https://mp.weixin.qq.com/s/WBo6FFVNiA-cSXPro0cppA" target="_blank">Z Potentials</a>
                 </div>
               </div>
             </li>
@@ -2748,6 +2820,7 @@
                   <a class="pub-link" href="https://jasper-aaa.github.io/embodied-data-pyramid/" target="_blank">Project Page</a>
                   <a class="pub-link" href="https://arxiv.org/pdf/2607.24744" target="_blank">Paper</a>
                   <a class="pub-link" href="https://arxiv.org/abs/2607.24744" target="_blank">arXiv</a>
+                  <a class="pub-link" href="https://mp.weixin.qq.com/s/eYcqyIyDCwBjkL4ReSf_4w" target="_blank">机器之心</a>
                 </div>
               </div>
             </li>
@@ -2787,7 +2860,24 @@
         <span class="pub-group-count">6</span>
         <span class="pub-group-chevron">Show more ↓</span>
       </button>
-      <ul class="pub-list pub-list--compact" id="pub-others-list" hidden>
+      <div class="pub-others-peek" id="pub-others-peek">
+      <ul class="pub-list pub-list--compact" id="pub-others-list">
+      <!-- InfBaGel -->
+            <li class="pub-item">
+              <div class="pub-thumb">
+                <video src="./assets/files/work/2026-infbagel.mp4" autoplay loop muted playsinline preload="auto"></video>
+              </div>
+              <div class="pub-body">
+                <div class="pub-title">InfBaGel: Human-Object-Scene Interaction Generation with Dynamic Perception and Iterative Refinement</div>
+                <div class="pub-authors">Yude Zou, Junji Gong, Xing Gao, Zixuan Li, <span class="self">Tianxing Chen</span>, Guanjie Zheng</div>
+                <div class="pub-venue"><span class="venue-name">ICLR 2026</span> <span class="venue-rank">CCF-A</span></div>
+                <div class="pub-links">
+                  <a class="pub-link" href="https://yudezou.github.io/InfBaGel-page/" target="_blank">Project Page</a>
+                  <a class="pub-link" href="https://arxiv.org/pdf/2604.04843" target="_blank">Paper</a>
+                  <a class="pub-link" href="https://arxiv.org/abs/2604.04843" target="_blank">arXiv</a>
+                </div>
+              </div>
+            </li>
 <!-- SAM2 Manip -->
             <li class="pub-item">
               <div class="pub-thumb">
@@ -2818,22 +2908,6 @@
                 <div class="pub-venue"><span class="venue-name">CVPR 2026</span> GigaWorld Workshop</div>
                 <div class="pub-links">
                   <a class="pub-link" href="https://openaccess.thecvf.com/content/CVPR2026W/GigaBrainChallenge/papers/Wang_EchoArena_Learning_World_Models_for_Reliable_VLA_Policy_Evaluation_CVPRW_2026_paper.pdf" target="_blank">Paper</a>
-                </div>
-              </div>
-            </li>
-      <!-- InfBaGel -->
-            <li class="pub-item">
-              <div class="pub-thumb">
-                <video src="./assets/files/work/2026-infbagel.mp4" autoplay loop muted playsinline></video>
-              </div>
-              <div class="pub-body">
-                <div class="pub-title">InfBaGel: Human-Object-Scene Interaction Generation with Dynamic Perception and Iterative Refinement</div>
-                <div class="pub-authors">Yude Zou, Junji Gong, Xing Gao, Zixuan Li, <span class="self">Tianxing Chen</span>, Guanjie Zheng</div>
-                <div class="pub-venue"><span class="venue-name">ICLR 2026</span></div>
-                <div class="pub-links">
-                  <a class="pub-link" href="https://yudezou.github.io/InfBaGel-page/" target="_blank">Project Page</a>
-                  <a class="pub-link" href="https://arxiv.org/pdf/2604.04843" target="_blank">Paper</a>
-                  <a class="pub-link" href="https://arxiv.org/abs/2604.04843" target="_blank">arXiv</a>
                 </div>
               </div>
             </li>
@@ -2885,6 +2959,7 @@
               </div>
             </li>
       </ul>
+      </div>
     </div>
 
 
@@ -3042,63 +3117,67 @@
     <div class="sec-head reveal">
       <h2 class="sec-title">Competitions</h2>
     </div>
-    <ul class="prog-list reveal">
-      <li class="prog-item">
-        <div class="prog-logo-box"><img src="assets/files/award/2026-worldarena-sparkworld.jpg" alt="WorldArena Sparkworld" onerror="this.parentElement.style.display='none'" /></div>
-        <div class="prog-content">
-          <div class="comp-name">CVPR 2026 WorldArena Challenge</div>
-          <div class="comp-detail">SparkWorld</div>
-        </div>
-        <div class="prog-side">
-          <div class="comp-year">2026</div>
-          <div class="comp-result">Third-Runnerup &amp; VQ SOTA</div>
-        </div>
-      </li>
-      <li class="prog-item">
-        <div class="prog-logo-box"><img src="assets/files/award/2025-neurips-mars-champion.jpg" alt="NeurIPS MARS Champion" onerror="this.parentElement.style.display='none'" /></div>
-        <div class="prog-content">
-          <div class="comp-name">NeurIPS 2025 MARS Challenge</div>
-          <div class="comp-detail">Control Track</div>
-        </div>
-        <div class="prog-side">
-          <div class="comp-year">2025</div>
-          <div class="comp-result">Champion</div>
-        </div>
-      </li>
-      <li class="prog-item">
-        <div class="prog-logo-box"><img src="assets/files/award/2025-agibotworld-challenge.jpg" alt="AgiBot World Third Runnerup" onerror="this.parentElement.style.display='none'" /></div>
-        <div class="prog-content">
-          <div class="comp-name">IEEE IROS 2025 AgiBot World Challenge</div>
-          <div class="comp-detail">Manipulation Track</div>
-        </div>
-        <div class="prog-side">
-          <div class="comp-year">2025</div>
-          <div class="comp-result">Third-Runnerup</div>
-        </div>
-      </li>
-      <li class="prog-item">
-        <div class="prog-logo-box"><img src="assets/files/award/2023-icpc.jpg" alt="ACM-ICPC" onerror="this.parentElement.style.display='none'" /></div>
-        <div class="prog-content">
-          <div class="comp-name">(ACM-ICPC) International Collegiate Programming Contest Regional Contest</div>
-          <div class="comp-detail">With Yuanjie He, Yifei Liu. Supervised by Prof. Jianbin Qin. Team: SZU_Tencent</div>
-        </div>
-        <div class="prog-side">
-          <div class="comp-year">2023</div>
-          <div class="comp-result">Silver Medal</div>
-        </div>
-      </li>
-      <li class="prog-item">
-        <div class="prog-logo-box"><img src="assets/files/photo/highlight/robocom-2024.png" alt="RAICOM" onerror="this.parentElement.style.display='none'" /></div>
-        <div class="prog-content">
-          <div class="comp-name">RoboCom Robot Development Competition (RAICOM)</div>
-          <div class="comp-detail">With Weili Li, Jiaxuan Li. Supervised by Dr. Jie Chen. Team: Shenzhen University</div>
-        </div>
-        <div class="prog-side">
-          <div class="comp-year">2023</div>
-          <div class="comp-result">National Runner-up</div>
-        </div>
-      </li>
-    </ul>
+    <div class="prog-list reveal">
+      <div class="prog-row">
+        <article class="prog-item" style="--ar: 1.294">
+          <div class="prog-logo-box"><img src="assets/files/award/2026-worldarena-sparkworld.jpg" width="792" height="612" alt="WorldArena Sparkworld" onerror="this.parentElement.style.display='none'" /></div>
+          <div class="prog-content">
+            <div class="comp-name">CVPR 2026 WorldArena Challenge</div>
+            <div class="comp-detail">SparkWorld Team · Track 1 (Video Quality)</div>
+          </div>
+          <div class="prog-side">
+            <div class="comp-year">2026</div>
+            <div class="comp-result">Third-Runnerup &amp; VQ SOTA</div>
+          </div>
+        </article>
+        <article class="prog-item" style="--ar: 1.421">
+          <div class="prog-logo-box"><img src="assets/files/award/2025-neurips-mars-champion.jpg" width="1535" height="1080" alt="NeurIPS MARS Champion" onerror="this.parentElement.style.display='none'" /></div>
+          <div class="prog-content">
+            <div class="comp-name">NeurIPS 2025 MARS Challenge</div>
+            <div class="comp-detail">MMLab@HKU × D-Robotics · Control Track</div>
+          </div>
+          <div class="prog-side">
+            <div class="comp-year">2025</div>
+            <div class="comp-result">Champion</div>
+          </div>
+        </article>
+        <article class="prog-item" style="--ar: 0.708">
+          <div class="prog-logo-box"><img src="assets/files/award/2025-agibotworld-challenge.jpg" width="1723" height="2433" alt="AgiBot World Third Runnerup" onerror="this.parentElement.style.display='none'" /></div>
+          <div class="prog-content">
+            <div class="comp-name">IEEE IROS 2025 AgiBot World Challenge</div>
+            <div class="comp-detail">Team FIREBOT, The University of Hong Kong · Manipulation Track</div>
+          </div>
+          <div class="prog-side">
+            <div class="comp-year">2025</div>
+            <div class="comp-result">Third-Runnerup</div>
+          </div>
+        </article>
+      </div>
+      <div class="prog-row">
+        <article class="prog-item" style="--ar: 1.373">
+          <div class="prog-logo-box"><img src="assets/files/award/2023-icpc.jpg" width="1950" height="1420" alt="ACM-ICPC" onerror="this.parentElement.style.display='none'" /></div>
+          <div class="prog-content">
+            <div class="comp-name">(ACM-ICPC) International Collegiate Programming Contest Regional Contest</div>
+            <div class="comp-detail">With Yuanjie He, Yifei Liu. Supervised by Prof. Jianbin Qin. Team: SZU_Tencent</div>
+          </div>
+          <div class="prog-side">
+            <div class="comp-year">2023</div>
+            <div class="comp-result">Silver Medal</div>
+          </div>
+        </article>
+        <article class="prog-item" style="--ar: 1.509">
+          <div class="prog-logo-box"><img src="assets/files/photo/highlight/robocom-2024.png" width="1224" height="811" alt="RAICOM" onerror="this.parentElement.style.display='none'" /></div>
+          <div class="prog-content">
+            <div class="comp-name">RoboCom Robot Development Competition (RAICOM)</div>
+            <div class="comp-detail">With Weili Li, Jiaxuan Li. Supervised by Dr. Jie Chen. Team: Shenzhen University</div>
+          </div>
+          <div class="prog-side">
+            <div class="comp-year">2023</div>
+            <div class="comp-result">National Runner-up</div>
+          </div>
+        </article>
+      </div>
+    </div>
     <ul class="prog-more reveal">
       <li><span class="p-year">2024</span><span>National gold medal team &amp; Provincial runner-up, (CCCC) China Collegiate Computing Contest</span></li>
       <li><span class="p-year">2023</span><span>Silver Medal, (ACM-ICPC) International Collegiate Programming Contest Regional Contest (46th)</span></li>
@@ -3118,6 +3197,18 @@
       <h2 class="sec-title">Open Source</h2>
     </div>
     <ul class="oss-list reveal">
+      <li class="oss-item">
+        <div class="oss-thumb">
+          <video src="./assets/files/work/2026-bench2arena.mp4" autoplay loop muted playsinline preload="auto"></video>
+        </div>
+        <div class="oss-body">
+          <div class="proj-name">
+            <a href="https://xsparkai.com/news/bench2arena/" target="_blank">Bench2Arena</a>
+          </div>
+          <div class="proj-meta">Xspark AI × NVIDIA Isaac Lab-Arena</div>
+          <div class="proj-desc">A human-supervised agentic compiler that brings RoboTwin and RoboDojo into Isaac Lab-Arena for composable, GPU-parallel evaluation.</div>
+        </div>
+      </li>
       <li class="oss-item">
         <div class="oss-thumb">
           <img src="assets/files/work/2025-Embodied-AI-Guide-real-logo.png" alt="Embodied-AI-Guide" loading="lazy" onerror="this.style.display='none'" />
@@ -3146,8 +3237,89 @@
   </div>
 </section>
 
+<!-- ================= INVITED TALKS ================= -->
+<section class="block" id="talks">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <h2 class="sec-title">Invited Talks</h2>
+    </div>
+
+    <div class="talks-list">
+    <div class="talk-group reveal">
+      <div class="talk-topic">Evaluation-Driven Policy Evolution</div>
+      <ul class="talk-entries">
+        <li class="talk-entry">
+          <span class="talk-date">08/2025</span>
+          <span class="talk-desc">VALSE Webinar, shared <strong>RoboDojo</strong></span>
+        </li>
+        <li class="talk-entry">
+          <span class="talk-date">07/2025</span>
+          <span class="talk-desc">DeepTech, shared <strong>RoboDojo</strong></span>
+        </li>
+        <li class="talk-entry">
+          <span class="talk-date">07/2025</span>
+          <span class="talk-desc">Xiaomi Robotics, shared <strong>RoboDojo</strong></span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="talk-group reveal">
+      <div class="talk-topic">Automated Simulation Data Generation Empowering Real-World Robotic Manipulation</div>
+      <ul class="talk-entries">
+        <li class="talk-entry">
+          <span class="talk-date">10/2025</span>
+          <span class="talk-desc">IROS 2025 RoboGen Workshop (Oral Presentation), shared <strong>RoboTwin 2.0</strong></span>
+        </li>
+        <li class="talk-entry">
+          <span class="talk-date">10/2025</span>
+          <span class="talk-desc">ARTS (Autonomous Robotic Technology Seminar), shared <strong>RoboTwin 2.0</strong></span>
+        </li>
+        <li class="talk-entry">
+          <span class="talk-date">10/2025</span>
+          <span class="talk-desc">模速空间, shared <strong>RoboTwin 2.0</strong></span>
+        </li>
+        <li class="talk-entry">
+          <span class="talk-date">09/2025</span>
+          <span class="talk-desc">DexForce Technology, shared <strong>RoboTwin 2.0</strong></span>
+        </li>
+        <li class="talk-entry">
+          <span class="talk-date">08/2025</span>
+          <span class="talk-desc">BAAI Hub, shared <strong>RoboTwin 2.0</strong> &nbsp;<a href="#" target="_blank">[Video]</a></span>
+        </li>
+        <li class="talk-entry">
+          <span class="talk-date">07/2025</span>
+          <span class="talk-desc">具身智能之心, shared <strong>RoboTwin 2.0</strong> &nbsp;<a href="https://www.bilibili.com/video/BV1wNuUz2EmU/?vd_source=c8f36241f20b81d579884e25736204c3" target="_blank">[Video]</a></span>
+        </li>
+        <li class="talk-entry">
+          <span class="talk-date">12/2024</span>
+          <span class="talk-desc">3DVer, shared <strong>RoboTwin</strong> &nbsp;<a href="https://www.bilibili.com/video/BV15rqAYAEGs/?spm_id_from=333.337.search-card.all.click" target="_blank">[Video]</a></span>
+        </li>
+        <li class="talk-entry">
+          <span class="talk-date">12/2024</span>
+          <span class="talk-desc">RLChina, shared <strong>RoboTwin</strong> &nbsp;<a href="#" target="_blank">[Video]</a></span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="talk-group reveal">
+      <div class="talk-topic">3D Semantic Flow for Generalizable Robotic Manipulation</div>
+      <ul class="talk-entries">
+        <li class="talk-entry">
+          <span class="talk-date">05/2025</span>
+          <span class="talk-desc">AI TIME Science Debate, shared <strong>G3Flow</strong> &nbsp;<a href="#" target="_blank">[Video]</a></span>
+        </li>
+        <li class="talk-entry">
+          <span class="talk-date">05/2025</span>
+          <span class="talk-desc">3DVer, shared <strong>G3Flow</strong> &nbsp;<a href="https://www.bilibili.com/video/BV1iAj6zhEm6/?spm_id_from=333.337.search-card.all.click" target="_blank">[Video]</a></span>
+        </li>
+      </ul>
+    </div>
+    </div>
+  </div>
+</section>
+
 <!-- ================= ACADEMIC SERVICES ================= -->
-<section class="block" id="services">
+<section class="block soft" id="services">
   <div class="wrap">
     <div class="sec-head reveal">
       <h2 class="sec-title">Academic Services</h2>
@@ -3231,87 +3403,6 @@
         <span>IROS 2026 Physical World Models Workshop, ECCV 2026 Safe World Model Workshop, EAI-100 2025, SIGGRAPH Asia 2025 TriFusion Workshop, CVPR 2025 2nd MEIS Workshop, The Greater Bay Area Embodied AI Workshop 2025, CICC-Lumina Innovation Camp on Humanoid Robots</span>
       </li>
     </ul>
-  </div>
-</section>
-
-<!-- ================= INVITED TALKS ================= -->
-<section class="block soft" id="talks">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <h2 class="sec-title">Invited Talks</h2>
-    </div>
-
-    <div class="talks-list">
-    <div class="talk-group reveal">
-      <div class="talk-topic">Evaluation-Driven Policy Evolution</div>
-      <ul class="talk-entries">
-        <li class="talk-entry">
-          <span class="talk-date">08/2025</span>
-          <span class="talk-desc">VALSE Webinar, shared <strong>RoboDojo</strong></span>
-        </li>
-        <li class="talk-entry">
-          <span class="talk-date">07/2025</span>
-          <span class="talk-desc">DeepTech, shared <strong>RoboDojo</strong></span>
-        </li>
-        <li class="talk-entry">
-          <span class="talk-date">07/2025</span>
-          <span class="talk-desc">Xiaomi Robotics, shared <strong>RoboDojo</strong></span>
-        </li>
-      </ul>
-    </div>
-
-    <div class="talk-group reveal">
-      <div class="talk-topic">Automated Simulation Data Generation Empowering Real-World Robotic Manipulation</div>
-      <ul class="talk-entries">
-        <li class="talk-entry">
-          <span class="talk-date">10/2025</span>
-          <span class="talk-desc">IROS 2025 RoboGen Workshop (Oral Presentation), shared <strong>RoboTwin 2.0</strong></span>
-        </li>
-        <li class="talk-entry">
-          <span class="talk-date">10/2025</span>
-          <span class="talk-desc">ARTS (Autonomous Robotic Technology Seminar), shared <strong>RoboTwin 2.0</strong></span>
-        </li>
-        <li class="talk-entry">
-          <span class="talk-date">10/2025</span>
-          <span class="talk-desc">模速空间, shared <strong>RoboTwin 2.0</strong></span>
-        </li>
-        <li class="talk-entry">
-          <span class="talk-date">09/2025</span>
-          <span class="talk-desc">DexForce Technology, shared <strong>RoboTwin 2.0</strong></span>
-        </li>
-        <li class="talk-entry">
-          <span class="talk-date">08/2025</span>
-          <span class="talk-desc">BAAI Hub, shared <strong>RoboTwin 2.0</strong> &nbsp;<a href="#" target="_blank">[Video]</a></span>
-        </li>
-        <li class="talk-entry">
-          <span class="talk-date">07/2025</span>
-          <span class="talk-desc">具身智能之心, shared <strong>RoboTwin 2.0</strong> &nbsp;<a href="https://www.bilibili.com/video/BV1wNuUz2EmU/?vd_source=c8f36241f20b81d579884e25736204c3" target="_blank">[Video]</a></span>
-        </li>
-        <li class="talk-entry">
-          <span class="talk-date">12/2024</span>
-          <span class="talk-desc">3DVer, shared <strong>RoboTwin</strong> &nbsp;<a href="https://www.bilibili.com/video/BV15rqAYAEGs/?spm_id_from=333.337.search-card.all.click" target="_blank">[Video]</a></span>
-        </li>
-        <li class="talk-entry">
-          <span class="talk-date">12/2024</span>
-          <span class="talk-desc">RLChina, shared <strong>RoboTwin</strong> &nbsp;<a href="#" target="_blank">[Video]</a></span>
-        </li>
-      </ul>
-    </div>
-
-    <div class="talk-group reveal">
-      <div class="talk-topic">3D Semantic Flow for Generalizable Robotic Manipulation</div>
-      <ul class="talk-entries">
-        <li class="talk-entry">
-          <span class="talk-date">05/2025</span>
-          <span class="talk-desc">AI TIME Science Debate, shared <strong>G3Flow</strong> &nbsp;<a href="#" target="_blank">[Video]</a></span>
-        </li>
-        <li class="talk-entry">
-          <span class="talk-date">05/2025</span>
-          <span class="talk-desc">3DVer, shared <strong>G3Flow</strong> &nbsp;<a href="https://www.bilibili.com/video/BV1iAj6zhEm6/?spm_id_from=333.337.search-card.all.click" target="_blank">[Video]</a></span>
-        </li>
-      </ul>
-    </div>
-    </div>
   </div>
 </section>
 
@@ -3502,6 +3593,25 @@
     list.classList.toggle('news-expanded');
     btn.textContent = list.classList.contains('news-expanded') ? 'Show less ↑' : 'Show more ↓';
   }
+  function syncPubOthersVideos(open) {
+    const list = document.getElementById('pub-others-list');
+    if (!list) return;
+    const lead = list.querySelector('.pub-item');
+    list.querySelectorAll('video').forEach((v) => {
+      const inPeek = open || v.closest('.pub-item') === lead;
+      if (inPeek) v.play().catch(() => {});
+      else v.pause();
+    });
+  }
+  function setPubOthersInert(open) {
+    const list = document.getElementById('pub-others-list');
+    if (!list) return;
+    const items = list.querySelectorAll('.pub-item');
+    items.forEach((item, i) => {
+      item.inert = !open && i > 0;
+    });
+    list.inert = false;
+  }
   function togglePubOthers(forceOpen) {
     const group = document.getElementById('pub-others');
     const list = document.getElementById('pub-others-list');
@@ -3511,11 +3621,27 @@
       : forceOpen === false ? false
       : !group.classList.contains('is-expanded');
     group.classList.toggle('is-expanded', open);
-    list.hidden = !open;
+    setPubOthersInert(open);
     btn.setAttribute('aria-expanded', open ? 'true' : 'false');
     const chevron = btn.querySelector('.pub-group-chevron');
     if (chevron) chevron.textContent = open ? 'Show less ↑' : 'Show more ↓';
+    syncPubOthersVideos(open);
   }
+  document.getElementById('pub-others-peek')?.addEventListener('click', () => {
+    const group = document.getElementById('pub-others');
+    if (group && !group.classList.contains('is-expanded')) togglePubOthers(true);
+  });
+  (function initPubOthersPeek() {
+    const list = document.getElementById('pub-others-list');
+    if (!list) return;
+    setPubOthersInert(false);
+    const playPeek = () => syncPubOthersVideos(false);
+    playPeek();
+    list.querySelectorAll('video').forEach((v) => {
+      v.addEventListener('loadeddata', playPeek, { once: true });
+    });
+    window.addEventListener('load', playPeek);
+  })();
 
   // Publications right TOC
   (function initResearchToc() {
@@ -3720,80 +3846,6 @@
         applyRate();
       });
     });
-  })();
-
-  // Live GitHub stars + Scholar citations
-  (function updateIntroMetrics() {
-    const starEl = document.getElementById('metric-github-stars');
-    const citeEl = document.getElementById('metric-citations');
-    if (!starEl && !citeEl) return;
-
-    const EXTRA_REPOS = ['RoboTwin-Platform/RoboTwin'];
-
-    function formatStars(n) {
-      if (!Number.isFinite(n) || n < 0) return null;
-      if (n >= 1000) {
-        const k = n / 1000;
-        const text = k >= 100 ? Math.round(k).toString() : k.toFixed(1).replace(/\.0$/, '');
-        return text + 'k';
-      }
-      return String(n);
-    }
-
-    function formatCitations(n) {
-      if (!Number.isFinite(n) || n < 0) return null;
-      return Math.round(n).toLocaleString('en-US');
-    }
-
-    async function fetchGithubStars() {
-      let total = 0;
-      for (let page = 1; page <= 5; page++) {
-        const res = await fetch(
-          `https://api.github.com/users/TianxingChen/repos?per_page=100&page=${page}&type=owner`
-        );
-        if (!res.ok) throw new Error('github repos ' + res.status);
-        const repos = await res.json();
-        if (!Array.isArray(repos) || !repos.length) break;
-        total += repos.reduce((sum, repo) => sum + (repo.stargazers_count || 0), 0);
-        if (repos.length < 100) break;
-      }
-      await Promise.all(EXTRA_REPOS.map(async (full) => {
-        const res = await fetch(`https://api.github.com/repos/${full}`);
-        if (!res.ok) return;
-        const repo = await res.json();
-        total += repo.stargazers_count || 0;
-      }));
-      return total;
-    }
-
-    async function fetchCachedMetrics() {
-      const res = await fetch(`assets/metrics.json?t=${Date.now()}`, { cache: 'no-store' });
-      if (!res.ok) throw new Error('metrics.json ' + res.status);
-      return res.json();
-    }
-
-    let starsFromApi = false;
-
-    fetchGithubStars()
-      .then((n) => {
-        const text = formatStars(n);
-        if (text && starEl) {
-          starEl.textContent = text;
-          starsFromApi = true;
-        }
-      })
-      .catch(() => {});
-
-    fetchCachedMetrics()
-      .then((data) => {
-        const citeText = formatCitations(Number(data.citations));
-        if (citeText && citeEl) citeEl.textContent = citeText;
-        if (!starsFromApi && starEl && data.github_stars) {
-          const text = formatStars(Number(data.github_stars));
-          if (text) starEl.textContent = text;
-        }
-      })
-      .catch(() => {});
   })();
 </script>
 </body>
