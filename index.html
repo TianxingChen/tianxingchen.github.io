@@ -621,63 +621,6 @@
   .dept, .role { font-size: 13.5px; color: var(--ink-soft); margin-top: 3px; line-height: 1.5; }
   .degree { font-size: 13px; color: var(--ink-faint); margin-top: 2px; }
 
-  /* ============ HIRING ============ */
-  .hiring {
-    border-top: 1px solid var(--line);
-  }
-  .hiring-row {
-    display: grid;
-    grid-template-columns: 220px minmax(0, 1fr) auto;
-    column-gap: 28px;
-    align-items: center;
-    padding: 20px 0 8px;
-  }
-  .hiring-logo {
-    width: 220px;
-    height: 72px;
-    display: flex; align-items: center; justify-content: flex-start;
-  }
-  .hiring-logo img {
-    width: auto; max-width: 220px; max-height: 72px; height: auto;
-    object-fit: contain; object-position: left center; display: block;
-  }
-  .hiring-main {
-    display: flex; flex-direction: column; gap: 8px; min-width: 0;
-  }
-  .hiring-kicker {
-    font-size: 11px; font-weight: 600;
-    letter-spacing: .14em; text-transform: uppercase; color: var(--ink-faint);
-  }
-  .hiring-lead {
-    margin: 0;
-    font-size: 18px; font-weight: 400;
-    letter-spacing: -.02em; line-height: 1.4; color: var(--ink);
-  }
-  .hiring-lead strong { font-weight: 500; }
-  .hiring-note {
-    margin: 0;
-    font-size: 13.5px; line-height: 1.55; color: var(--ink-soft);
-  }
-  .hiring-side {
-    display: flex; flex-direction: column;
-    align-items: flex-end; gap: 6px;
-    text-align: right; justify-self: end;
-  }
-  .hiring-side-label {
-    font-size: 11px; font-weight: 600;
-    letter-spacing: .12em; text-transform: uppercase; color: var(--ink-faint);
-  }
-  .hiring-side a {
-    font-size: 14.5px; font-weight: 500;
-    color: var(--accent); letter-spacing: -.01em;
-  }
-  .hiring-side a:hover { text-decoration: underline; text-underline-offset: 3px; }
-  .hiring-side-link {
-    font-size: 12.5px !important; font-weight: 500 !important;
-    color: var(--ink-faint) !important;
-  }
-  .hiring-side-link:hover { color: var(--accent) !important; }
-
   /* ============ PUB SPOTLIGHT ============ */
   .pub-spotlight {
     border: none; border-radius: var(--radius-lg);
@@ -1638,22 +1581,6 @@
     .vent-logo img { max-height: 48px; max-width: 160px; }
     .vent-logo--xspark img { max-width: 180px; max-height: 52px; }
 
-    .hiring-row {
-      grid-template-columns: 1fr;
-      row-gap: 14px;
-      align-items: start;
-    }
-    .hiring-logo { width: auto; height: auto; }
-    .hiring-logo img { max-width: 160px; max-height: 52px; }
-    .hiring-lead { font-size: 16px; }
-    .hiring-note { font-size: 13px; }
-    .hiring-side {
-      align-items: flex-start; text-align: left;
-      padding-top: 10px;
-      border-top: 1px solid var(--line-soft);
-      width: 100%;
-    }
-
     .news-item { grid-template-columns: 56px 1fr; gap: 10px; font-size: 13.5px; }
     .news-date { font-size: 12px; }
 
@@ -1735,7 +1662,6 @@
     <div class="nav-links" id="nav-links">
       <a href="#about">About</a>
       <a href="#news">News</a>
-      <a href="#hiring">Hiring</a>
       <a href="#publications">Publications</a>
       <a href="#honors">Honors</a>
       <a href="#talks">Talks</a>
@@ -1784,7 +1710,7 @@
         <div class="intro-actions reveal reveal-d3">
           <a href="mailto:chentianxing2002@gmail.com"><img src="assets/files/icon/email.png" alt="" /> Email</a>
           <a href="https://scholar.google.com/citations?user=pvS8MH8AAAAJ&hl=en" target="_blank"><img src="assets/files/icon/google_scholar.png" alt="" /> Scholar</a>
-          <a href="https://github.com/TianxingChen" target="_blank"><img class="is-round" src="assets/files/icon/github_s.jpg" alt="" /> GitHub</a>
+          <a href="https://github.com/TianxingChen" target="_blank"><img src="assets/files/icon/github.svg" alt="" /> GitHub</a>
           <a href="https://x.com/MarioChan2002" target="_blank"><img src="assets/files/icon/X_icon.png" alt="" /> X</a>
           <a href="https://www.xiaohongshu.com/user/profile/618fe930000000001000afe7" target="_blank"><img src="assets/files/icon/xiaohongshu.png" alt="" /> Rednote</a>
           <a href="https://space.bilibili.com/520068753?spm_id_from=333.1007.0.0" target="_blank"><img src="assets/files/icon/bilibili.png" alt="" /> Bilibili</a>
@@ -2091,39 +2017,8 @@
   </div>
 </section>
 
-<!-- ================= HIRING ================= -->
-<section class="block" id="hiring">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <h2 class="sec-title">Hiring</h2>
-    </div>
-    <div class="hiring reveal">
-      <div class="hiring-row">
-        <div class="hiring-logo">
-          <img src="assets/files/institute/xsparkai-en.png" alt="Xspark AI" />
-        </div>
-        <div class="hiring-main">
-          <div class="hiring-kicker">SparkLab · Xspark AI</div>
-          <p class="hiring-lead">
-            Looking for talent across Embodied AI — <strong>hardware</strong>, <strong>algorithms</strong>, <strong>simulation</strong>, and more.
-          </p>
-          <p class="hiring-note">
-            Research-oriented candidates get full research opportunities and support to pursue impactful work in trustworthy physical intelligence.
-          </p>
-        </div>
-        <div class="hiring-side">
-          <span class="hiring-side-label">Contact</span>
-          <a href="mailto:sparklab@xsparkai.com">sparklab@xsparkai.com</a>
-          <a class="hiring-side-link" href="https://xsparkai.com/" target="_blank">xsparkai.com</a>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</section>
-
 <!-- ================= RESEARCH EXPERIENCE ================= -->
-<section class="block soft" id="experience">
+<section class="block" id="experience">
   <div class="wrap">
     <div class="sec-head reveal">
       <h2 class="sec-title">Research Experience</h2>
@@ -2157,7 +2052,7 @@
 
 
 <!-- ================= PUBLICATIONS ================= -->
-<section class="block" id="publications">
+<section class="block soft" id="publications">
   <nav class="research-toc" id="research-toc" aria-label="Publication categories">
     <a href="#pub-evaluation">Evaluation</a>
     <a href="#pub-fast-brain">Fast Brain</a>
@@ -2972,7 +2867,7 @@
 </section>
 
 <!-- ================= HONORS ================= -->
-<section class="block soft" id="honors">
+<section class="block" id="honors">
   <div class="wrap">
     <div class="sec-head reveal">
       <h2 class="sec-title">Honors &amp; Awards</h2>
@@ -3113,7 +3008,7 @@
 </section>
 
 <!-- ================= PROGRAMMING COMPETITIONS ================= -->
-<section class="block" id="competitions">
+<section class="block soft" id="competitions">
   <div class="wrap">
     <div class="sec-head reveal">
       <h2 class="sec-title">Competitions</h2>
@@ -3192,7 +3087,7 @@
 </section>
 
 <!-- ================= OPEN SOURCE ================= -->
-<section class="block soft" id="opensource">
+<section class="block" id="opensource">
   <div class="wrap">
     <div class="sec-head reveal">
       <h2 class="sec-title">Open Source</h2>
@@ -3239,7 +3134,7 @@
 </section>
 
 <!-- ================= INVITED TALKS ================= -->
-<section class="block" id="talks">
+<section class="block soft" id="talks">
   <div class="wrap">
     <div class="sec-head reveal">
       <h2 class="sec-title">Invited Talks</h2>
@@ -3320,7 +3215,7 @@
 </section>
 
 <!-- ================= ACADEMIC SERVICES ================= -->
-<section class="block soft" id="services">
+<section class="block" id="services">
   <div class="wrap">
     <div class="sec-head reveal">
       <h2 class="sec-title">Academic Services</h2>
