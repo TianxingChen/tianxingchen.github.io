@@ -23,7 +23,7 @@
 
 Hi! I am **Tianxing Chen (陈天行)**, working on **Embodied AI Infra** — Robotic Foundation Models, Data Generators, and Evaluation — supervised by [Prof. Ping Luo](https://luoping.me/).
 
-My works received **Best Paper** at ICRA 2026 ViTac & ECCV 2024 MAAS Workshop, **Champion** at NeurIPS 2025 MARS Challenge, **Best Poster** at multiple IROS / ChinaSI workshops, and a **CVPR Highlight**. I lead [Embodied-AI-Guide](https://github.com/TianxingChen/Embodied-AI-Guide) (10k+ ⭐), the most popular EAI tutorial in China.
+My works received **Best Paper** at ICRA 2026 ViTac & ECCV 2024 MAAS Workshop, **Best Paper Award Finalist** at IEEE RCAR 2026, **Champion** at NeurIPS 2025 MARS Challenge, **Best Poster** at multiple IROS / ChinaSI workshops, and a **CVPR Highlight**. I lead [Embodied-AI-Guide](https://github.com/TianxingChen/Embodied-AI-Guide) (10k+ ⭐), the most popular EAI tutorial in China. Open-source work has surpassed **1 million Hugging Face downloads**.
 
 <details>
 <summary><b>🇨🇳 中文介绍 (Chinese Profile)</b></summary>
@@ -31,7 +31,7 @@ My works received **Best Paper** at ICRA 2026 ViTac & ECCV 2024 MAAS Workshop, *
 
 我是**陈天行**，Xspark AI 联合创始人兼 CTO，[Lumina 具身智能社区](https://lumina-embodied.ai/)创始人，香港大学 [MMLab@HKU](https://mmlab.hk/) 一年级博士生，师从[罗平教授](https://luoping.me/)。研究方向为具身智能基础架构：机器人通用基础模型、数据合成器与评测。
 
-我在 CVPR、RSS、ICLR、ICRA、ACL 等顶会发表多篇论文；获 NeurIPS 2025 MARS 操作赛冠军、CVPR Highlight、CCF 优秀大学生（全国 99 人）、荔园卓越之星等荣誉。小红书 🎒 [@TianxingChen (陈天行)](https://www.xiaohongshu.com/user/profile/618fe930000000001000afe7) 20k+ 粉丝。
+我在 CVPR、ICML、ICLR、CoRL、RSS、ICRA、ACL 等顶会发表多篇论文；获 IEEE RCAR 2026 Best Paper Award Finalist、NeurIPS 2025 MARS 操作赛冠军、CVPR Highlight、CCF 优秀大学生（全国 99 人）、荔园卓越之星等荣誉。开源工作 Hugging Face 下载量已突破 100 万。小红书 🎒 [@TianxingChen (陈天行)](https://www.xiaohongshu.com/user/profile/618fe930000000001000afe7) 20k+ 粉丝。
 
 </details>
 
@@ -59,6 +59,7 @@ My works received **Best Paper** at ICRA 2026 ViTac & ECCV 2024 MAAS Workshop, *
 | Venue | Paper | Links |
 |:------|:------|:------|
 | **ICML 2026** | RoboTwin 2.0: Scalable Data Generator and Benchmark for Bimanual Manipulation | [Web](https://robotwin-platform.github.io/) · [Code](https://github.com/RoboTwin-Platform/RoboTwin) ![stars](https://img.shields.io/github/stars/RoboTwin-Platform/RoboTwin?style=flat&logo=github) |
+| **CoRL 2026** | UniVTAC: Unified Visuo-Tactile Simulation Platform **(ICRA ViTac Best Paper 🏆)** | [Web](https://univtac.github.io/) · [Code](https://github.com/univtac/UniVTAC) |
 | **CVPR 2025** | RoboTwin: Dual-Arm Robot Benchmark with Generative Digital Twins **(Highlight)** | [Web](https://robotwin-benchmark.github.io/) · [Code](https://github.com/TianxingChen/RoboTwin) |
 | **CVPR 2025** | G3Flow: Generative 3D Semantic Flow for Pose-aware Manipulation | [Web](https://tianxingchen.github.io/G3Flow/) · [Code](https://github.com/TianxingChen/G3Flow) |
 | **ACL 2025** | Text2World: Benchmarking LLMs for Symbolic World Model Generation | [Web](https://text-to-world.github.io/) · [Code](https://github.com/Aaron617/text2world) |
@@ -67,13 +68,13 @@ My works received **Best Paper** at ICRA 2026 ViTac & ECCV 2024 MAAS Workshop, *
 | **Report** | RoboTwin Dual-Arm Challenge @ CVPR 2025 MEIS Workshop | [Web](https://robotwin-benchmark.github.io/cvpr-2025-challenge/) |
 | **arXiv 2026** | ManiTwin: Scaling Data-Generation-Ready Digital Object Dataset to 100K | [Web](https://manitwin.github.io/) |
 | **arXiv 2026** | RMBench: Memory-Dependent Robotic Manipulation Benchmark | [Web](https://rmbench.github.io/) |
-| **arXiv 2026** | UniVTAC: Unified Visuo-Tactile Simulation Platform **(ICRA ViTac Best Paper 🏆)** | [Web](https://univtac.github.io/) · [Code](https://github.com/univtac/UniVTAC) |
 | **arXiv 2025** | FieldGen: Field-Guided Data Generation from Teleop Trajectories | [Web](https://fieldgen.github.io/) · [Code](https://github.com/FieldGen/FieldGen) |
 
 ### Co-Author
 
 | Venue | Paper | Links |
 |:------|:------|:------|
+| **CoRL 2026** | EventVLA: Event-Driven Visual Evidence Memory for Long-Horizon VLA Policies | [Web](https://ganlin-yang.github.io/EventVLA.github.io/) · [Code](https://github.com/InternRobotics/EventVLA) |
 | **ICRA 2026** | LeHome: Deformable Object Manipulation in Household Scenarios | [Web](https://lehome-web.github.io/) |
 | **ICRA 2026** | GarmentPile++: Cluttered Garments Retrieval with VLM Reasoning | [Web](https://garmentpile2.github.io/) |
 | **ICRA 2026** | AVR: Active Vision-Driven Precision Manipulation | [Paper](https://arxiv.org/abs/2503.01439) |
