@@ -3,7 +3,7 @@ from io import BytesIO
 from PIL import Image, ImageOps
 
 # ================== 全局参数 ==================
-TARGET_SIZE = 0.3 * 1024 * 1024  # 目标大小：1MB
+TARGET_SIZE = 0.1 * 1024 * 1024  # 目标大小：1MB
 MIN_QUALITY = 20               # 最低质量（有损）
 QUALITY_STEP = 5               # 每次降低的质量步长
 DOWNSCALE_RATIO = 0.9          # 每轮等比缩小比例
