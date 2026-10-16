@@ -186,7 +186,7 @@
 
   /* ============ INTRO ============ */
   .intro {
-    padding: calc(var(--nav-h) + 44px) 0 56px;
+    padding: calc(var(--nav-h) + 36px) 0 44px;
     position: relative;
     overflow: hidden;
   }
@@ -237,16 +237,22 @@
   .intro .wrap { position: relative; z-index: 1; }
   .intro-grid {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(260px, 34%);
-    gap: 28px 32px;
-    align-items: stretch;
+    grid-template-columns: minmax(0, 1fr) 240px;
+    column-gap: 40px;
+    row-gap: 0;
+    align-items: start;
   }
-  .intro-copy {
-    display: flex;
-    flex-direction: column;
-    min-width: 0;
-    min-height: 100%;
-  }
+  /* Children of the copy (and of <details>) join this grid, so the portrait
+     can center on the collapsed block and stay put when the bio opens. */
+  .intro-copy,
+  .intro details { display: contents; }
+  .intro details:not([open]) > .bio-detail { display: none; }
+  .intro h1 { grid-column: 1; grid-row: 1; }
+  .intro-roles { grid-column: 1; grid-row: 2; }
+  .intro-bio { grid-column: 1; grid-row: 3; }
+  .intro-actions { grid-column: 1; grid-row: 4; }
+  .intro summary { grid-column: 1; grid-row: 5; margin-top: 14px; }
+  .bio-detail { grid-column: 1; grid-row: 6; }
   .intro h1 {
     margin-top: 10px;
     font-size: clamp(38px, 4.8vw, 56px);
@@ -291,32 +297,20 @@
     line-height: 1.3;
   }
   .intro-roles .role a:hover { color: var(--accent); text-decoration: none; }
-  .intro-lead {
-    margin-top: 36px;
-    margin-bottom: 22px;
-    text-align: center;
-    font-size: clamp(22px, 2.8vw, 32px);
-    font-weight: 300;
-    letter-spacing: -.025em;
-    line-height: 1.25;
-    color: var(--ink);
-  }
-  .intro-lead em {
-    font-style: normal;
-    font-weight: 500;
-  }
   .intro-bio {
-    margin-top: 0;
+    margin-top: 24px;
     font-size: 14px; line-height: 1.65; color: var(--ink-soft);
   }
   .intro-bio a { color: var(--accent); }
   .intro-bio strong { color: var(--ink); font-weight: 600; }
 
   .intro-side {
+    grid-column: 2;
+    grid-row: 1 / 6;
     display: flex;
     flex-direction: column;
     width: 100%;
-    align-self: stretch;
+    align-self: center;
   }
 
   .intro-actions {
@@ -335,7 +329,6 @@
   }
   .intro-actions a img.is-round { border-radius: 50%; }
 
-  .intro details { margin-top: 14px; }
   .intro summary {
     cursor: pointer; font-size: 11.5px; font-weight: 500;
     letter-spacing: .1em; text-transform: uppercase; color: var(--ink-faint);
@@ -350,7 +343,7 @@
 
   .intro-portrait {
     width: 100%;
-    aspect-ratio: 4 / 5;
+    aspect-ratio: 1 / 1;
     border-radius: 22px;
     overflow: hidden;
     background: var(--bg-soft);
@@ -367,20 +360,20 @@
   }
 
   /* ============ SECTIONS ============ */
-  section.block { padding: 48px 0; }
+  section.block { padding: 38px 0; }
   section.block.soft {
     background: var(--bg-soft);
     border-top: 1px solid transparent;
     border-bottom: 1px solid transparent;
   }
   .sec-head {
-    margin-bottom: 20px;
+    margin-bottom: 16px;
     display: flex; flex-direction: column; align-items: flex-start; gap: 4px;
     border-bottom: none; padding-bottom: 0;
   }
   .sec-head--center { align-items: center; text-align: center; }
   .sec-title {
-    font-size: clamp(28px, 3.4vw, 40px);
+    font-size: clamp(26px, 3vw, 36px);
     font-weight: 400; letter-spacing: -.035em; line-height: 1.08;
   }
   .sec-head .scholar-link {
@@ -440,19 +433,19 @@
     grid-template-columns: 240px minmax(0, 1fr) auto;
     column-gap: 28px;
     align-items: center;
-    padding: 16px 0;
+    padding: 10px 0;
     border: none;
     border-bottom: 1px solid var(--line-soft);
     background: transparent;
   }
   .exp-item:last-child { border-bottom: none; }
   .exp-logo-box {
-    width: 240px; height: 80px;
+    width: 240px; height: 64px;
     display: flex; align-items: center; justify-content: center;
     border: none; border-radius: 0; background: none; box-shadow: none; overflow: visible;
   }
   .exp-logo-box img {
-    width: auto; max-width: 220px; max-height: 68px; height: auto;
+    width: auto; max-width: 220px; max-height: 58px; height: auto;
     object-fit: contain; object-position: center; display: block;
   }
   .exp-main {
@@ -496,14 +489,14 @@
     grid-template-columns: 200px minmax(0, 1fr) auto;
     column-gap: 28px;
     align-items: center;
-    padding: 16px 0;
+    padding: 10px 0;
     border: none;
     border-bottom: 1px solid var(--line-soft);
     background: transparent;
   }
   .edu-list--rows .edu-item:last-child { border-bottom: none; }
   .edu-list--rows .edu-logo-box {
-    width: 200px; height: 64px;
+    width: 200px; height: 56px;
     display: flex; align-items: center; justify-content: center;
     border: none; border-radius: 0; background: none;
     box-shadow: none; overflow: visible;
@@ -555,7 +548,7 @@
     grid-template-columns: 220px minmax(0, 1fr) auto;
     column-gap: 28px;
     align-items: center;
-    padding: 16px 0;
+    padding: 10px 0;
     border: none;
     border-bottom: 1px solid var(--line-soft);
     background: transparent;
@@ -563,7 +556,7 @@
   .vent-item:last-child { border-bottom: none; }
   .vent-logo {
     width: 220px;
-    height: 72px;
+    height: 64px;
     margin: 0;
     display: flex; align-items: center; justify-content: center;
     background: none; border: none; overflow: visible;
@@ -573,7 +566,7 @@
     object-fit: contain; object-position: center; display: block;
   }
   .vent-logo--xspark img {
-    max-width: 220px; max-height: 72px;
+    max-width: 220px; max-height: 64px;
   }
   .vent-main {
     display: flex;
@@ -722,8 +715,8 @@
   .pub-featured-label:hover { color: var(--accent); text-decoration: none; }
 
   /* ============ PUB LIST ============ */
-  .pub-group { margin-top: 36px; scroll-margin-top: calc(var(--nav-h) + 20px); }
-  .pub-lightbox + .pub-group { margin-top: 16px; }
+  .pub-group { margin-top: 26px; scroll-margin-top: calc(var(--nav-h) + 20px); }
+  .pub-lightbox + .pub-group { margin-top: 12px; }
 
   /* Right mini TOC for research / publications */
   .research-toc {
@@ -773,13 +766,13 @@
 
   .pub-group-head {
     display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap;
-    padding: 6px 0 12px;
-    margin-bottom: 4px;
-    border-bottom: 2px solid var(--ink);
+    padding: 2px 0 8px;
+    margin-bottom: 2px;
+    border-bottom: 1.5px solid var(--ink);
   }
   .pub-group-title {
     margin: 0;
-    font-size: clamp(22px, 2.4vw, 28px);
+    font-size: clamp(20px, 2vw, 24px);
     font-weight: 500;
     letter-spacing: -.025em;
     line-height: 1.15;
@@ -790,91 +783,42 @@
     letter-spacing: .14em; text-transform: uppercase;
     color: var(--accent);
   }
-  .pub-group-toggle {
-    width: 100%;
-    display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap;
-    padding: 6px 0 12px;
-    border: none; border-bottom: 2px solid var(--line);
-    background: transparent; cursor: pointer;
-    font: inherit; text-align: left; color: inherit;
-  }
-  .pub-group-toggle .pub-group-title {
-    font-size: clamp(20px, 2.2vw, 26px);
-  }
-  .pub-group-toggle:hover .pub-group-title,
-  .pub-group-toggle:hover .pub-group-chevron { color: var(--accent); }
-  .pub-group-count {
-    font-size: 12px; color: var(--ink-faint);
-  }
-  .pub-group-chevron {
-    margin-left: auto;
-    font-size: 12.5px; font-weight: 500; color: var(--ink-soft);
-  }
-  .pub-group--others.is-expanded .pub-group-toggle {
-    border-bottom-color: var(--ink);
-  }
-  .pub-others-peek {
-    position: relative;
-    cursor: pointer;
-  }
-  .pub-group--others:not(.is-expanded) .pub-others-peek {
-    max-height: 220px;
-    overflow: hidden;
-  }
-  .pub-group--others:not(.is-expanded) .pub-others-peek::after {
-    content: '';
-    position: absolute;
-    left: 0; right: 0; bottom: 0;
-    height: 72px;
-    background: linear-gradient(to bottom, rgba(255,255,255,0), var(--bg) 78%);
-    pointer-events: none;
-  }
-  .pub-group--others:not(.is-expanded) #pub-others-list {
-    pointer-events: none;
-  }
-  .pub-group--others.is-expanded .pub-others-peek {
-    max-height: none;
-    cursor: default;
-  }
-
   .pub-list { list-style: none; border-top: none; }
   .pub-item {
-    display: grid; grid-template-columns: 140px 1fr; gap: 16px;
-    padding: 12px 10px; border-bottom: 1px solid var(--line-soft);
+    display: grid; grid-template-columns: 124px 1fr; gap: 14px;
+    padding: 9px 8px; border-bottom: 1px solid var(--line-soft);
     transition: background .15s ease; align-items: center;
     border-radius: 0;
   }
   .pub-item:hover { background: transparent; }
-  .pub-item--lead {
-    background: color-mix(in srgb, var(--accent) 5%, transparent);
-    box-shadow: inset 2px 0 0 color-mix(in srgb, var(--accent) 40%, transparent);
-  }
-  .pub-item--lead:hover {
-    background: color-mix(in srgb, var(--accent) 8%, transparent);
-  }
   .pub-thumb {
-    width: 140px; flex-shrink: 0; align-self: center;
-    border: none; border-radius: 10px;
+    width: 124px; flex-shrink: 0; align-self: center;
+    border: none; border-radius: 8px;
     overflow: hidden; background: var(--bg-soft);
     box-shadow: 0 0 0 1px var(--line);
   }
   .pub-thumb--clear { background: #fff; }
   .pub-thumb img, .pub-thumb video {
-    width: 140px; height: auto; display: block; object-fit: contain;
+    width: 124px; height: auto; display: block; object-fit: contain;
   }
   .pub-thumb-placeholder {
-    width: 140px; min-height: 80px; display: flex; align-items: center; justify-content: center;
-    font-size: 10px; color: var(--ink-faint); text-align: center; padding: 10px;
+    width: 124px; min-height: 70px; display: flex; align-items: center; justify-content: center;
+    font-size: 10px; color: var(--ink-faint); text-align: center; padding: 8px;
   }
 
-  /* Others: denser text spacing (same thumb size) */
-  .pub-list--compact .pub-item { padding: 10px; gap: 14px; }
-  .pub-list--compact .pub-title { font-size: 14px; line-height: 1.35; }
-  .pub-list--compact .pub-authors { margin-top: 4px; font-size: 12px; line-height: 1.45; }
-  .pub-list--compact .pub-venue,
-  .pub-list--compact .pub-award { margin-top: 4px; font-size: 11.5px; }
-  .pub-title { font-size: 16px; font-weight: 500; letter-spacing: -.015em; line-height: 1.3; }
-  .pub-authors { font-size: 12.5px; color: var(--ink-faint); margin-top: 3px; line-height: 1.45; }
+  /* Venue and links share one line; award drops below them */
+  .pub-body {
+    display: flex; flex-wrap: wrap; align-items: baseline;
+    column-gap: 12px; min-width: 0;
+  }
+  .pub-body > .pub-title,
+  .pub-body > .pub-authors { flex: 1 1 100%; }
+  .pub-body > .pub-venue { flex: 0 0 auto; }
+  .pub-body > .pub-links { flex: 1 1 auto; }
+  .pub-body > .pub-award { flex: 1 1 100%; order: 1; }
+
+  .pub-title { font-size: 15px; font-weight: 500; letter-spacing: -.015em; line-height: 1.3; }
+  .pub-authors { font-size: 12.5px; color: var(--ink-faint); margin-top: 2px; line-height: 1.4; }
   .pub-authors .self { color: var(--ink); font-weight: 600; }
   .pub-authors .authors-ellipsis {
     color: var(--ink-faint);
@@ -902,7 +846,7 @@
   }
   .pub-venue,
   .pub-award {
-    margin-top: 4px;
+    margin-top: 3px;
     font-size: 11.5px;
     line-height: 1.35;
   }
@@ -918,9 +862,9 @@
     letter-spacing: .04em; color: var(--ink-faint);
   }
   .award-hl { color: #c62828; font-weight: 600; }
-  .pub-links { display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px 0; margin-top: 6px; }
+  .pub-links { display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px 0; margin-top: 3px; }
   .pub-link {
-    font-size: 12.5px; font-weight: 500; padding: 0 10px 0 0;
+    font-size: 12px; font-weight: 500; padding: 0 8px 0 0; line-height: 1.4;
     border: none; border-radius: 0; color: var(--ink);
     background: transparent; letter-spacing: .01em;
     text-decoration: underline;
@@ -930,7 +874,7 @@
     transition: color .15s ease, text-decoration-color .15s ease;
   }
   .pub-link + .pub-link {
-    padding-left: 10px;
+    padding-left: 8px;
     border-left: 1px solid var(--line);
   }
   .pub-link:hover {
@@ -939,9 +883,33 @@
     background: transparent;
     border-color: var(--line);
   }
-  .pub-list--compact .pub-links { margin-top: 5px; }
-  .pub-list--compact .pub-link { font-size: 12px; }
-  .pub-footnote { margin-top: 16px; font-size: 12px; color: var(--ink-faint); }
+
+  /* Non-highlight papers: title + venue/links on one line when they fit */
+  .pub-item.pub-item--brief {
+    grid-template-columns: 1fr;
+    gap: 0;
+    padding: 6px 8px;
+    align-items: start;
+  }
+  .pub-item--brief .pub-body > .pub-title {
+    flex: 0 1 auto;
+    font-size: 14px;
+    line-height: 1.35;
+  }
+  .pub-brief-meta {
+    flex: 0 1 auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    column-gap: 12px;
+    row-gap: 2px;
+    margin-top: 1px;
+  }
+  .pub-item--brief .pub-links,
+  .pub-item--brief .pub-venue,
+  .pub-item--brief .pub-award { margin-top: 0; }
+  .pub-item--brief .venue-name { font-size: 11px; }
+  .pub-footnote { margin-top: 12px; font-size: 12px; color: var(--ink-faint); }
 
   /* ============ LIGHTBOX ============ */
   .pub-lightbox { position: fixed; inset: 0; z-index: 200; display: none; }
@@ -966,7 +934,7 @@
   .pub-lightbox-close:hover { background: rgba(255,255,255,.22); }
 
   /* ============ HONORS ============ */
-  .honors-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+  .honors-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
   .honor-card {
     border: none; border-radius: 0;
     overflow: visible; background: transparent;
@@ -974,7 +942,7 @@
   }
   .honor-card:hover { transform: translateY(-2px); box-shadow: none; }
   .honor-card-media {
-    height: 148px; padding: 4px 6px; box-sizing: border-box;
+    height: 128px; padding: 4px 6px; box-sizing: border-box;
     overflow: hidden; background: #fff;
     border-radius: var(--radius-md); box-shadow: 0 0 0 1px var(--line);
   }
@@ -999,19 +967,13 @@
 
   /* ============ PROG COMPETITIONS ============ */
   .prog-list {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px 10px;
     margin-bottom: 16px;
   }
-  .prog-row {
-    display: flex;
-    gap: 10px;
-    align-items: flex-start;
-  }
+  .prog-row { display: contents; }
   .prog-item {
-    flex: 1 1 0;
-    max-width: calc((100% - 20px) / 3);
     min-width: 0;
     display: flex;
     flex-direction: column;
@@ -1024,7 +986,7 @@
   .prog-item:hover { transform: translateY(-2px); }
   .prog-logo-box {
     width: 100%;
-    height: 168px;
+    height: 144px;
     padding: 6px 8px;
     box-sizing: border-box;
     border: none; border-radius: 10px; overflow: hidden;
@@ -1081,38 +1043,38 @@
   .oss-item {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 14px;
-    padding: 22px 28px 22px 0;
+    gap: 8px;
+    padding: 12px 20px 12px 0;
     border: none;
     background: transparent;
     box-shadow: none;
     border-radius: 0;
   }
   .oss-item + .oss-item {
-    padding-left: 28px;
+    padding-left: 20px;
     padding-right: 0;
     border-left: 1px solid var(--line);
   }
   .oss-thumb {
-    height: 64px;
+    height: 40px;
     display: flex; align-items: center; justify-content: flex-start;
     background: transparent; overflow: visible;
   }
   .oss-thumb img, .oss-thumb video {
-    width: auto; max-width: 100%; height: 52px;
+    width: auto; max-width: 100%; height: 34px;
     object-fit: contain; object-position: left center; display: block;
   }
   .oss-thumb video { border-radius: 6px; }
   .oss-body { padding: 0; }
-  .proj-name { font-size: 15.5px; font-weight: 500; letter-spacing: -.015em; }
+  .proj-name { font-size: 14.5px; font-weight: 500; letter-spacing: -.015em; line-height: 1.3; }
   .proj-name a { color: var(--ink); }
   .proj-name a:hover { color: var(--accent); text-decoration: none; }
   .proj-meta {
-    font-size: 12.5px; color: var(--ink-faint); margin-top: 6px;
-    display: flex; align-items: center; gap: 6px; flex-wrap: wrap; line-height: 1.45;
+    font-size: 12px; color: var(--ink-faint); margin-top: 3px;
+    display: flex; align-items: center; gap: 6px; flex-wrap: wrap; line-height: 1.4;
   }
   .proj-meta img { height: 16px; display: inline; }
-  .proj-desc { font-size: 13px; color: var(--ink-soft); margin-top: 6px; line-height: 1.55; }
+  .proj-desc { font-size: 12.5px; color: var(--ink-soft); margin-top: 3px; line-height: 1.45; }
   .proj-desc img { height: 16px; display: inline; vertical-align: -3px; }
   .oss-stars { white-space: nowrap; }
 
@@ -1121,42 +1083,45 @@
     list-style: none;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 10px 20px;
+    gap: 0 24px;
     border-top: none;
   }
   .svc-item {
-    display: grid; grid-template-columns: 88px minmax(0, 1fr); gap: 12px;
-    padding: 10px 0; border-bottom: 1px solid var(--line-soft);
+    display: grid; grid-template-columns: 72px minmax(0, 1fr);
+    column-gap: 12px; row-gap: 1px;
+    padding: 7px 0; border-top: 1px solid var(--line-soft);
     align-items: start;
   }
+  .svc-item:nth-child(-n+2) { border-top: none; }
   .svc-item:hover { background: transparent; }
   .svc-year {
-    grid-column: 1 / -1;
-    font-size: 11px; font-weight: 600; color: var(--accent);
-    letter-spacing: .06em; text-transform: uppercase; line-height: 1.2;
-    margin-bottom: -4px;
+    grid-column: 2; grid-row: 1;
+    font-size: 10.5px; font-weight: 600; color: var(--accent);
+    letter-spacing: .06em; text-transform: uppercase; line-height: 1.3;
   }
   .svc-thumb-box {
-    width: 88px; border-radius: 8px; overflow: hidden;
+    grid-column: 1; grid-row: 1 / span 2;
+    width: 72px; border-radius: 6px; overflow: hidden;
     box-shadow: 0 0 0 1px var(--line); background: var(--bg-soft);
   }
   .svc-thumb-box img {
-    width: 88px; height: auto; display: block; object-fit: contain;
+    width: 72px; height: auto; display: block; object-fit: contain;
   }
-  .svc-content { min-width: 0; }
-  .svc-name { font-size: 13.5px; font-weight: 500; letter-spacing: -.01em; line-height: 1.35; }
-  .svc-role { font-size: 12px; color: var(--ink-soft); margin-top: 2px; line-height: 1.4; }
-  .svc-desc { font-size: 12px; color: var(--ink-faint); margin-top: 3px; line-height: 1.45; }
+  .svc-content { grid-column: 2; grid-row: 2; min-width: 0; }
+  .svc-name { font-size: 13px; font-weight: 500; letter-spacing: -.01em; line-height: 1.3; }
+  .svc-role { font-size: 12px; color: var(--ink-soft); margin-top: 1px; line-height: 1.35; }
+  .svc-desc { font-size: 12px; color: var(--ink-faint); margin-top: 2px; line-height: 1.4; }
 
-  .svc-misc { list-style: none; margin-top: 14px; border-top: 1px solid var(--line); }
+  .svc-misc { list-style: none; margin-top: 12px; border-top: 1px solid var(--line); }
   .svc-misc li {
-    display: grid; grid-template-columns: 72px 1fr; gap: 12px;
-    padding: 6px 0; border-bottom: 1px solid var(--line-soft);
-    font-size: 13px; color: var(--ink-soft); line-height: 1.45;
+    display: grid; grid-template-columns: 84px 1fr; gap: 16px;
+    padding: 9px 0; border-bottom: 1px solid var(--line-soft);
+    font-size: 13px; color: var(--ink-soft); line-height: 1.6;
   }
+  .svc-misc li:last-child { border-bottom: none; }
   .sm-label {
     font-size: 11px; font-weight: 600;
-    letter-spacing: .1em; text-transform: uppercase; color: var(--ink-faint); padding-top: 1px;
+    letter-spacing: .1em; text-transform: uppercase; color: var(--ink-faint); padding-top: 3px;
   }
 
   /* ============ TALKS ============ */
@@ -1166,7 +1131,7 @@
     grid-template-columns: minmax(200px, 280px) 1fr;
     gap: 20px 28px;
     align-items: start;
-    padding: 14px 0;
+    padding: 10px 0;
     border-top: 1px solid var(--line);
   }
   .talk-group:last-child { border-bottom: 1px solid var(--line); }
@@ -1395,7 +1360,7 @@
   @media (max-width: 960px) {
     .wrap { padding: 0 22px; }
     .nav-inner { padding: 0 22px; }
-    .intro-grid { grid-template-columns: minmax(0, 1fr) minmax(200px, 32%); gap: 22px 24px; }
+    .intro-grid { grid-template-columns: minmax(0, 1fr) 200px; column-gap: 28px; }
     .intro h1 { font-size: clamp(32px, 5.5vw, 44px); }
     .honors-grid { grid-template-columns: repeat(3, 1fr); gap: 10px; }
     .pub-spotlight-list--grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -1403,13 +1368,14 @@
     .pub-featured { grid-template-columns: repeat(2, 1fr); gap: 14px; }
     .prog-row { gap: 10px; }
     .svc-list { grid-template-columns: 1fr; }
+    .svc-item:nth-child(2) { border-top: 1px solid var(--line-soft); }
     .oss-list { grid-template-columns: 1fr; }
     .oss-item + .oss-item {
       border-left: none;
       padding-left: 0;
       padding-right: 0;
     }
-    .oss-item { padding: 18px 0; }
+    .oss-item { padding: 12px 0; }
     .pub-item { gap: 16px; }
     .pub-thumb, .pub-thumb img, .pub-thumb video, .pub-thumb-placeholder { width: 120px; }
   }
@@ -1463,15 +1429,26 @@
       -webkit-mask-image: linear-gradient(to bottom, #000 35%, transparent 82%);
       mask-image: linear-gradient(to bottom, #000 35%, transparent 82%);
     }
-    .intro-grid { grid-template-columns: 1fr; gap: 18px; }
+    .intro-grid { grid-template-columns: 1fr; column-gap: 0; row-gap: 18px; }
+    .intro-copy { display: flex; flex-direction: column; }
+    .intro details { display: block; }
+    .intro h1,
+    .intro-roles,
+    .intro-bio,
+    .intro-actions,
+    .intro summary,
+    .bio-detail,
+    .intro-side { grid-column: auto; grid-row: auto; }
+    .intro summary { margin-top: 0; }
+    .intro details { margin-top: 14px; }
     .intro-side {
       order: -1;
-      max-width: 200px;
+      align-self: auto;
+      max-width: 160px;
       margin: 0 auto;
       width: 100%;
     }
     .intro-portrait { border-radius: 14px; }
-    .intro-copy { min-height: 0; }
     .intro h1 { font-size: clamp(30px, 9vw, 38px); margin-top: 8px; text-align: center; }
     .intro-roles { justify-content: center; margin-top: 14px; gap: 12px 0; }
     .intro-roles .role {
@@ -1479,8 +1456,7 @@
       padding: 0 14px;
     }
     .intro-roles .role:first-child { padding-left: 14px; }
-    .intro-lead { margin-top: 28px; margin-bottom: 18px; }
-    .intro-bio { font-size: 13.5px; text-align: center; }
+    .intro-bio { margin-top: 20px; font-size: 13.5px; text-align: center; }
     .intro-actions {
       justify-content: center;
       gap: 8px 14px;
@@ -1526,11 +1502,6 @@
     .pub-venue, .pub-award { font-size: 11.5px; }
     .pub-links { gap: 4px 0; }
     .pub-link { font-size: 12.5px; padding-right: 8px; }
-    .pub-list--compact .pub-item { padding: 8px 4px; gap: 10px; }
-    .pub-list--compact .pub-thumb,
-    .pub-list--compact .pub-thumb img,
-    .pub-list--compact .pub-thumb video,
-    .pub-list--compact .pub-thumb-placeholder { width: 72px; }
     .pub-group-title { font-size: 18px; }
     .pub-group-head { flex-wrap: wrap; gap: 4px 10px; }
     .pub-lightbox-dialog { width: min(100vw - 24px, 920px); padding: 12px; }
@@ -1599,8 +1570,7 @@
     .news-item { grid-template-columns: 56px 1fr; gap: 10px; font-size: 13.5px; }
     .news-date { font-size: 12px; }
 
-    .prog-row { flex-wrap: wrap; gap: 12px 10px; }
-    .prog-item { flex: 1 1 calc(50% - 5px); max-width: none; }
+    .prog-list { grid-template-columns: repeat(2, 1fr); }
     .prog-logo-box { height: 140px; }
     .comp-name { font-size: 13px; }
     .comp-detail { font-size: 12px; }
@@ -1610,14 +1580,12 @@
       font-size: 12.5px;
     }
 
-    .svc-list { grid-template-columns: 1fr; gap: 4px; }
-    .svc-item { grid-template-columns: 76px minmax(0, 1fr); gap: 10px; }
-    .svc-thumb-box, .svc-thumb-box img { width: 76px; }
-    .svc-name { font-size: 13px; }
-    .svc-misc li { grid-template-columns: 1fr; gap: 2px; font-size: 12.5px; }
+    .svc-list { grid-template-columns: 1fr; gap: 0; }
+    .svc-item { grid-template-columns: 64px minmax(0, 1fr); column-gap: 10px; }
+    .svc-thumb-box, .svc-thumb-box img { width: 64px; }
+    .svc-misc li { grid-template-columns: 1fr; gap: 4px; font-size: 12.5px; padding: 8px 0; }
 
     .oss-thumb { width: min(100%, 280px); }
-    .oss-body { padding-top: 8px; }
 
     .talk-group { grid-template-columns: 1fr; gap: 8px; padding: 12px 0; }
     .talk-topic { font-size: 14.5px; }
@@ -1647,8 +1615,8 @@
     .pub-item { grid-template-columns: 80px minmax(0, 1fr); gap: 10px; padding: 10px 0; }
     .pub-thumb, .pub-thumb img, .pub-thumb video, .pub-thumb-placeholder { width: 80px; }
     .prog-logo-box { height: 120px; }
-    .svc-item { grid-template-columns: 64px minmax(0, 1fr); }
-    .svc-thumb-box, .svc-thumb-box img { width: 64px; }
+    .svc-item { grid-template-columns: 56px minmax(0, 1fr); }
+    .svc-thumb-box, .svc-thumb-box img { width: 56px; }
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -1679,8 +1647,8 @@
       <a href="#news">News</a>
       <a href="#publications">Publications</a>
       <a href="#honors">Honors</a>
-      <a href="#talks">Talks</a>
       <a href="#services">Services</a>
+      <a href="#talks">Talks</a>
     </div>
   </div>
 </nav>
@@ -1708,10 +1676,6 @@
             <span class="role-title">Founder</span>
             <a href="https://lumina-embodied.ai/" target="_blank">Lumina EAI Community</a>
           </span>
-        </p>
-
-        <p class="intro-lead reveal reveal-d2">
-          To Bring <em>1B+</em> General Robots Home
         </p>
 
         <p class="intro-bio reveal reveal-d3">
@@ -1794,7 +1758,7 @@
 
       <aside class="intro-side reveal reveal-d2">
         <div class="intro-portrait">
-          <img src="assets/files/avatar/avatar_3.jpg" alt="Tianxing Chen"
+          <img src="assets/files/avatar/avatar_4.jpg" alt="Tianxing Chen"
                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'" />
           <div class="avatar-placeholder" style="display:none;">TC</div>
         </div>
@@ -2198,43 +2162,6 @@
       </div>
     </div>
 
-    <div class="pub-featured reveal">
-      <div class="pub-featured-item">
-        <button type="button" class="pub-featured-media pub-featured-trigger"
-                data-media-type="video"
-                data-src="https://media.luminis-sim.com/media/home/featured.mp4"
-                data-playback-rate="2.0"
-                aria-label="Play RoboDojo demo">
-          <video src="https://media.luminis-sim.com/media/home/featured.mp4" muted loop autoplay playsinline preload="metadata"
-                 onloadedmetadata="this.playbackRate=2.0"></video>
-          <span class="pub-featured-play-hint" aria-hidden="true"></span>
-        </button>
-        <a class="pub-featured-label" href="https://RoboDojo-Benchmark.com" target="_blank" rel="noopener noreferrer">RoboDojo (Under Review)</a>
-      </div>
-      <div class="pub-featured-item">
-        <button type="button" class="pub-featured-media pub-featured-trigger"
-                data-media-type="video"
-                data-src="./assets/files/work/2025-robotwin2.0.mp4"
-                data-playback-rate="3.0"
-                aria-label="Play RoboTwin 2.0 demo">
-          <video src="./assets/files/work/2025-robotwin2.0.mp4" muted loop autoplay playsinline preload="metadata"
-                 onloadedmetadata="this.playbackRate=3.0"></video>
-          <span class="pub-featured-play-hint" aria-hidden="true"></span>
-        </button>
-        <a class="pub-featured-label" href="https://RoboTwin-Platform.github.io/" target="_blank" rel="noopener noreferrer">RoboTwin 2.0 (ICML 2026)</a>
-      </div>
-      <div class="pub-featured-item">
-        <button type="button" class="pub-featured-media pub-featured-trigger"
-                data-media-type="image"
-                data-src="assets/files/work/2026-rmbench.jpg"
-                aria-label="View RMBench preview">
-          <img src="assets/files/work/2026-rmbench.jpg" alt="RMBench preview" />
-          <span class="pub-featured-play-hint" aria-hidden="true"></span>
-        </button>
-        <a class="pub-featured-label" href="https://rmbench.github.io/" target="_blank" rel="noopener noreferrer">RMBench (Under Review)</a>
-      </div>
-    </div>
-
     <div id="pub-media-lightbox" class="pub-lightbox" aria-hidden="true">
       <div class="pub-lightbox-backdrop" data-close-lightbox></div>
       <div class="pub-lightbox-dialog" role="dialog" aria-modal="true" aria-label="Expanded media preview">
@@ -2383,7 +2310,6 @@
                 </div>
               </div>
             </li>
-
       <!-- LeHome -->
             <li class="pub-item">
               <div class="pub-thumb">
@@ -2409,41 +2335,19 @@
         <span class="pub-group-meta">Manipulation</span>
       </div>
       <ul class="pub-list">
-      <!-- GroundAnything -->
+      <!-- Spark-0 -->
             <li class="pub-item">
               <div class="pub-thumb">
-                <img src="assets/files/work/2026-grounding_anything.png" alt="GroundAnything"
-                     onerror="this.outerHTML='<div class=pub-thumb-placeholder>GroundAnything</div>'" />
+                <video src="./assets/files/work/2026-spark-0.mp4" autoplay loop muted playsinline></video>
               </div>
               <div class="pub-body">
-                <div class="pub-title">GroundAnything: Reconciling Parallel Decoding with Precise Visual Grounding at Flash Speed</div>
-                <div class="pub-authors">Qize Yu*§, Lianrui Fan*, Bowen Ping*, Xini Ding*, Zetian Song*, Junbo Niu, Kaixuan Wang, <span class="self">Tianxing Chen</span>, Yue Chen, Minghua He, Yuran Wang, Jie Huang, Haojun Zhang, Min Chen, Hao Li, Wenxuan Song, Ruihai Wu, Xianming Liu, Shilong Liu, Shuchang Zhou, Ping Luo†, Shiyu Huang†</div>
+                <div class="pub-title">Spark-0: Scaling Spatially Aligned Tactile Pretraining for Robot Dexterous Manipulation</div>
+                <div class="pub-authors"><span class="self">Tianxing Chen*§</span>, Wenwei Lin*, Chuqiao Lyu*§, Peicheng Xiang*, Junyuan Tang*, Tian Nian*, Zijian Cai, Kehe Ye, Chenze Yu, Wenxuan Zhu, Eric J. Chen, Yan Qin, Yue Chen, Tongyu Wu, Junhao Gong, Kai-Chong Lei, Jiahao Zhang, Kailun Su, Qiwei Liang, Renjing Xu, Ping Luo†, Wenbo Ding†</div>
                 <div class="pub-venue"><span class="venue-name">Under Review</span></div>
                 <div class="pub-links">
-                  <a class="pub-link" href="https://groundingpi.github.io/groundanything/" target="_blank">Project Page</a>
-                  <a class="pub-link" href="https://arxiv.org/pdf/2609.39600" target="_blank">Paper</a>
-                  <a class="pub-link" href="https://arxiv.org/abs/2609.39600" target="_blank">arXiv</a>
-                  <a class="pub-link" href="https://github.com/groundingpi/GroundAnything" target="_blank">Code</a>
-                  <a class="pub-link" href="https://huggingface.co/GroundingPI/GroundAnything" target="_blank">Model</a>
-                </div>
-              </div>
-            </li>
-      <!-- GroundingPI -->
-            <li class="pub-item">
-              <div class="pub-thumb">
-                <img src="assets/files/work/2026-grounding_pi.png" alt="GroundingPI"
-                     onerror="this.outerHTML='<div class=pub-thumb-placeholder>GroundingPI</div>'" />
-              </div>
-              <div class="pub-body">
-                <div class="pub-title">GroundingPI: A Grounding Foundation Model towards Physical Intelligence with Visual Primitives</div>
-                <div class="pub-authors">Qize Yu*§, Lianrui Fan*, Boyu Chen*, Jiaqi Liang*, Xini Ding*, Yue Chen, Zetian Song, Yuran Wang, Yi Zou, Kaixuan Wang, <span class="self">Tianxing Chen</span>, Wenxuan Song, Bohan Zhou, Mingleyang Li, Siqiao Huang, Yuqi Ye, Caigao Jiang, Wei Wei, Ruihai Wu, Hang Zhang, Yixiao Ge, Shuchang Zhou, Shilong Liu, Xianming Liu, Ping Luo†, Shiyu Huang†</div>
-                <div class="pub-venue"><span class="venue-name">Under Review</span></div>
-                <div class="pub-links">
-                  <a class="pub-link" href="https://groundingpi.github.io/" target="_blank">Project Page</a>
-                  <a class="pub-link" href="https://arxiv.org/pdf/2609.39601" target="_blank">Paper</a>
-                  <a class="pub-link" href="https://arxiv.org/abs/2609.39601" target="_blank">arXiv</a>
-                  <a class="pub-link" href="https://github.com/groundingpi/GroundingPI" target="_blank">Code</a>
-                  <a class="pub-link" href="https://huggingface.co/GroundingPI/GroundingPI" target="_blank">Model</a>
+                  <a class="pub-link" href="https://xsparkai.com/spark-0" target="_blank">Project Page</a>
+                  <a class="pub-link" href="https://arxiv.org/pdf/2610.22342" target="_blank">Paper</a>
+                  <a class="pub-link" href="https://arxiv.org/abs/2610.22342" target="_blank">arXiv</a>
                 </div>
               </div>
             </li>
@@ -2464,22 +2368,6 @@
                 </div>
               </div>
             </li>
-      <!-- BiView-Touch -->
-            <li class="pub-item">
-              <div class="pub-thumb">
-                <img src="assets/files/work/2026-biview-touch.jpg" alt="BiView-Touch"
-                     onerror="this.outerHTML='<div class=pub-thumb-placeholder>BiView-Touch</div>'" />
-              </div>
-              <div class="pub-body">
-                <div class="pub-title">BiView-Touch: Learning Bimanual Tactile Representations by Cross-Hand Completion</div>
-                <div class="pub-authors">Chenxin Liang, Youchen Lai, Chuqiao Lyu, <span class="self">Tianxing Chen</span>, Shoujie Li, Wenbo Ding†</div>
-                <div class="pub-venue"><span class="venue-name">Under Review</span></div>
-                <div class="pub-links">
-                  <a class="pub-link" href="https://arxiv.org/pdf/2609.23352" target="_blank">Paper</a>
-                  <a class="pub-link" href="https://arxiv.org/abs/2609.23352" target="_blank">arXiv</a>
-                </div>
-              </div>
-            </li>
       <!-- DexTouch-WM -->
             <li class="pub-item">
               <div class="pub-thumb">
@@ -2496,7 +2384,7 @@
                 </div>
               </div>
             </li>
-        <!-- MoPA -->
+      <!-- MoPA -->
             <li class="pub-item">
               <div class="pub-thumb">
                 <video src="./assets/files/work/2026-mopa.mp4" autoplay loop muted playsinline speed="10.0"></video>
@@ -2513,7 +2401,7 @@
                 </div>
               </div>
             </li>
-<!-- EventVLA -->
+      <!-- EventVLA -->
             <li class="pub-item">
               <div class="pub-thumb">
                 <video src="./assets/files/work/2026-eventvla.mp4" autoplay loop muted playsinline onloadedmetadata="this.playbackRate=3.0"></video>
@@ -2527,39 +2415,6 @@
                   <a class="pub-link" href="https://arxiv.org/pdf/2606.20092" target="_blank">Paper</a>
                   <a class="pub-link" href="https://arxiv.org/abs/2606.20092" target="_blank">arXiv</a>
                   <a class="pub-link" href="https://github.com/InternRobotics/EventVLA" target="_blank">Code</a>
-                </div>
-              </div>
-            </li>
-<!-- SimpleVLA-RL -->
-            <li class="pub-item">
-              <div class="pub-thumb">
-                <video src="./assets/files/work/2025-simplevla-rl.mp4" autoplay loop muted playsinline onloadedmetadata="this.playbackRate=3.0"></video>
-              </div>
-              <div class="pub-body">
-                <div class="pub-title">SimpleVLA-RL: Scaling VLA Training via Reinforcement Learning</div>
-                <div class="pub-authors">Haozhan Li*, Yuxin Zuo*, Jiale Yu*, Yuhao Zhang*, Zhaohui Yang, Kaiyan Zhang, Xuekai Zhu, Yuchen Zhang, <span class="self">Tianxing Chen</span>, Ganqu Cui, Dehui Wang, Dingxiang Luo, Yuchen Fan, Youbang Sun, Jia Zeng, Jiangmiao Pang, Shanghang Zhang, Yu Wang, Yao Mu, Bowen Zhou†, Ning Ding†</div>
-                <div class="pub-venue"><span class="venue-name">ICLR 2026</span> <span class="venue-rank">CCF-A</span></div>
-                <div class="pub-links">
-                  <a class="pub-link" href="https://arxiv.org/pdf/2509.09674" target="_blank">Paper</a>
-                  <a class="pub-link" href="https://arxiv.org/abs/2509.09674" target="_blank">arXiv</a>
-                  <a class="pub-link" href="https://github.com/PRIME-RL/SimpleVLA-RL" target="_blank">Code</a>
-                </div>
-              </div>
-            </li>
-      <!-- CordViP -->
-            <li class="pub-item">
-              <div class="pub-thumb">
-                <img src="assets/files/work/2025-cordvip.png" alt="CordViP"
-                     onerror="this.outerHTML='<div class=pub-thumb-placeholder>CordViP</div>'" />
-              </div>
-              <div class="pub-body">
-                <div class="pub-title">CordViP: Correspondence-based Visuomotor Policy for Dexterous Manipulation in Real-World</div>
-                <div class="pub-authors">Yankai Fu*, Qiuxuan Feng*, Ning Chen*, ZiChen Zhou, Mengzhen Liu, Mingdong Wu, <span class="self">Tianxing Chen</span>, Shanyu Rong, Jiaming Liu, Hao Dong and Shanghang Zhang†</div>
-                <div class="pub-venue"><span class="venue-name">RSS 2025</span> <span class="venue-rank">Top Conference</span></div>
-                <div class="pub-links">
-                  <a class="pub-link" href="https://aureleopku.github.io/CordViP/" target="_blank">Project Page</a>
-                  <a class="pub-link" href="https://www.arxiv.org/pdf/2502.08449" target="_blank">Paper</a>
-                  <a class="pub-link" href="https://www.arxiv.org/abs/2502.08449" target="_blank">arXiv</a>
                 </div>
               </div>
             </li>
@@ -2577,24 +2432,6 @@
                   <a class="pub-link" href="https://openaccess.thecvf.com/content/CVPR2025/papers/Chen_G3Flow_Generative_3D_Semantic_Flow_for_Pose-aware_and_Generalizable_Object_CVPR_2025_paper.pdf" target="_blank">Paper</a>
                   <a class="pub-link" href="https://arxiv.org/abs/2411.18369" target="_blank">arXiv</a>
                   <a class="pub-link" href="https://github.com/TianxingChen/G3Flow" target="_blank">Code</a>
-                </div>
-              </div>
-            </li>
-      <!-- DexHandDiff -->
-            <li class="pub-item">
-              <div class="pub-thumb">
-                <img src="assets/files/work/2024-cvpr-dexdiffuser.jpg" alt="DexHandDiff"
-                     onerror="this.outerHTML='<div class=pub-thumb-placeholder>DexHandDiff</div>'" />
-              </div>
-              <div class="pub-body">
-                <div class="pub-title">DexHandDiff: Interaction-aware Diffusion Planning for Adaptive Dexterous Manipulation</div>
-                <div class="pub-authors">Zhixuan Liang, Yao Mu, Yixiao Wang, <span class="self">Tianxing Chen</span>, Wenqi Shao, Wei Zhan, Masayoshi Tomizuka, Ping Luo† and Mingyu Ding</div>
-                <div class="pub-venue"><span class="venue-name">CVPR 2025</span> <span class="venue-rank">CCF-A</span></div>
-                <div class="pub-links">
-                  <a class="pub-link" href="https://dexdiffuser.github.io/" target="_blank">Project Page</a>
-                  <a class="pub-link" href="https://arxiv.org/pdf/2411.18562" target="_blank">Paper</a>
-                  <a class="pub-link" href="https://arxiv.org/abs/2411.18562" target="_blank">arXiv</a>
-                  <a class="pub-link" href="https://github.com/Liang-ZX/DexHandDiff" target="_blank">Code</a>
                 </div>
               </div>
             </li>
@@ -2617,18 +2454,104 @@
                 </div>
               </div>
             </li>
-      <!-- AVR -->
-            <li class="pub-item">
-              <div class="pub-thumb">
-                <video src="./assets/files/work/2025-AVR.mp4" autoplay loop muted playsinline onloadedmetadata="this.playbackRate=3.0"></video>
+      <!-- GroundAnything -->
+            <li class="pub-item pub-item--brief">
+              <div class="pub-body">
+                <div class="pub-title">GroundAnything: Reconciling Parallel Decoding with Precise Visual Grounding at Flash Speed</div>
+                <div class="pub-brief-meta">
+                  <span class="pub-venue"><span class="venue-name">Under Review</span></span>
+                  <div class="pub-links">
+                    <a class="pub-link" href="https://groundingpi.github.io/groundanything/" target="_blank">Project Page</a>
+                    <a class="pub-link" href="https://arxiv.org/pdf/2609.39600" target="_blank">Paper</a>
+                    <a class="pub-link" href="https://arxiv.org/abs/2609.39600" target="_blank">arXiv</a>
+                    <a class="pub-link" href="https://github.com/groundingpi/GroundAnything" target="_blank">Code</a>
+                    <a class="pub-link" href="https://huggingface.co/GroundingPI/GroundAnything" target="_blank">Model</a>
+                  </div>
+                </div>
               </div>
+            </li>
+      <!-- GroundingPI -->
+            <li class="pub-item pub-item--brief">
+              <div class="pub-body">
+                <div class="pub-title">GroundingPI: A Grounding Foundation Model towards Physical Intelligence with Visual Primitives</div>
+                <div class="pub-brief-meta">
+                  <span class="pub-venue"><span class="venue-name">Under Review</span></span>
+                  <div class="pub-links">
+                    <a class="pub-link" href="https://groundingpi.github.io/" target="_blank">Project Page</a>
+                    <a class="pub-link" href="https://arxiv.org/pdf/2609.39601" target="_blank">Paper</a>
+                    <a class="pub-link" href="https://arxiv.org/abs/2609.39601" target="_blank">arXiv</a>
+                    <a class="pub-link" href="https://github.com/groundingpi/GroundingPI" target="_blank">Code</a>
+                    <a class="pub-link" href="https://huggingface.co/GroundingPI/GroundingPI" target="_blank">Model</a>
+                  </div>
+                </div>
+              </div>
+            </li>
+      <!-- BiView-Touch -->
+            <li class="pub-item pub-item--brief">
+              <div class="pub-body">
+                <div class="pub-title">BiView-Touch: Learning Bimanual Tactile Representations by Cross-Hand Completion</div>
+                <div class="pub-brief-meta">
+                  <span class="pub-venue"><span class="venue-name">Under Review</span></span>
+                  <div class="pub-links">
+                    <a class="pub-link" href="https://arxiv.org/pdf/2609.23352" target="_blank">Paper</a>
+                    <a class="pub-link" href="https://arxiv.org/abs/2609.23352" target="_blank">arXiv</a>
+                  </div>
+                </div>
+              </div>
+            </li>
+      <!-- SimpleVLA-RL -->
+            <li class="pub-item pub-item--brief">
+              <div class="pub-body">
+                <div class="pub-title">SimpleVLA-RL: Scaling VLA Training via Reinforcement Learning</div>
+                <div class="pub-brief-meta">
+                  <span class="pub-venue"><span class="venue-name">ICLR 2026</span> <span class="venue-rank">CCF-A</span></span>
+                  <div class="pub-links">
+                    <a class="pub-link" href="https://arxiv.org/pdf/2509.09674" target="_blank">Paper</a>
+                    <a class="pub-link" href="https://arxiv.org/abs/2509.09674" target="_blank">arXiv</a>
+                    <a class="pub-link" href="https://github.com/PRIME-RL/SimpleVLA-RL" target="_blank">Code</a>
+                  </div>
+                </div>
+              </div>
+            </li>
+      <!-- CordViP -->
+            <li class="pub-item pub-item--brief">
+              <div class="pub-body">
+                <div class="pub-title">CordViP: Correspondence-based Visuomotor Policy for Dexterous Manipulation in Real-World</div>
+                <div class="pub-brief-meta">
+                  <span class="pub-venue"><span class="venue-name">RSS 2025</span> <span class="venue-rank">Top Conference</span></span>
+                  <div class="pub-links">
+                    <a class="pub-link" href="https://aureleopku.github.io/CordViP/" target="_blank">Project Page</a>
+                    <a class="pub-link" href="https://www.arxiv.org/pdf/2502.08449" target="_blank">Paper</a>
+                    <a class="pub-link" href="https://www.arxiv.org/abs/2502.08449" target="_blank">arXiv</a>
+                  </div>
+                </div>
+              </div>
+            </li>
+      <!-- DexHandDiff -->
+            <li class="pub-item pub-item--brief">
+              <div class="pub-body">
+                <div class="pub-title">DexHandDiff: Interaction-aware Diffusion Planning for Adaptive Dexterous Manipulation</div>
+                <div class="pub-brief-meta">
+                  <span class="pub-venue"><span class="venue-name">CVPR 2025</span> <span class="venue-rank">CCF-A</span></span>
+                  <div class="pub-links">
+                    <a class="pub-link" href="https://dexdiffuser.github.io/" target="_blank">Project Page</a>
+                    <a class="pub-link" href="https://arxiv.org/pdf/2411.18562" target="_blank">Paper</a>
+                    <a class="pub-link" href="https://arxiv.org/abs/2411.18562" target="_blank">arXiv</a>
+                    <a class="pub-link" href="https://github.com/Liang-ZX/DexHandDiff" target="_blank">Code</a>
+                  </div>
+                </div>
+              </div>
+            </li>
+      <!-- AVR -->
+            <li class="pub-item pub-item--brief">
               <div class="pub-body">
                 <div class="pub-title">AVR: Active Vision-Driven Robotic Precision Manipulation with Viewpoint and Focal Length Optimization</div>
-                <div class="pub-authors">Yushan Liu*, Shilong Mu*, Xintao Chao, Zizhen Li, Yao Mu, <span class="self">Tianxing Chen</span>, Shoujie Li, Chuqiao Lyu, Xiao-Ping Zhang, Fellow, IEEE, Wenbo Ding†</div>
-                <div class="pub-venue"><span class="venue-name">IEEE ICRA 2026</span> <span class="venue-rank">CCF-B</span></div>
-                <div class="pub-links">
-                  <a class="pub-link" href="https://arxiv.org/pdf/2503.01439" target="_blank">Paper</a>
-                  <a class="pub-link" href="https://arxiv.org/abs/2503.01439" target="_blank">arXiv</a>
+                <div class="pub-brief-meta">
+                  <span class="pub-venue"><span class="venue-name">IEEE ICRA 2026</span> <span class="venue-rank">CCF-B</span></span>
+                  <div class="pub-links">
+                    <a class="pub-link" href="https://arxiv.org/pdf/2503.01439" target="_blank">Paper</a>
+                    <a class="pub-link" href="https://arxiv.org/abs/2503.01439" target="_blank">arXiv</a>
+                  </div>
                 </div>
               </div>
             </li>
@@ -2641,7 +2564,6 @@
         <span class="pub-group-meta">Cognition</span>
       </div>
       <ul class="pub-list">
-      
       <!-- Agents' Last Exam -->
             <li class="pub-item">
               <div class="pub-thumb">
@@ -2661,44 +2583,6 @@
                 </div>
               </div>
             </li>
-      <!-- CubeBench -->
-            <li class="pub-item">
-              <div class="pub-thumb">
-                <img src="assets/files/work/2025-CubeBench.jpg" alt="CubeBench"
-                     onerror="this.outerHTML='<div class=pub-thumb-placeholder>CubeBench</div>'" />
-              </div>
-              <div class="pub-body">
-                <div class="pub-title">CubeBench: Diagnosing Interactive, Long-Horizon Spatial Reasoning Under Partial Observations</div>
-                <div class="pub-authors">Huan-ang Gao, Zikang Zhang, Tianwei Luo, Kaisen Yang, Xinzhe Juan, Jiahao Qiu, <span class="self">Tianxing Chen</span>, Bingxiang He, Hao Zhao, Hao Zhou, Shilong Liu, Mengdi Wang†</div>
-                <div class="pub-venue"><span class="venue-name">ICLR 2026</span> <span class="venue-rank">CCF-A</span></div>
-                <div class="pub-links">
-                  <a class="pub-link" href="https://cubebench.c7w.tech/" target="_blank">Project Page</a>
-                  <a class="pub-link" href="https://arxiv.org/pdf/2512.23328" target="_blank">Paper</a>
-                  <a class="pub-link" href="https://arxiv.org/abs/2512.23328" target="_blank">arXiv</a>
-                  <a class="pub-link" href="https://github.com/Princeton-AI2-Lab/CubeBench" target="_blank">Code</a>
-                </div>
-              </div>
-            </li>
-
-      <!-- GarmentPile++ -->
-            <li class="pub-item">
-              <div class="pub-thumb">
-                <video src="./assets/files/work/2026-garmentpile++.mp4" autoplay loop muted playsinline onloadedmetadata="this.playbackRate=3.0"></video>
-              </div>
-              <div class="pub-body">
-                <div class="pub-title">GarmentPile++: Affordance-Driven Cluttered Garments Retrieval with Vision-Language Reasoning</div>
-                <div class="pub-authors">Mingleyang Li, Yuran Wang, Yue Chen, <span class="self">Tianxing Chen</span>, Jiaqi Liang, Zishun Shen, Haoran Lu, Ruihai Wu†, Hao Dong†</div>
-                <div class="pub-venue"><span class="venue-name">IEEE ICRA 2026</span> <span class="venue-rank">CCF-B</span></div>
-                <div class="pub-links">
-                  <a class="pub-link" href="https://garmentpile2.github.io/" target="_blank">Project Page</a>
-                  <a class="pub-link" href="https://arxiv.org/pdf/2603.04158" target="_blank">Paper</a>
-                  <a class="pub-link" href="https://arxiv.org/abs/2603.04158" target="_blank">arXiv</a>
-                  <a class="pub-link" href="https://github.com/d-finite/GarmentPile2" target="_blank">Code</a>
-                  <a class="pub-link" href="https://mp.weixin.qq.com/s/y-vVRy11WQkYSJqegkHaIg" target="_blank">机器之心</a>
-                </div>
-              </div>
-            </li>
-
       <!-- Text2World -->
             <li class="pub-item">
               <div class="pub-thumb">
@@ -2718,20 +2602,48 @@
                 </div>
               </div>
             </li>
-      <!-- HiAgent -->
-            <li class="pub-item">
-              <div class="pub-thumb">
-                <img src="assets/files/work/2024-hiagent.jpg" alt="HiAgent"
-                     onerror="this.outerHTML='<div class=pub-thumb-placeholder>HiAgent</div>'" />
+      <!-- CubeBench -->
+            <li class="pub-item pub-item--brief">
+              <div class="pub-body">
+                <div class="pub-title">CubeBench: Diagnosing Interactive, Long-Horizon Spatial Reasoning Under Partial Observations</div>
+                <div class="pub-brief-meta">
+                  <span class="pub-venue"><span class="venue-name">ICLR 2026</span> <span class="venue-rank">CCF-A</span></span>
+                  <div class="pub-links">
+                    <a class="pub-link" href="https://cubebench.c7w.tech/" target="_blank">Project Page</a>
+                    <a class="pub-link" href="https://arxiv.org/pdf/2512.23328" target="_blank">Paper</a>
+                    <a class="pub-link" href="https://arxiv.org/abs/2512.23328" target="_blank">arXiv</a>
+                    <a class="pub-link" href="https://github.com/Princeton-AI2-Lab/CubeBench" target="_blank">Code</a>
+                  </div>
+                </div>
               </div>
+            </li>
+      <!-- GarmentPile++ -->
+            <li class="pub-item pub-item--brief">
+              <div class="pub-body">
+                <div class="pub-title">GarmentPile++: Affordance-Driven Cluttered Garments Retrieval with Vision-Language Reasoning</div>
+                <div class="pub-brief-meta">
+                  <span class="pub-venue"><span class="venue-name">IEEE ICRA 2026</span> <span class="venue-rank">CCF-B</span></span>
+                  <div class="pub-links">
+                    <a class="pub-link" href="https://garmentpile2.github.io/" target="_blank">Project Page</a>
+                    <a class="pub-link" href="https://arxiv.org/pdf/2603.04158" target="_blank">Paper</a>
+                    <a class="pub-link" href="https://arxiv.org/abs/2603.04158" target="_blank">arXiv</a>
+                    <a class="pub-link" href="https://github.com/d-finite/GarmentPile2" target="_blank">Code</a>
+                    <a class="pub-link" href="https://mp.weixin.qq.com/s/y-vVRy11WQkYSJqegkHaIg" target="_blank">机器之心</a>
+                  </div>
+                </div>
+              </div>
+            </li>
+      <!-- HiAgent -->
+            <li class="pub-item pub-item--brief">
               <div class="pub-body">
                 <div class="pub-title">HiAgent: Hierarchical Working Memory Management for Solving Long-Horizon Agent Tasks with Large Language Model</div>
-                <div class="pub-authors">Mengkang Hu, <span class="self">Tianxing Chen</span>, Qiguang Chen, Yao Mu, Wenqi Shao and Ping Luo†</div>
-                <div class="pub-venue"><span class="venue-name">ACL 2025</span> (main) <span class="venue-rank">CCF-A</span></div>
-                <div class="pub-links">
-                  <a class="pub-link" href="https://arxiv.org/pdf/2408.09559" target="_blank">Paper</a>
-                  <a class="pub-link" href="https://arxiv.org/abs/2408.09559" target="_blank">arXiv</a>
-                  <a class="pub-link" href="https://github.com/HiAgent2024/HiAgent" target="_blank">Code</a>
+                <div class="pub-brief-meta">
+                  <span class="pub-venue"><span class="venue-name">ACL 2025</span> (main) <span class="venue-rank">CCF-A</span></span>
+                  <div class="pub-links">
+                    <a class="pub-link" href="https://arxiv.org/pdf/2408.09559" target="_blank">Paper</a>
+                    <a class="pub-link" href="https://arxiv.org/abs/2408.09559" target="_blank">arXiv</a>
+                    <a class="pub-link" href="https://github.com/HiAgent2024/HiAgent" target="_blank">Code</a>
+                  </div>
                 </div>
               </div>
             </li>
@@ -2810,19 +2722,16 @@
               </div>
             </li>
       <!-- SynManDex -->
-            <li class="pub-item">
-              <div class="pub-thumb">
-                <img src="assets/files/work/2026-syndexman.jpg" alt="SynManDex"
-                     onerror="this.outerHTML='<div class=pub-thumb-placeholder>SynManDex</div>'" />
-              </div>
+            <li class="pub-item pub-item--brief">
               <div class="pub-body">
                 <div class="pub-title">SynManDex: From Human Pre-Grasps to Executable Dexterous Robot Grasps</div>
-                <div class="pub-authors">Yanming Shao, Zanxin Chen, Wenwei Lin, Mingjie Zhou, <span class="self">Tianxing Chen</span>, Xiaokang Yang, Yichen Chi, Yao Mu</div>
-                <div class="pub-venue"><span class="venue-name">Under Review</span></div>
-                <div class="pub-links">
-                  <a class="pub-link" href="https://tsunami-kun.github.io/SynManDex/" target="_blank">Project Page</a>
-                  <a class="pub-link" href="https://arxiv.org/pdf/2606.09798" target="_blank">Paper</a>
-                  <a class="pub-link" href="https://arxiv.org/abs/2606.09798" target="_blank">arXiv</a>
+                <div class="pub-brief-meta">
+                  <span class="pub-venue"><span class="venue-name">Under Review</span></span>
+                  <div class="pub-links">
+                    <a class="pub-link" href="https://tsunami-kun.github.io/SynManDex/" target="_blank">Project Page</a>
+                    <a class="pub-link" href="https://arxiv.org/pdf/2606.09798" target="_blank">Paper</a>
+                    <a class="pub-link" href="https://arxiv.org/abs/2606.09798" target="_blank">arXiv</a>
+                  </div>
                 </div>
               </div>
             </li>
@@ -2835,7 +2744,7 @@
         <span class="pub-group-meta">Framework</span>
       </div>
       <ul class="pub-list">
-<!-- Trustworthy Survey -->
+      <!-- Trustworthy Survey -->
             <li class="pub-item">
               <div class="pub-thumb">
                 <img src="assets/files/work/2026-trustworthy-survey.jpg" alt="Trustworthy Survey"
@@ -2853,21 +2762,18 @@
                 </div>
               </div>
             </li>
-<!-- Data Pyramid -->
-            <li class="pub-item">
-              <div class="pub-thumb">
-                <img src="assets/files/work/2026-data-pyramid.jpg" alt="Data Pyramid"
-                     onerror="this.outerHTML='<div class=pub-thumb-placeholder>Data Pyramid</div>'" />
-              </div>
+      <!-- Data Pyramid -->
+            <li class="pub-item pub-item--brief">
               <div class="pub-body">
                 <div class="pub-title">Data Pyramid for Embodied Manipulation: A Survey</div>
-                <div class="pub-authors">Yifan Ye*, Yankai Fu*, Yaoxu Lv*, Bohan Hou*, Jun Cen*†, Lingdong Kong*, Duo Zheng, <span class="self">Tianxing Chen</span>, Jiaming Liu, Ziang Cao, Yunfan Lou, Wei Chow, Xian Sun, Yingshuo Wang, Kuangzhi Ge, Xiaowei Chi, Xidong Zhang, Zhibo Pang, Yiwu Zhong, Sirui Han, Zhihe Lu, Weihao Yuan, Qifeng Chen, Michael Yu Wang, Yao Mu, Ziwei Liu, Jianfei Yang, Ping Luo, Shanghang Zhang†</div>
-                <div class="pub-venue"><span class="venue-name">Under Review</span></div>
-                <div class="pub-links">
-                  <a class="pub-link" href="https://jasper-aaa.github.io/embodied-data-pyramid/" target="_blank">Project Page</a>
-                  <a class="pub-link" href="https://arxiv.org/pdf/2607.24744" target="_blank">Paper</a>
-                  <a class="pub-link" href="https://arxiv.org/abs/2607.24744" target="_blank">arXiv</a>
-                  <a class="pub-link" href="https://mp.weixin.qq.com/s/eYcqyIyDCwBjkL4ReSf_4w" target="_blank">机器之心</a>
+                <div class="pub-brief-meta">
+                  <span class="pub-venue"><span class="venue-name">Under Review</span></span>
+                  <div class="pub-links">
+                    <a class="pub-link" href="https://jasper-aaa.github.io/embodied-data-pyramid/" target="_blank">Project Page</a>
+                    <a class="pub-link" href="https://arxiv.org/pdf/2607.24744" target="_blank">Paper</a>
+                    <a class="pub-link" href="https://arxiv.org/abs/2607.24744" target="_blank">arXiv</a>
+                    <a class="pub-link" href="https://mp.weixin.qq.com/s/eYcqyIyDCwBjkL4ReSf_4w" target="_blank">机器之心</a>
+                  </div>
                 </div>
               </div>
             </li>
@@ -2900,151 +2806,123 @@
       </ul>
     </div>
 
-    <div class="pub-group pub-group--others" id="pub-others">
-      <button type="button" class="pub-group-toggle" id="pub-others-toggle" onclick="togglePubOthers()" aria-expanded="false">
-        <span class="pub-group-title">Others</span>
+    <div class="pub-group" id="pub-others">
+      <div class="pub-group-head">
+        <h3 class="pub-group-title">Others</h3>
         <span class="pub-group-meta">More</span>
-        <span class="pub-group-count">8</span>
-        <span class="pub-group-chevron">Show more ↓</span>
-      </button>
-      <div class="pub-others-peek" id="pub-others-peek">
-      <ul class="pub-list pub-list--compact" id="pub-others-list">
-      <!-- InfBaGel -->
-            <li class="pub-item">
-              <div class="pub-thumb">
-                <video src="./assets/files/work/2026-infbagel.mp4" autoplay loop muted playsinline preload="auto"></video>
-              </div>
+      </div>
+      <ul class="pub-list">
+      <!-- RoboTwin Challenge Report -->
+            <li class="pub-item pub-item--brief">
               <div class="pub-body">
-                <div class="pub-title">InfBaGel: Human-Object-Scene Interaction Generation with Dynamic Perception and Iterative Refinement</div>
-                <div class="pub-authors">Yude Zou, Junji Gong, Xing Gao, Zixuan Li, <span class="self">Tianxing Chen</span>, Guanjie Zheng</div>
-                <div class="pub-venue"><span class="venue-name">ICLR 2026</span> <span class="venue-rank">CCF-A</span></div>
-                <div class="pub-links">
-                  <a class="pub-link" href="https://yudezou.github.io/InfBaGel-page/" target="_blank">Project Page</a>
-                  <a class="pub-link" href="https://arxiv.org/pdf/2604.04843" target="_blank">Paper</a>
-                  <a class="pub-link" href="https://arxiv.org/abs/2604.04843" target="_blank">arXiv</a>
+                <div class="pub-title">Benchmarking Generalizable Bimanual Manipulation: RoboTwin Dual-Arm Collaboration Challenge at CVPR 2025 MEIS Workshop</div>
+                <div class="pub-brief-meta">
+                  <span class="pub-venue"><span class="venue-name">Technical Report · CVPR 2025 MEIS Workshop</span></span>
+                  <div class="pub-links">
+                    <a class="pub-link" href="https://robotwin-benchmark.github.io/cvpr-2025-challenge/" target="_blank">Project Page</a>
+                    <a class="pub-link" href="https://arxiv.org/pdf/2506.23351" target="_blank">Paper</a>
+                    <a class="pub-link" href="https://arxiv.org/abs/2506.23351" target="_blank">arXiv</a>
+                    <a class="pub-link" href="https://mp.weixin.qq.com/s/qxqs9vvvHsAJ-0hoYANYzQ" target="_blank">量子位</a>
+                  </div>
                 </div>
               </div>
             </li>
-      <!-- RoboTwin Challenge Report -->
-            <li class="pub-item">
-              <div class="pub-thumb">
-                <img src="assets/files/work/2025-robotwin-challenge.jpg" alt="RoboTwin Challenge"
-                     onerror="this.outerHTML='<div class=pub-thumb-placeholder>RoboTwin Challenge</div>'" />
-              </div>
+      <!-- SAM2 Manip -->
+            <li class="pub-item pub-item--brief">
               <div class="pub-body">
-                <div class="pub-title">Benchmarking Generalizable Bimanual Manipulation: RoboTwin Dual-Arm Collaboration Challenge at CVPR 2025 MEIS Workshop</div>
-                <div class="pub-authors"><span class="self">Tianxing Chen*</span>, Kaixuan Wang*, Zhaohui Yang*, Yuhao Zhang*, Zanxin Chen*, Baijun Chen*, Wanxi Dong*, Ziyuan Liu, Dong Chen, Tianshuo Yang, Haibao Yu, Xiaokang Yang, Yusen Qin, Zhiqiang Xie, Yao Mu†, Ping Luo†, and All Competition Volunteers and Participants</div>
-                <div class="pub-venue"><span class="venue-name">Technical Report · CVPR 2025 MEIS Workshop</span></div>
-                <div class="pub-links">
-                  <a class="pub-link" href="https://robotwin-benchmark.github.io/cvpr-2025-challenge/" target="_blank">Project Page</a>
-                  <a class="pub-link" href="https://arxiv.org/pdf/2506.23351" target="_blank">Paper</a>
-                  <a class="pub-link" href="https://arxiv.org/abs/2506.23351" target="_blank">arXiv</a>
-                  <a class="pub-link" href="https://mp.weixin.qq.com/s/qxqs9vvvHsAJ-0hoYANYzQ" target="_blank">量子位</a>
+                <div class="pub-title">Articulated Object Manipulation using Online Axis Estimation with SAM2-Based Tracking</div>
+                <div class="pub-brief-meta">
+                  <span class="pub-venue"><span class="venue-name">CoRL 2025 RINO Workshop</span></span>
+                  <div class="pub-links">
+                    <a class="pub-link" href="https://hytidel.github.io/video-tracking-for-axis-estimation/" target="_blank">Project Page</a>
+                    <a class="pub-link" href="https://arxiv.org/pdf/2409.16287" target="_blank">Paper</a>
+                    <a class="pub-link" href="https://arxiv.org/abs/2409.16287" target="_blank">arXiv</a>
+                    <a class="pub-link" href="https://github.com/TianxingChen/VideoTracking-For-AxisEst" target="_blank">Code</a>
+                  </div>
+                </div>
+              </div>
+            </li>
+      <!-- InfBaGel -->
+            <li class="pub-item pub-item--brief">
+              <div class="pub-body">
+                <div class="pub-title">InfBaGel: Human-Object-Scene Interaction Generation with Dynamic Perception and Iterative Refinement</div>
+                <div class="pub-brief-meta">
+                  <span class="pub-venue"><span class="venue-name">ICLR 2026</span> <span class="venue-rank">CCF-A</span></span>
+                  <div class="pub-links">
+                    <a class="pub-link" href="https://yudezou.github.io/InfBaGel-page/" target="_blank">Project Page</a>
+                    <a class="pub-link" href="https://arxiv.org/pdf/2604.04843" target="_blank">Paper</a>
+                    <a class="pub-link" href="https://arxiv.org/abs/2604.04843" target="_blank">arXiv</a>
+                  </div>
                 </div>
               </div>
             </li>
       <!-- MARS Report -->
-            <li class="pub-item">
-              <div class="pub-thumb">
-                <img src="assets/files/work/2026-mars-report.jpg" alt="MARS Report"
-                     onerror="this.outerHTML='<div class=pub-thumb-placeholder>MARS Report</div>'" />
-              </div>
+            <li class="pub-item pub-item--brief">
               <div class="pub-body">
                 <div class="pub-title">Advances and Innovations in the Multi-Agent Robotic System (MARS) Challenge</div>
-                <div class="pub-authors">Organizers and Participants (contributed Champion Solution)</div>
-                <div class="pub-venue"><span class="venue-name">Technical Report · NeurIPS 2025 MARS Challenge at SpaVLE Workshop</span></div>
-                <div class="pub-award"><span class="award-hl">Champion</span> — NeurIPS 2025 MARS Challenge Manipulation Track</div>
-                <div class="pub-links">
-                  <a class="pub-link" href="https://mars-eai.github.io/MARS-Challenge-Webpage/" target="_blank">Project Page</a>
-                  <a class="pub-link" href="https://arxiv.org/pdf/2601.18733" target="_blank">Paper</a>
-                  <a class="pub-link" href="https://arxiv.org/abs/2601.18733" target="_blank">arXiv</a>
-                </div>
-              </div>
-            </li>
-<!-- SAM2 Manip -->
-            <li class="pub-item">
-              <div class="pub-thumb">
-                <img src="./assets/files/work/2024-SAM2-Manip.jpg" alt="SAM2 Manip"
-                     onerror="this.outerHTML='<div class=pub-thumb-placeholder>SAM2 Manip</div>'" />
-              </div>
-              <div class="pub-body">
-                <div class="pub-title">Articulated Object Manipulation using Online Axis Estimation with SAM2-Based Tracking</div>
-                <div class="pub-authors">Xi Wang*, <span class="self">Tianxing Chen*</span>, Qiaojun Yu*, Tianling Xu, Zanxin Chen, Yiting Fu, Ziqi He, Cewu Lu†, Yao Mu†, Ping Luo†</div>
-                <div class="pub-venue"><span class="venue-name">CoRL 2025 RINO Workshop</span></div>
-                <div class="pub-links">
-                  <a class="pub-link" href="https://hytidel.github.io/video-tracking-for-axis-estimation/" target="_blank">Project Page</a>
-                  <a class="pub-link" href="https://arxiv.org/pdf/2409.16287" target="_blank">Paper</a>
-                  <a class="pub-link" href="https://arxiv.org/abs/2409.16287" target="_blank">arXiv</a>
-                  <a class="pub-link" href="https://github.com/TianxingChen/VideoTracking-For-AxisEst" target="_blank">Code</a>
+                <div class="pub-brief-meta">
+                  <span class="pub-venue"><span class="venue-name">Technical Report · NeurIPS 2025 MARS Challenge at SpaVLE Workshop</span></span>
+                  <span class="pub-award"><span class="award-hl">Champion</span> — NeurIPS 2025 MARS Challenge Manipulation Track</span>
+                  <div class="pub-links">
+                    <a class="pub-link" href="https://mars-eai.github.io/MARS-Challenge-Webpage/" target="_blank">Project Page</a>
+                    <a class="pub-link" href="https://arxiv.org/pdf/2601.18733" target="_blank">Paper</a>
+                    <a class="pub-link" href="https://arxiv.org/abs/2601.18733" target="_blank">arXiv</a>
+                  </div>
                 </div>
               </div>
             </li>
       <!-- EchoArena -->
-            <li class="pub-item">
-              <div class="pub-thumb">
-                <img src="assets/files/work/2026-echoarena.jpg" alt="EchoArena"
-                     onerror="this.outerHTML='<div class=pub-thumb-placeholder>EchoArena</div>'" />
-              </div>
+            <li class="pub-item pub-item--brief">
               <div class="pub-body">
                 <div class="pub-title">EchoArena: Learning World Models for Reliable VLA Policy Evaluation</div>
-                <div class="pub-authors">Yu-Kai Wang, Kevin Zhang, Xiaowei Chi, <span class="self">Tianxing Chen</span>, Siqiao Huang, Chuyao Fu, Tiecheng Guo, Peidong Jia, Yan Qin, Kuangzhi Ge, Siyuan Qian, Weishi Mi, Zezhong Qian, Jiajun Li, Qingpo Wuwu, Xiaozhu Ju, Jian Tang, Shanghang Zhang</div>
-                <div class="pub-venue"><span class="venue-name">CVPR 2026</span> GigaWorld Workshop</div>
-                <div class="pub-links">
-                  <a class="pub-link" href="https://openaccess.thecvf.com/content/CVPR2026W/GigaBrainChallenge/papers/Wang_EchoArena_Learning_World_Models_for_Reliable_VLA_Policy_Evaluation_CVPRW_2026_paper.pdf" target="_blank">Paper</a>
+                <div class="pub-brief-meta">
+                  <span class="pub-venue"><span class="venue-name">CVPR 2026</span> GigaWorld Workshop</span>
+                  <div class="pub-links">
+                    <a class="pub-link" href="https://openaccess.thecvf.com/content/CVPR2026W/GigaBrainChallenge/papers/Wang_EchoArena_Learning_World_Models_for_Reliable_VLA_Policy_Evaluation_CVPRW_2026_paper.pdf" target="_blank">Paper</a>
+                  </div>
                 </div>
               </div>
             </li>
       <!-- Drive-KD -->
-            <li class="pub-item">
-              <div class="pub-thumb">
-                <img src="assets/files/work/2026-drivekd.jpg" alt="Drive-KD"
-                     onerror="this.outerHTML='<div class=pub-thumb-placeholder>Drive-KD</div>'" />
-              </div>
+            <li class="pub-item pub-item--brief">
               <div class="pub-body">
                 <div class="pub-title">Drive-KD: Multi-Teacher Distillation for VLMs in Autonomous Driving</div>
-                <div class="pub-authors">Weitong Lian, Zecong Tang, Haoran Li, Tianjian Gao, Yifei Wang, Zixu Wang, Lingyi Meng, Tengju Ru, Zhejun Cui, Yichen Zhu, Hangshuo Cao, Qi Kang, <span class="self">Tianxing Chen</span>, Kaixuan Wang, Yu Zhang</div>
-                <div class="pub-venue"><span class="venue-name">Under Review</span></div>
-                <div class="pub-links">
-                  <a class="pub-link" href="https://arxiv.org/pdf/2601.21288" target="_blank">Paper</a>
-                  <a class="pub-link" href="https://arxiv.org/abs/2601.21288" target="_blank">arXiv</a>
+                <div class="pub-brief-meta">
+                  <span class="pub-venue"><span class="venue-name">Under Review</span></span>
+                  <div class="pub-links">
+                    <a class="pub-link" href="https://arxiv.org/pdf/2601.21288" target="_blank">Paper</a>
+                    <a class="pub-link" href="https://arxiv.org/abs/2601.21288" target="_blank">arXiv</a>
+                  </div>
                 </div>
               </div>
             </li>
       <!-- HyCodePolicy -->
-            <li class="pub-item">
-              <div class="pub-thumb">
-                <img src="assets/files/work/2025-HyCodePolicy.jpg" alt="HyCodePolicy"
-                     onerror="this.outerHTML='<div class=pub-thumb-placeholder>HyCodePolicy</div>'" />
-              </div>
+            <li class="pub-item pub-item--brief">
               <div class="pub-body">
                 <div class="pub-title">HyCodePolicy: Hybrid Language Controllers for Multimodal Monitoring and Decision in Embodied Agents</div>
-                <div class="pub-authors">Yibin Liu, Zhixuan Liang, Zanxin Chen, <span class="self">Tianxing Chen</span>, Mengkang Hu, Wanxi Dong, Congsheng Xu, Zhaoming Han, Yusen Qin, Yao Mu</div>
-                <div class="pub-venue"><span class="venue-name">ICCV 2025</span> MMR Workshop</div>
-                <div class="pub-links">
-                  <a class="pub-link" href="https://arxiv.org/pdf/2508.02629" target="_blank">Paper</a>
-                  <a class="pub-link" href="https://arxiv.org/abs/2508.02629" target="_blank">arXiv</a>
+                <div class="pub-brief-meta">
+                  <span class="pub-venue"><span class="venue-name">ICCV 2025</span> MMR Workshop</span>
+                  <div class="pub-links">
+                    <a class="pub-link" href="https://arxiv.org/pdf/2508.02629" target="_blank">Paper</a>
+                    <a class="pub-link" href="https://arxiv.org/abs/2508.02629" target="_blank">arXiv</a>
+                  </div>
                 </div>
               </div>
             </li>
       <!-- UAV -->
-            <li class="pub-item">
-              <div class="pub-thumb">
-                <img src="assets/files/work/2024-UAV.jpg" alt="UAV Policy"
-                     onerror="this.outerHTML='<div class=pub-thumb-placeholder>UAV Policy</div>'" />
-              </div>
+            <li class="pub-item pub-item--brief">
               <div class="pub-body">
                 <div class="pub-title">Robust UAV Policy Learning for Urban Infrastructure Surface Screening</div>
-                <div class="pub-authors">Bingging Du*, Uddin Md. Borhan*, <span class="self">Tianxing Chen</span>, Jianyong Chen, Jiangiang Li†, and Jie Chen†</div>
-                <div class="pub-venue"><span class="venue-name">ICARM 2024</span></div>
-                <div class="pub-links">
-                  <a class="pub-link" href="https://ieeexplore.ieee.org/abstract/document/10715841/" target="_blank">Paper</a>
+                <div class="pub-brief-meta">
+                  <span class="pub-venue"><span class="venue-name">ICARM 2024</span></span>
+                  <div class="pub-links">
+                    <a class="pub-link" href="https://ieeexplore.ieee.org/abstract/document/10715841/" target="_blank">Paper</a>
+                  </div>
                 </div>
               </div>
             </li>
       </ul>
-      </div>
     </div>
-
 
     <p class="pub-footnote">
       * Equal contribution / Core lead author. &nbsp; † Corresponding author. &nbsp; § Project Lead. &nbsp;
@@ -3141,6 +3019,7 @@
         </div>
       </div>
 
+      <!-- ChinaSI, hidden for now
       <div class="honor-card">
         <div class="honor-card-media">
           <img class="honor-card-img" src="assets/files/award/2025-chinasi-best-poster.jpg" alt="ChinaSI Outstanding Poster" loading="lazy" onerror="this.style.display='none'" />
@@ -3150,6 +3029,7 @@
           <div class="award-event">ChinaSI 2025</div>
         </div>
       </div>
+      -->
 
       <div class="honor-card">
         <div class="honor-card-media">
@@ -3167,7 +3047,7 @@
         </div>
         <div class="honor-card-body">
           <div class="award-name">Excellent Star of SZU 2023–2024</div>
-          <div class="award-event">Highest honor for UG at SZU (rk 2/30,000)</div>
+          <div class="award-event">Highest honor for UG at SZU</div>
         </div>
       </div>
     </div>
@@ -3273,7 +3153,7 @@
           <div class="prog-logo-box"><img src="assets/files/photo/highlight/robocom-2024.jpg" width="1224" height="811" alt="RAICOM" onerror="this.parentElement.style.display='none'" /></div>
           <div class="prog-content">
             <div class="comp-name">RoboCom Robot Development Competition (RAICOM)</div>
-            <div class="comp-detail">With Weili Li, Jiaxuan Li. Team: Shenzhen University</div>
+            <div class="comp-detail">With Weili Li, Jiaxuan Li. Team: SZU</div>
           </div>
           <div class="prog-side">
             <div class="comp-year">2023</div>
@@ -3341,93 +3221,8 @@
   </div>
 </section>
 
-<!-- ================= INVITED TALKS ================= -->
-<section class="block soft" id="talks">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <h2 class="sec-title">Invited Talks</h2>
-    </div>
-
-    <div class="talks-list">
-    <div class="talk-group reveal">
-      <div class="talk-topic">Evaluation-Driven Policy Evolution</div>
-      <ul class="talk-entries">
-        <li class="talk-entry">
-          <span class="talk-date">09/2026</span>
-          <span class="talk-desc">Shanghai Innovation Institute, shared <strong>RoboDojo, RoboTwin</strong></span>
-        </li>
-        <li class="talk-entry">
-          <span class="talk-date">08/2026</span>
-          <span class="talk-desc">VALSE Webinar, shared <strong>RoboDojo</strong></span>
-        </li>
-        <li class="talk-entry">
-          <span class="talk-date">07/2026</span>
-          <span class="talk-desc">DeepTech, shared <strong>RoboDojo</strong></span>
-        </li>
-        <li class="talk-entry">
-          <span class="talk-date">07/2026</span>
-          <span class="talk-desc">Xiaomi Robotics, shared <strong>RoboDojo</strong></span>
-        </li>
-      </ul>
-    </div>
-
-    <div class="talk-group reveal">
-      <div class="talk-topic">Automated Simulation Data Generation Empowering Real-World Robotic Manipulation</div>
-      <ul class="talk-entries">
-        <li class="talk-entry">
-          <span class="talk-date">10/2025</span>
-          <span class="talk-desc">IROS 2025 RoboGen Workshop (Oral Presentation), shared <strong>RoboTwin 2.0</strong></span>
-        </li>
-        <li class="talk-entry">
-          <span class="talk-date">10/2025</span>
-          <span class="talk-desc">ARTS (Autonomous Robotic Technology Seminar), shared <strong>RoboTwin 2.0</strong></span>
-        </li>
-        <li class="talk-entry">
-          <span class="talk-date">10/2025</span>
-          <span class="talk-desc">模速空间, shared <strong>RoboTwin 2.0</strong></span>
-        </li>
-        <li class="talk-entry">
-          <span class="talk-date">09/2025</span>
-          <span class="talk-desc">DexForce Technology, shared <strong>RoboTwin 2.0</strong></span>
-        </li>
-        <li class="talk-entry">
-          <span class="talk-date">08/2025</span>
-          <span class="talk-desc">BAAI Hub, shared <strong>RoboTwin 2.0</strong> &nbsp;<a href="#" target="_blank">[Video]</a></span>
-        </li>
-        <li class="talk-entry">
-          <span class="talk-date">07/2025</span>
-          <span class="talk-desc">具身智能之心, shared <strong>RoboTwin 2.0</strong> &nbsp;<a href="https://www.bilibili.com/video/BV1wNuUz2EmU/?vd_source=c8f36241f20b81d579884e25736204c3" target="_blank">[Video]</a></span>
-        </li>
-        <li class="talk-entry">
-          <span class="talk-date">12/2024</span>
-          <span class="talk-desc">3DVer, shared <strong>RoboTwin</strong> &nbsp;<a href="https://www.bilibili.com/video/BV15rqAYAEGs/?spm_id_from=333.337.search-card.all.click" target="_blank">[Video]</a></span>
-        </li>
-        <li class="talk-entry">
-          <span class="talk-date">12/2024</span>
-          <span class="talk-desc">RLChina, shared <strong>RoboTwin</strong> &nbsp;<a href="#" target="_blank">[Video]</a></span>
-        </li>
-      </ul>
-    </div>
-
-    <div class="talk-group reveal">
-      <div class="talk-topic">3D Semantic Flow for Generalizable Robotic Manipulation</div>
-      <ul class="talk-entries">
-        <li class="talk-entry">
-          <span class="talk-date">05/2025</span>
-          <span class="talk-desc">AI TIME Science Debate, shared <strong>G3Flow</strong> &nbsp;<a href="#" target="_blank">[Video]</a></span>
-        </li>
-        <li class="talk-entry">
-          <span class="talk-date">05/2025</span>
-          <span class="talk-desc">3DVer, shared <strong>G3Flow</strong> &nbsp;<a href="https://www.bilibili.com/video/BV1iAj6zhEm6/?spm_id_from=333.337.search-card.all.click" target="_blank">[Video]</a></span>
-        </li>
-      </ul>
-    </div>
-    </div>
-  </div>
-</section>
-
 <!-- ================= ACADEMIC SERVICES ================= -->
-<section class="block" id="services">
+<section class="block soft" id="services">
   <div class="wrap">
     <div class="sec-head reveal">
       <h2 class="sec-title">Academic Services</h2>
@@ -3511,6 +3306,91 @@
         <span>IROS 2026 Physical World Models Workshop, ECCV 2026 Safe World Model Workshop, EAI-100 2025, SIGGRAPH Asia 2025 TriFusion Workshop, CVPR 2025 2nd MEIS Workshop, The Greater Bay Area Embodied AI Workshop 2025, CICC-Lumina Innovation Camp on Humanoid Robots</span>
       </li>
     </ul>
+  </div>
+</section>
+
+<!-- ================= INVITED TALKS ================= -->
+<section class="block" id="talks">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <h2 class="sec-title">Invited Talks</h2>
+    </div>
+
+    <div class="talks-list">
+    <div class="talk-group reveal">
+      <div class="talk-topic">Evaluation-Driven Policy Evolution</div>
+      <ul class="talk-entries">
+        <li class="talk-entry">
+          <span class="talk-date">09/2026</span>
+          <span class="talk-desc">Shanghai Innovation Institute, shared <strong>RoboDojo, RoboTwin</strong></span>
+        </li>
+        <li class="talk-entry">
+          <span class="talk-date">08/2026</span>
+          <span class="talk-desc">VALSE Webinar, shared <strong>RoboDojo</strong></span>
+        </li>
+        <li class="talk-entry">
+          <span class="talk-date">07/2026</span>
+          <span class="talk-desc">DeepTech, shared <strong>RoboDojo</strong></span>
+        </li>
+        <li class="talk-entry">
+          <span class="talk-date">07/2026</span>
+          <span class="talk-desc">Xiaomi Robotics, shared <strong>RoboDojo</strong></span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="talk-group reveal">
+      <div class="talk-topic">Automated Simulation Data Generation Empowering Real-World Robotic Manipulation</div>
+      <ul class="talk-entries">
+        <li class="talk-entry">
+          <span class="talk-date">10/2025</span>
+          <span class="talk-desc">IROS 2025 RoboGen Workshop (Oral Presentation), shared <strong>RoboTwin 2.0</strong></span>
+        </li>
+        <li class="talk-entry">
+          <span class="talk-date">10/2025</span>
+          <span class="talk-desc">ARTS (Autonomous Robotic Technology Seminar), shared <strong>RoboTwin 2.0</strong></span>
+        </li>
+        <li class="talk-entry">
+          <span class="talk-date">10/2025</span>
+          <span class="talk-desc">模速空间, shared <strong>RoboTwin 2.0</strong></span>
+        </li>
+        <li class="talk-entry">
+          <span class="talk-date">09/2025</span>
+          <span class="talk-desc">DexForce Technology, shared <strong>RoboTwin 2.0</strong></span>
+        </li>
+        <li class="talk-entry">
+          <span class="talk-date">08/2025</span>
+          <span class="talk-desc">BAAI Hub, shared <strong>RoboTwin 2.0</strong> &nbsp;<a href="#" target="_blank">[Video]</a></span>
+        </li>
+        <li class="talk-entry">
+          <span class="talk-date">07/2025</span>
+          <span class="talk-desc">具身智能之心, shared <strong>RoboTwin 2.0</strong> &nbsp;<a href="https://www.bilibili.com/video/BV1wNuUz2EmU/?vd_source=c8f36241f20b81d579884e25736204c3" target="_blank">[Video]</a></span>
+        </li>
+        <li class="talk-entry">
+          <span class="talk-date">12/2024</span>
+          <span class="talk-desc">3DVer, shared <strong>RoboTwin</strong> &nbsp;<a href="https://www.bilibili.com/video/BV15rqAYAEGs/?spm_id_from=333.337.search-card.all.click" target="_blank">[Video]</a></span>
+        </li>
+        <li class="talk-entry">
+          <span class="talk-date">12/2024</span>
+          <span class="talk-desc">RLChina, shared <strong>RoboTwin</strong> &nbsp;<a href="#" target="_blank">[Video]</a></span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="talk-group reveal">
+      <div class="talk-topic">3D Semantic Flow for Generalizable Robotic Manipulation</div>
+      <ul class="talk-entries">
+        <li class="talk-entry">
+          <span class="talk-date">05/2025</span>
+          <span class="talk-desc">AI TIME Science Debate, shared <strong>G3Flow</strong> &nbsp;<a href="#" target="_blank">[Video]</a></span>
+        </li>
+        <li class="talk-entry">
+          <span class="talk-date">05/2025</span>
+          <span class="talk-desc">3DVer, shared <strong>G3Flow</strong> &nbsp;<a href="https://www.bilibili.com/video/BV1iAj6zhEm6/?spm_id_from=333.337.search-card.all.click" target="_blank">[Video]</a></span>
+        </li>
+      </ul>
+    </div>
+    </div>
   </div>
 </section>
 
@@ -3700,56 +3580,6 @@
     list.classList.toggle('news-expanded');
     btn.textContent = list.classList.contains('news-expanded') ? 'Show less ↑' : 'Show more ↓';
   }
-  function syncPubOthersVideos(open) {
-    const list = document.getElementById('pub-others-list');
-    if (!list) return;
-    const lead = list.querySelector('.pub-item');
-    list.querySelectorAll('video').forEach((v) => {
-      const inPeek = open || v.closest('.pub-item') === lead;
-      if (inPeek) v.play().catch(() => {});
-      else v.pause();
-    });
-  }
-  function setPubOthersInert(open) {
-    const list = document.getElementById('pub-others-list');
-    if (!list) return;
-    const items = list.querySelectorAll('.pub-item');
-    items.forEach((item, i) => {
-      item.inert = !open && i > 0;
-    });
-    list.inert = false;
-  }
-  function togglePubOthers(forceOpen) {
-    const group = document.getElementById('pub-others');
-    const list = document.getElementById('pub-others-list');
-    const btn = document.getElementById('pub-others-toggle');
-    if (!group || !list || !btn) return;
-    const open = forceOpen === true ? true
-      : forceOpen === false ? false
-      : !group.classList.contains('is-expanded');
-    group.classList.toggle('is-expanded', open);
-    setPubOthersInert(open);
-    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-    const chevron = btn.querySelector('.pub-group-chevron');
-    if (chevron) chevron.textContent = open ? 'Show less ↑' : 'Show more ↓';
-    syncPubOthersVideos(open);
-  }
-  document.getElementById('pub-others-peek')?.addEventListener('click', () => {
-    const group = document.getElementById('pub-others');
-    if (group && !group.classList.contains('is-expanded')) togglePubOthers(true);
-  });
-  (function initPubOthersPeek() {
-    const list = document.getElementById('pub-others-list');
-    if (!list) return;
-    setPubOthersInert(false);
-    const playPeek = () => syncPubOthersVideos(false);
-    playPeek();
-    list.querySelectorAll('video').forEach((v) => {
-      v.addEventListener('loadeddata', playPeek, { once: true });
-    });
-    window.addEventListener('load', playPeek);
-  })();
-
   // Publications right TOC
   (function initResearchToc() {
     const toc = document.getElementById('research-toc');
@@ -3785,14 +3615,11 @@
     links.forEach((a) => {
       a.addEventListener('click', () => {
         const id = a.getAttribute('href').slice(1);
-        if (id === 'pub-others') togglePubOthers(true);
         setActive(id);
       });
     });
 
-    // Honor deep links like #pub-others on first load
     const initialHash = location.hash.slice(1);
-    if (initialHash === 'pub-others') togglePubOthers(true);
     if (initialHash && document.getElementById(initialHash)) {
       setActive(initialHash);
     }
