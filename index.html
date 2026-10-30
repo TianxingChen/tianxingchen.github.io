@@ -909,6 +909,64 @@
   .pub-item--brief .pub-venue,
   .pub-item--brief .pub-award { margin-top: 0; }
   .pub-item--brief .venue-name { font-size: 11px; }
+
+  .pub-brief-toggle {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    padding: 8px 0 2px;
+    border-bottom: none;
+  }
+  .pub-brief-more {
+    appearance: none;
+    font-family: var(--font);
+    font-size: 12.5px;
+    font-weight: 500;
+    letter-spacing: .01em;
+    color: var(--ink-soft);
+    background: var(--bg-soft);
+    border: 1px solid color-mix(in srgb, var(--line) 90%, var(--ink) 10%);
+    border-radius: 999px;
+    padding: 6px 16px;
+    cursor: pointer;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 10px 28px -18px rgba(18, 19, 23, .55);
+    transition: color .15s ease, border-color .15s ease, background .15s ease;
+  }
+  .pub-brief-more:hover {
+    color: var(--ink);
+    border-color: color-mix(in srgb, var(--ink) 22%, var(--line));
+    background: var(--bg);
+  }
+  .pub-list--folded { position: relative; }
+  .pub-list--folded:not(.is-briefs-open) .pub-brief-extra { display: none; }
+  .pub-brief-veil {
+    position: absolute;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    pointer-events: none;
+    list-style: none;
+    backdrop-filter: blur(2.5px);
+    -webkit-backdrop-filter: blur(2.5px);
+    background: linear-gradient(
+      to bottom,
+      transparent 0%,
+      color-mix(in srgb, var(--bg-soft) 40%, transparent) 42%,
+      var(--bg-soft) 100%
+    );
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 38%, #000 100%);
+    mask-image: linear-gradient(to bottom, transparent 0%, #000 38%, #000 100%);
+  }
+  .pub-list--folded.is-briefs-open .pub-brief-veil { display: none; }
+  .pub-list--folded:not(.is-briefs-open) .pub-brief-toggle {
+    position: relative;
+    z-index: 2;
+    margin-top: 0;
+    padding: 2px 0 8px;
+    background: none;
+  }
   .pub-footnote { margin-top: 12px; font-size: 12px; color: var(--ink-faint); }
 
   /* ============ LIGHTBOX ============ */
@@ -2056,9 +2114,9 @@
     <a href="#pub-evaluation">Evaluation</a>
     <a href="#pub-fast-brain">Fast Brain</a>
     <a href="#pub-slow-brain">Slow Brain</a>
+    <a href="#pub-infra">Infra</a>
     <a href="#pub-data">Data</a>
     <a href="#pub-theory">Theory</a>
-    <a href="#pub-infra">Infra</a>
     <a href="#pub-others">Others</a>
   </nav>
   <div class="wrap">
@@ -2326,6 +2384,60 @@
                 </div>
               </div>
             </li>
+      <!-- Text2World -->
+            <li class="pub-item">
+              <div class="pub-thumb">
+                <img src="assets/files/work/2025-text2world.jpg" alt="Text2World"
+                     onerror="this.outerHTML='<div class=pub-thumb-placeholder>Text2World</div>'" />
+              </div>
+              <div class="pub-body">
+                <div class="pub-title">Text2World: Benchmarking Large Language Models for Symbolic World Model Generation</div>
+                <div class="pub-authors">Mengkang Hu*, <span class="self">Tianxing Chen*</span>, Yude Zou*, Yuheng Lei, Ming Li, Qiguang Chen, Hongyuan Zhang, Wenqi Shao, Ping Luo†</div>
+                <div class="pub-venue"><span class="venue-name">ACL 2025</span> (findings) <span class="venue-rank">CCF-A</span></div>
+                <div class="pub-links">
+                  <a class="pub-link" href="https://text-to-world.github.io/" target="_blank">Project Page</a>
+                  <a class="pub-link" href="https://arxiv.org/pdf/2502.13092" target="_blank">Paper</a>
+                  <a class="pub-link" href="https://arxiv.org/abs/2502.13092" target="_blank">arXiv</a>
+                  <a class="pub-link" href="https://github.com/Aaron617/text2world" target="_blank">Code</a>
+                  <a class="pub-link" href="https://huggingface.co/spaces/xdzouyd/text2world" target="_blank">Data Viewer</a>
+                </div>
+              </div>
+            </li>
+      <!-- RoboValue -->
+            <li class="pub-item pub-item--brief">
+              <div class="pub-body">
+                <div class="pub-title">RoboValue: A Fine-Grained Sim-and-Real Benchmark for Unified Evaluation of Robotic Value Models</div>
+                <div class="pub-brief-meta">
+                  <span class="pub-venue"><span class="venue-name">Under Review</span></span>
+                  <div class="pub-links">
+                    <a class="pub-link" href="https://robovalue-benchmark.github.io/" target="_blank">Project Page</a>
+                    <a class="pub-link" href="https://robovalue-benchmark.github.io/leaderboard/" target="_blank">Leaderboard</a>
+                    <a class="pub-link" href="https://arxiv.org/pdf/2610.26663" target="_blank">Paper</a>
+                    <a class="pub-link" href="https://arxiv.org/abs/2610.26663" target="_blank">arXiv</a>
+                    <a class="pub-link" href="https://github.com/RoboValue-Benchmark/RoboValue" target="_blank">Code</a>
+                    <a class="pub-link" href="https://robovalue-benchmark.github.io/doc/" target="_blank">Document</a>
+                    <a class="pub-link" href="https://huggingface.co/datasets/wzlllong/value-model-benchmark-training-data" target="_blank">Dataset</a>
+                    <a class="pub-link" href="https://mp.weixin.qq.com/s/mwxJNB9CZdt97M39rcwHkw" target="_blank">具身智能之心</a>
+                  </div>
+                </div>
+              </div>
+            </li>
+      <!-- Agents' Last Exam -->
+            <li class="pub-item pub-item--brief">
+              <div class="pub-body">
+                <div class="pub-title">Agents' Last Exam</div>
+                <div class="pub-brief-meta">
+                  <span class="pub-venue"><span class="venue-name" style="text-transform: none;">NeurIPS 2026</span> <span class="venue-rank">CCF-A</span></span>
+                  <div class="pub-links">
+                    <a class="pub-link" href="https://agenthle.org/" target="_blank">Project Page</a>
+                    <a class="pub-link" href="https://arxiv.org/pdf/2606.05405" target="_blank">Paper</a>
+                    <a class="pub-link" href="https://arxiv.org/abs/2606.05405" target="_blank">arXiv</a>
+                    <a class="pub-link" href="https://github.com/rdi-berkeley/agents-last-exam" target="_blank">Code</a>
+                    <a class="pub-link" href="https://agenthle.org/leaderboard" target="_blank">Leaderboard</a>
+                  </div>
+                </div>
+              </div>
+            </li>
       </ul>
     </div>
 
@@ -2401,23 +2513,6 @@
                 </div>
               </div>
             </li>
-      <!-- EventVLA -->
-            <li class="pub-item">
-              <div class="pub-thumb">
-                <video src="./assets/files/work/2026-eventvla.mp4" autoplay loop muted playsinline onloadedmetadata="this.playbackRate=3.0"></video>
-              </div>
-              <div class="pub-body">
-                <div class="pub-title">EventVLA: Event-Driven Visual Evidence Memory for Long-Horizon Vision-Language-Action Policies</div>
-                <div class="pub-authors">Ganlin Yang, Zhangzheng Tu, Yuqiang Yang, Sitong Mao, Junyi Dong, <span class="self">Tianxing Chen</span>, Jiaqi Peng, Jing Xiong, Jiafei Cao, Jifeng Dai, Wengang Zhou, Yao Mu, Tai Wang</div>
-                <div class="pub-venue"><span class="venue-name">CoRL 2026</span> <span class="venue-rank">Top Conference</span></div>
-                <div class="pub-links">
-                  <a class="pub-link" href="https://ganlin-yang.github.io/EventVLA.github.io/" target="_blank">Project Page</a>
-                  <a class="pub-link" href="https://arxiv.org/pdf/2606.20092" target="_blank">Paper</a>
-                  <a class="pub-link" href="https://arxiv.org/abs/2606.20092" target="_blank">arXiv</a>
-                  <a class="pub-link" href="https://github.com/InternRobotics/EventVLA" target="_blank">Code</a>
-                </div>
-              </div>
-            </li>
       <!-- G3Flow -->
             <li class="pub-item">
               <div class="pub-thumb">
@@ -2451,6 +2546,21 @@
                   <a class="pub-link" href="https://arxiv.org/pdf/2406.01586" target="_blank">Paper</a>
                   <a class="pub-link" href="https://arxiv.org/abs/2406.01586" target="_blank">arXiv</a>
                   <a class="pub-link" href="https://github.com/ManiCM-fast/ManiCM" target="_blank">Code</a>
+                </div>
+              </div>
+            </li>
+      <!-- EventVLA -->
+            <li class="pub-item pub-item--brief">
+              <div class="pub-body">
+                <div class="pub-title">EventVLA: Event-Driven Visual Evidence Memory for Long-Horizon Vision-Language-Action Policies</div>
+                <div class="pub-brief-meta">
+                  <span class="pub-venue"><span class="venue-name">CoRL 2026</span> <span class="venue-rank">Top Conference</span></span>
+                  <div class="pub-links">
+                    <a class="pub-link" href="https://ganlin-yang.github.io/EventVLA.github.io/" target="_blank">Project Page</a>
+                    <a class="pub-link" href="https://arxiv.org/pdf/2606.20092" target="_blank">Paper</a>
+                    <a class="pub-link" href="https://arxiv.org/abs/2606.20092" target="_blank">arXiv</a>
+                    <a class="pub-link" href="https://github.com/InternRobotics/EventVLA" target="_blank">Code</a>
+                  </div>
                 </div>
               </div>
             </li>
@@ -2564,44 +2674,6 @@
         <span class="pub-group-meta">Cognition</span>
       </div>
       <ul class="pub-list">
-      <!-- Agents' Last Exam -->
-            <li class="pub-item">
-              <div class="pub-thumb">
-                <img src="assets/files/work/2026-agent-last-exam.jpg" alt="Agents' Last Exam"
-                     onerror="this.outerHTML='<div class=pub-thumb-placeholder>Agents\' Last Exam</div>'" />
-              </div>
-              <div class="pub-body">
-                <div class="pub-title">Agents' Last Exam</div>
-                <div class="pub-authors">Contributor</div>
-                <div class="pub-venue"><span class="venue-name" style="text-transform: none;">NeurIPS 2026</span> <span class="venue-rank">CCF-A</span></div>
-                <div class="pub-links">
-                  <a class="pub-link" href="https://agenthle.org/" target="_blank">Project Page</a>
-                  <a class="pub-link" href="https://arxiv.org/pdf/2606.05405" target="_blank">Paper</a>
-                  <a class="pub-link" href="https://arxiv.org/abs/2606.05405" target="_blank">arXiv</a>
-                  <a class="pub-link" href="https://github.com/rdi-berkeley/agents-last-exam" target="_blank">Code</a>
-                  <a class="pub-link" href="https://agenthle.org/leaderboard" target="_blank">Leaderboard</a>
-                </div>
-              </div>
-            </li>
-      <!-- Text2World -->
-            <li class="pub-item">
-              <div class="pub-thumb">
-                <img src="assets/files/work/2025-text2world.jpg" alt="Text2World"
-                     onerror="this.outerHTML='<div class=pub-thumb-placeholder>Text2World</div>'" />
-              </div>
-              <div class="pub-body">
-                <div class="pub-title">Text2World: Benchmarking Large Language Models for Symbolic World Model Generation</div>
-                <div class="pub-authors">Mengkang Hu*, <span class="self">Tianxing Chen*</span>, Yude Zou*, Yuheng Lei, Ming Li, Qiguang Chen, Hongyuan Zhang, Wenqi Shao, Ping Luo†</div>
-                <div class="pub-venue"><span class="venue-name">ACL 2025</span> (findings) <span class="venue-rank">CCF-A</span></div>
-                <div class="pub-links">
-                  <a class="pub-link" href="https://text-to-world.github.io/" target="_blank">Project Page</a>
-                  <a class="pub-link" href="https://arxiv.org/pdf/2502.13092" target="_blank">Paper</a>
-                  <a class="pub-link" href="https://arxiv.org/abs/2502.13092" target="_blank">arXiv</a>
-                  <a class="pub-link" href="https://github.com/Aaron617/text2world" target="_blank">Code</a>
-                  <a class="pub-link" href="https://huggingface.co/spaces/xdzouyd/text2world" target="_blank">Data Viewer</a>
-                </div>
-              </div>
-            </li>
       <!-- CubeBench -->
             <li class="pub-item pub-item--brief">
               <div class="pub-body">
@@ -2650,12 +2722,45 @@
       </ul>
     </div>
 
-    <div class="pub-group" id="pub-data">
+    <div class="pub-group" id="pub-infra">
       <div class="pub-group-head">
-        <h3 class="pub-group-title">Data</h3>
-        <span class="pub-group-meta">Scale</span>
+        <h3 class="pub-group-title">Infra</h3>
+        <span class="pub-group-meta">Foundation</span>
       </div>
       <ul class="pub-list">
+      <!-- XPolicyLab -->
+            <li class="pub-item">
+              <div class="pub-thumb">
+                <video src="./assets/files/work/2026-xpolicylab.mp4" autoplay loop muted playsinline onloadedmetadata="this.playbackRate=3.0"></video>
+              </div>
+              <div class="pub-body">
+                <div class="pub-title">XPolicyLab: A Unified Standard and Open Ecosystem for Robot Policy Evaluation and Deployment</div>
+                <div class="pub-authors"><span class="self">Tianxing Chen*§</span>, Yue Chen*, Tian Nian*, Zijian Cai*, Guangyu Chen*, Wenwei Lin*, Qiwei Liang*, Zanxin Chen*, Peicheng Xiang, Kailun Su, Zixuan Li, Junyuan Tang, Yan Qin, Qiangyu Chen, Shaolong Zhu, Xiang Li, Jiahao Zhang, Weijie Wan, Baijun Chen, Honghao Su, Kehe Ye, Shujia Liu, Huan-ang Gao, Kaixuan Wang, Haotian Liang, Yunze Liu, Mingleyang Li, Yuran Wang, Boyu Chen, Hongzhe Bi, Shuhe Huang, Hengkai Tan, Jisong Cai, Yao Mu, Jun Guo, Xiaofeng Wang, Zheng Zhu, Weijie Ke, Hengtao Li, Yiqing Wang, Tengyue Jiang, Yuhang Tang, Xiaofan Li, Ganlin Yang, Zhangzheng Tu, Shuai Yang, Wenxuan Song, Pengxiang Ding, Kaidong Zhang, Yu Sun, Junliang Guo, Tong Zhang, Yixing Chen, Rongxu Cui, Zongzheng Zhang, Haoxiang Ma, Junhao Cai, Haoyu Zhang, Senqiao Yang, Jinhui Ye, Pengguang Chen, Shu Liu, Xiu Su, Wenhan Fang, Wenhao Li, Yichao Cao, Chengyao Wang, Qiang Chen, Wenbo Ding†, Ping Luo†</div>
+                <div class="pub-award">IEEE IROS 2026 ScaleInfra Workshop <span class="award-hl">Best Tool Paper Award</span></div>
+                <div class="pub-links">
+                  <a class="pub-link" href="https://xpolicylab.github.io/" target="_blank">Project Page</a>
+                  <a class="pub-link" href="https://arxiv.org/pdf/2608.09892" target="_blank">Paper</a>
+                  <a class="pub-link" href="https://arxiv.org/abs/2608.09892" target="_blank">arXiv</a>
+                  <a class="pub-link" href="https://github.com/XPolicyLab/XPolicyLab" target="_blank">Code</a>
+                </div>
+              </div>
+            </li>
+      <!-- WorldMirror -->
+            <li class="pub-item">
+              <div class="pub-thumb">
+                <video src="./assets/files/work/2026-worldmirror.mp4" autoplay loop muted playsinline></video>
+              </div>
+              <div class="pub-body">
+                <div class="pub-title">WorldMirror: Agentic Real-to-Sim Generation of Interactive Worlds from In-the-Wild Robot Demonstrations</div>
+                <div class="pub-authors">Tianling Xu*, Weijie Wan*, Honghao Su*, Kailun Su, Junyuan Tang, Huichi Zhou, Haozheng Zhang, Qi Xiong, Ping Luo, Wenbo Ding†, <span class="self">Tianxing Chen†</span>, Yue Chen†</div>
+                <div class="pub-venue"><span class="venue-name">Under Review</span></div>
+                <div class="pub-links">
+                  <a class="pub-link" href="https://worldmirror-page.github.io/" target="_blank">Project Page</a>
+                  <a class="pub-link" href="https://arxiv.org/pdf/2610.31834" target="_blank">Paper</a>
+                  <a class="pub-link" href="https://arxiv.org/abs/2610.31834" target="_blank">arXiv</a>
+                </div>
+              </div>
+            </li>
       <!-- TouchSight -->
             <li class="pub-item">
               <div class="pub-thumb">
@@ -2671,6 +2776,15 @@
                 </div>
               </div>
             </li>
+      </ul>
+    </div>
+
+    <div class="pub-group" id="pub-data">
+      <div class="pub-group-head">
+        <h3 class="pub-group-title">Data</h3>
+        <span class="pub-group-meta">Scale</span>
+      </div>
+      <ul class="pub-list">
       <!-- HumanTouch -->
             <li class="pub-item">
               <div class="pub-thumb">
@@ -2705,19 +2819,17 @@
               </div>
             </li>
       <!-- FieldGen -->
-            <li class="pub-item">
-              <div class="pub-thumb">
-                <video src="./assets/files/work/2025-FieldGen.mp4" autoplay loop muted playsinline onloadedmetadata="this.playbackRate=3.0"></video>
-              </div>
+            <li class="pub-item pub-item--brief">
               <div class="pub-body">
                 <div class="pub-title">FieldGen: From Teleoperated Pre-Manipulation Trajectories to Field-Guided Data Generation</div>
-                <div class="pub-authors">Wenhao Wang*, Kehe Ye*, Xinyu Zhou*, <span class="self">Tianxing Chen*</span>, Cao Min, Qiaoming Zhu, Xiaokang Yang, Ping Luo, Yongjian Shen, Yang Yang, Maoqing Yao, Yao Mu†</div>
-                <div class="pub-venue"><span class="venue-name">Under Review</span></div>
-                <div class="pub-links">
-                  <a class="pub-link" href="https://fieldgen.github.io/" target="_blank">Project Page</a>
-                  <a class="pub-link" href="https://arxiv.org/pdf/2510.20774" target="_blank">Paper</a>
-                  <a class="pub-link" href="https://arxiv.org/abs/2510.20774" target="_blank">arXiv</a>
-                  <a class="pub-link" href="https://github.com/FieldGen/FieldGen" target="_blank">Code</a>
+                <div class="pub-brief-meta">
+                  <span class="pub-venue"><span class="venue-name">Under Review</span></span>
+                  <div class="pub-links">
+                    <a class="pub-link" href="https://fieldgen.github.io/" target="_blank">Project Page</a>
+                    <a class="pub-link" href="https://arxiv.org/pdf/2510.20774" target="_blank">Paper</a>
+                    <a class="pub-link" href="https://arxiv.org/abs/2510.20774" target="_blank">arXiv</a>
+                    <a class="pub-link" href="https://github.com/FieldGen/FieldGen" target="_blank">Code</a>
+                  </div>
                 </div>
               </div>
             </li>
@@ -2774,32 +2886,6 @@
                     <a class="pub-link" href="https://arxiv.org/abs/2607.24744" target="_blank">arXiv</a>
                     <a class="pub-link" href="https://mp.weixin.qq.com/s/eYcqyIyDCwBjkL4ReSf_4w" target="_blank">机器之心</a>
                   </div>
-                </div>
-              </div>
-            </li>
-      </ul>
-    </div>
-
-    <div class="pub-group" id="pub-infra">
-      <div class="pub-group-head">
-        <h3 class="pub-group-title">Infra</h3>
-        <span class="pub-group-meta">Foundation</span>
-      </div>
-      <ul class="pub-list">
-      <!-- XPolicyLab -->
-            <li class="pub-item">
-              <div class="pub-thumb">
-                <video src="./assets/files/work/2026-xpolicylab.mp4" autoplay loop muted playsinline onloadedmetadata="this.playbackRate=3.0"></video>
-              </div>
-              <div class="pub-body">
-                <div class="pub-title">XPolicyLab: A Unified Standard and Open Ecosystem for Robot Policy Evaluation and Deployment</div>
-                <div class="pub-authors"><span class="self">Tianxing Chen*§</span>, Yue Chen*, Tian Nian*, Zijian Cai*, Guangyu Chen*, Wenwei Lin*, Qiwei Liang*, Zanxin Chen*, Peicheng Xiang, Kailun Su, Zixuan Li, Junyuan Tang, Yan Qin, Qiangyu Chen, Shaolong Zhu, Xiang Li, Jiahao Zhang, Weijie Wan, Baijun Chen, Honghao Su, Kehe Ye, Shujia Liu, Huan-ang Gao, Kaixuan Wang, Haotian Liang, Yunze Liu, Mingleyang Li, Yuran Wang, Boyu Chen, Hongzhe Bi, Shuhe Huang, Hengkai Tan, Jisong Cai, Yao Mu, Jun Guo, Xiaofeng Wang, Zheng Zhu, Weijie Ke, Hengtao Li, Yiqing Wang, Tengyue Jiang, Yuhang Tang, Xiaofan Li, Ganlin Yang, Zhangzheng Tu, Shuai Yang, Wenxuan Song, Pengxiang Ding, Kaidong Zhang, Yu Sun, Junliang Guo, Tong Zhang, Yixing Chen, Rongxu Cui, Zongzheng Zhang, Haoxiang Ma, Junhao Cai, Haoyu Zhang, Senqiao Yang, Jinhui Ye, Pengguang Chen, Shu Liu, Xiu Su, Wenhan Fang, Wenhao Li, Yichao Cao, Chengyao Wang, Qiang Chen, Wenbo Ding†, Ping Luo†</div>
-                <div class="pub-award">IEEE IROS 2026 ScaleInfra Workshop <span class="award-hl">Best Tool Paper Award</span></div>
-                <div class="pub-links">
-                  <a class="pub-link" href="https://xpolicylab.github.io/" target="_blank">Project Page</a>
-                  <a class="pub-link" href="https://arxiv.org/pdf/2608.09892" target="_blank">Paper</a>
-                  <a class="pub-link" href="https://arxiv.org/abs/2608.09892" target="_blank">arXiv</a>
-                  <a class="pub-link" href="https://github.com/XPolicyLab/XPolicyLab" target="_blank">Code</a>
                 </div>
               </div>
             </li>
@@ -3321,6 +3407,10 @@
       <div class="talk-topic">Evaluation-Driven Policy Evolution</div>
       <ul class="talk-entries">
         <li class="talk-entry">
+          <span class="talk-date">10/2026</span>
+          <span class="talk-desc">Xiaomi Robotics, shared <strong>RoboDojo, RoboTwin</strong></span>
+        </li>
+        <li class="talk-entry">
           <span class="talk-date">09/2026</span>
           <span class="talk-desc">Shanghai Innovation Institute, shared <strong>RoboDojo, RoboTwin</strong></span>
         </li>
@@ -3493,6 +3583,54 @@
   })();
 
   PubAuthorsCompact.init();
+
+  (function initBriefFolds() {
+    document.querySelectorAll('.pub-list').forEach((list) => {
+      const briefs = [...list.children].filter((el) => el.classList?.contains('pub-item--brief'));
+      if (briefs.length <= 2) return;
+      briefs.slice(3).forEach((el) => el.classList.add('pub-brief-extra'));
+      list.classList.add('pub-list--folded');
+      const veil = document.createElement('li');
+      veil.className = 'pub-brief-veil';
+      veil.setAttribute('aria-hidden', 'true');
+      const toggle = document.createElement('li');
+      toggle.className = 'pub-brief-toggle';
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'pub-brief-more';
+      const placeVeil = () => {
+        if (list.classList.contains('is-briefs-open')) return;
+        const start = briefs[1].getBoundingClientRect();
+        const end = briefs[2].getBoundingClientRect();
+        const listTop = list.getBoundingClientRect().top;
+        const top = start.top - listTop + start.height * 0.5;
+        veil.style.top = top + 'px';
+        veil.style.height = Math.max(0, end.bottom - listTop - top) + 'px';
+      };
+      const setOpen = (open) => {
+        list.classList.toggle('is-briefs-open', open);
+        briefs.slice(1).forEach((el) => {
+          if (open) el.removeAttribute('inert');
+          else el.setAttribute('inert', '');
+        });
+        btn.textContent = open ? 'Show less ↑' : 'Show more ↓';
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        placeVeil();
+      };
+      setOpen(false);
+      btn.addEventListener('click', () => setOpen(!list.classList.contains('is-briefs-open')));
+      toggle.appendChild(btn);
+      list.appendChild(veil);
+      list.appendChild(toggle);
+      window.addEventListener('resize', placeVeil);
+      document.fonts?.ready?.then(placeVeil);
+      window.addEventListener('load', placeVeil);
+      if (typeof ResizeObserver !== 'undefined') {
+        const observer = new ResizeObserver(placeVeil);
+        observer.observe(list);
+      }
+    });
+  })();
 
   // Scroll reveal
   const io = new IntersectionObserver(entries => {
