@@ -57,7 +57,7 @@
     -webkit-text-size-adjust: 100%;
     text-size-adjust: 100%;
   }
-  body.nav-open { overflow: hidden; }
+  body.nav-open, body.news-open { overflow: hidden; }
 
   ::selection { background: var(--accent-soft); color: var(--accent); }
 
@@ -381,6 +381,17 @@
   }
 
   /* ============ NEWS ============ */
+  .sec-head.news-head {
+    flex-direction: row; align-items: baseline; justify-content: space-between; gap: 16px;
+  }
+  .news-more {
+    display: inline-flex; align-items: center; gap: 6px; flex-shrink: 0;
+    padding: 4px 0; border: 0; background: none;
+    color: var(--ink-soft); font: 500 13px/20px var(--font);
+    cursor: pointer; white-space: nowrap;
+  }
+  .news-more:hover { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+  .news-more:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
   .news-list { list-style: none; border-top: 1px solid var(--line); }
   .news-item {
     display: grid; grid-template-columns: 72px 1fr; gap: 14px;
@@ -391,8 +402,46 @@
   .news-date { font-size: 12px; font-weight: 500; color: var(--ink-faint); letter-spacing: .02em; }
   .news-content { font-size: 13.5px; color: var(--ink-soft); line-height: 1.5; }
   .news-content strong { color: var(--ink); font-weight: 600; }
-  .news-hidden { display: none; }
-  .news-list.news-expanded .news-hidden { display: grid; }
+  #news-list > .news-item:nth-child(n + 4) { display: none; }
+  .news-dialog {
+    position: fixed; inset: 0;
+    width: min(780px, calc(100vw - 40px));
+    max-height: calc(100vh - 80px);
+    max-height: min(760px, calc(100dvh - 80px));
+    margin: auto; padding: 0;
+    border: 1px solid var(--line); border-radius: var(--radius-md);
+    background: var(--bg); color: var(--ink);
+    box-shadow: 0 24px 80px rgba(18,19,23,.2);
+    overflow: hidden;
+  }
+  .news-dialog[open] { display: flex; flex-direction: column; }
+  .news-dialog::backdrop { background: rgba(60,64,72,.5); }
+  .news-dialog-header {
+    display: flex; align-items: center; justify-content: space-between; gap: 20px;
+    flex-shrink: 0; padding: 22px 28px 18px;
+    border-bottom: 1px solid var(--line);
+  }
+  .news-dialog-title { font-size: 28px; font-weight: 400; letter-spacing: -.025em; line-height: 1.2; }
+  .news-dialog-subtitle { margin-top: 5px; font-size: 13px; color: var(--ink-faint); }
+  .news-dialog-close {
+    display: flex; align-items: center; justify-content: center;
+    width: 40px; height: 40px; flex-shrink: 0;
+    border: 1px solid var(--line); border-radius: 50%;
+    background: var(--bg); color: var(--ink-soft);
+    font: 400 26px/1 var(--font); cursor: pointer;
+  }
+  .news-dialog-close:hover { background: var(--bg-soft); color: var(--ink); }
+  .news-dialog-scroll {
+    min-height: 0; padding: 0 28px 20px;
+    overflow-y: auto; overscroll-behavior: contain;
+    scrollbar-gutter: stable;
+  }
+  .news-dialog .news-list { border-top: 0; }
+  .news-dialog .news-item { padding: 14px 0; }
+  .news-dialog a:focus-visible, .news-dialog-close:focus-visible {
+    outline: 2px solid var(--accent); outline-offset: 3px;
+  }
+  .news-dialog-scroll:focus-visible { outline: 2px solid var(--accent); outline-offset: -3px; }
   .toggle-btn {
     margin-top: 14px;
     font-size: 13px; font-weight: 500; color: var(--ink);
@@ -404,6 +453,66 @@
     border-color: var(--ink);
     background: var(--bg);
   }
+
+  /* ============ BLOG ============ */
+  .sec-head.blog-section-head {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px 24px;
+  }
+  .blog-tagline { margin-top: 8px; color: var(--ink-soft); font-size: 13.5px; }
+  .blog-index-link { font-size: 13px; font-weight: 500; white-space: nowrap; }
+  .blog-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+    gap: 40px;
+  }
+  .blog-feature {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 140px;
+    align-items: center;
+    gap: 18px;
+    padding: 20px 0;
+    border-top: 1px solid var(--line);
+    color: var(--ink);
+  }
+  .blog-feature:hover { text-decoration: none; }
+  .blog-feature-meta {
+    display: flex; flex-wrap: wrap; align-items: baseline; gap: 10px;
+    color: var(--accent); font-size: 12px; font-weight: 500;
+  }
+  .blog-feature-meta time, .blog-post-date {
+    color: var(--ink-faint); font-size: 12px; font-weight: 400;
+    font-variant-numeric: tabular-nums; white-space: nowrap;
+  }
+  .blog-feature h3 {
+    margin: 10px 0;
+    font-size: clamp(20px, 2.1vw, 25px);
+    font-weight: 500; line-height: 1.5; text-wrap: balance;
+  }
+  .blog-feature-summary { color: var(--ink-soft); font-size: 13.5px; line-height: 1.8; }
+  .blog-read-link { display: inline-block; margin-top: 14px; color: var(--accent); font-size: 13px; }
+  .blog-feature:hover h3 { color: var(--accent); }
+  .blog-feature-art {
+    width: 140px; height: 180px; object-fit: cover;
+  }
+  .blog-post-list { list-style: none; border-top: 1px solid var(--line); }
+  .blog-post-list a {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: baseline;
+    gap: 14px;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--line-soft);
+    color: var(--ink);
+    font-size: 15px;
+    line-height: 1.6;
+  }
+  .blog-post-list a:hover { color: var(--accent); text-decoration: none; }
+  .blog-post-list a:hover .blog-post-title { text-decoration: underline; text-underline-offset: 3px; }
+  #blog a:focus-visible { outline: 2px solid var(--accent); outline-offset: 5px; border-radius: 2px; }
 
   /* ============ EDU / EXP ============ */
   .edu-list, .exp-list { list-style: none; border-top: 1px solid var(--line); }
@@ -948,18 +1057,34 @@
     z-index: 1;
     pointer-events: none;
     list-style: none;
-    backdrop-filter: blur(2.5px);
-    -webkit-backdrop-filter: blur(2.5px);
+    opacity: 1;
+    transition: opacity .28s ease;
+  }
+  .pub-brief-veil::before,
+  .pub-brief-veil::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+  }
+  .pub-brief-veil::before {
+    backdrop-filter: blur(1.5px);
+    -webkit-backdrop-filter: blur(1.5px);
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,.08) 20%, rgba(0,0,0,.3) 45%, rgba(0,0,0,.65) 72%, #000 100%);
+    mask-image: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,.08) 20%, rgba(0,0,0,.3) 45%, rgba(0,0,0,.65) 72%, #000 100%);
+  }
+  .pub-brief-veil::after {
     background: linear-gradient(
       to bottom,
       transparent 0%,
-      color-mix(in srgb, var(--bg-soft) 40%, transparent) 42%,
+      color-mix(in srgb, var(--bg-soft) 5%, transparent) 16%,
+      color-mix(in srgb, var(--bg-soft) 18%, transparent) 34%,
+      color-mix(in srgb, var(--bg-soft) 42%, transparent) 54%,
+      color-mix(in srgb, var(--bg-soft) 72%, transparent) 74%,
+      color-mix(in srgb, var(--bg-soft) 93%, transparent) 90%,
       var(--bg-soft) 100%
     );
-    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 38%, #000 100%);
-    mask-image: linear-gradient(to bottom, transparent 0%, #000 38%, #000 100%);
   }
-  .pub-list--folded.is-briefs-open .pub-brief-veil { display: none; }
+  .pub-list--folded.is-briefs-open .pub-brief-veil { opacity: 0; }
   .pub-list--folded:not(.is-briefs-open) .pub-brief-toggle {
     position: relative;
     z-index: 2;
@@ -1426,6 +1551,9 @@
     .pub-featured { grid-template-columns: repeat(2, 1fr); gap: 14px; }
     .prog-row { gap: 10px; }
     .svc-list { grid-template-columns: 1fr; }
+    .blog-grid { gap: 28px; }
+    .blog-feature { grid-template-columns: minmax(0, 1fr) 100px; gap: 12px; }
+    .blog-feature-art { width: 100px; height: 150px; }
     .svc-item:nth-child(2) { border-top: 1px solid var(--line-soft); }
     .oss-list { grid-template-columns: 1fr; }
     .oss-item + .oss-item {
@@ -1528,6 +1656,10 @@
     section.block { padding: 28px 0; }
     .sec-head { margin-bottom: 14px; }
     .sec-title { font-size: 22px; }
+    .blog-grid { grid-template-columns: 1fr; gap: 8px; }
+    .blog-feature { padding: 16px 0; }
+    .blog-feature h3 { font-size: 20px; }
+    .blog-post-list a { padding: 14px 0; font-size: 14px; gap: 10px; }
 
     .pub-spotlight {
       padding: 12px 12px;
@@ -1627,6 +1759,14 @@
 
     .news-item { grid-template-columns: 56px 1fr; gap: 10px; font-size: 13.5px; }
     .news-date { font-size: 12px; }
+    .news-dialog {
+      width: calc(100vw - 24px);
+      max-height: calc(100vh - 32px);
+      max-height: calc(100dvh - 32px);
+    }
+    .news-dialog-header { padding: 18px 18px 14px; }
+    .news-dialog-title { font-size: 24px; }
+    .news-dialog-scroll { padding: 0 18px 16px; }
 
     .prog-list { grid-template-columns: repeat(2, 1fr); }
     .prog-logo-box { height: 140px; }
@@ -1679,6 +1819,7 @@
 
   @media (prefers-reduced-motion: reduce) {
     .reveal { opacity: 1; transform: none; transition: none; }
+    .pub-brief-veil { transition: none; }
     html { scroll-behavior: auto; }
   }
 </style>
@@ -1705,6 +1846,7 @@
       <a href="#news">News</a>
       <a href="#publications">Publications</a>
       <a href="#honors">Honors</a>
+      <a href="#blog">Blog</a>
       <a href="#services">Services</a>
       <a href="#talks">Talks</a>
     </div>
@@ -1723,7 +1865,7 @@
 
         <p class="intro-roles reveal reveal-d2">
           <span class="role">
-            <span class="role-title">Co-Founder &amp; CTO</span>
+            <span class="role-title">CTO</span>
             <a href="https://xsparkai.com/" target="_blank">Xspark AI</a>
           </span>
           <span class="role">
@@ -1759,7 +1901,7 @@
           <summary>Detailed Profile (详细个人介绍)</summary>
           <div class="bio-detail">
             <p>
-              Hi! I am <strong>Tianxing Chen (Chinese name: 陈天行)</strong>, Co-Founder and CTO of
+              Hi! I am <strong>Tianxing Chen (Chinese name: 陈天行)</strong>, CTO of
               <a href="https://xsparkai.com/" target="_blank">Xspark AI</a>, founder of
               <a href="https://lumina-embodied.ai/" target="_blank">Lumina Embodied AI Community</a>,
               and a Ph.D. student at
@@ -1791,10 +1933,11 @@
               I have served as an organizer of the ECCV 2026 Safe World Model Workshop,SIGGRAPH ASIA 2025 TriFusion Workshop, CVPR 2025 MEIS Workshop,
               the CVPR 2025 RoboTwin Dual-Arm Collaboration Challenge, and the Greater Bay Area Embodied AI Workshop.
               I am also a student committee member of the Autonomous Robotic Technology Seminar (ARTS).
+              I co-initiated the <a href="https://modelscope.cn/learn/6060" target="_blank">EAI-100</a> selection with the ModelScope community.
               In addition, I share my thoughts on research and technology as a blogger and vlogger,
               with over 20k followers on Rednote @<a href="https://www.xiaohongshu.com/user/profile/618fe930000000001000afe7" target="_blank">TianxingChen (陈天行)</a>.
             </p>
-            <p>Hi！我是<strong>陈天行 (English name: Tianxing Chen)</strong>，<a href="https://xsparkai.com/" target="_blank">Xspark AI</a> 联合创始人兼CTO，<a href="https://lumina-embodied.ai/" target="_blank">Lumina具身智能社区</a>的创始人，
+            <p>Hi！我是<strong>陈天行 (English name: Tianxing Chen)</strong>，现任 <a href="https://xsparkai.com/" target="_blank">Xspark AI</a> CTO，是<a href="https://lumina-embodied.ai/" target="_blank">Lumina具身智能社区</a>的创始人，
               同时也是香港大学<a href="https://mmlab.hk/" target="_blank">MMLab@HKU</a>的博士生（始于2025年10月），
               师从<a href="https://luoping.me/" target="_blank">罗平教授</a>。
               我的研究方向是具身智能基础架构，包括机器人通用基础模型、数据合成器与评测。近期，我由红杉中国与《麻省理工科技评论》中国联合评选为 <strong>AI25</strong>（25岁以下AI创新青年先锋）。</p>
@@ -1809,6 +1952,7 @@
               竞赛上获得ACM-ICPC国际大学生程序设计竞赛银牌，在RAICOM机器人开发者大赛中获得赛道全国亚军等。</p>
             <p>我也曾作为组织者举办ECCV 2026 Safe World Model Workshop、SIGGRAPH ASIA 2025 TriFusion Workshop、CVPR 2025 MEIS Workshop、
               CVPR 2025 RoboTwin双臂协作竞赛、大湾区具身智能研讨会等。担任ARTS自主机器人技术研讨会的学生委员会成员。
+              我还与魔搭社区共同发起了 <a href="https://modelscope.cn/learn/6060" target="_blank">EAI-100</a> 榜单评选。
               同时，我还在小红书拥有超20k粉丝 @<a href="https://www.xiaohongshu.com/user/profile/618fe930000000001000afe7" target="_blank">TianxingChen (陈天行)</a>。</p>
           </div>
         </details>
@@ -1828,13 +1972,18 @@
 <!-- ================= NEWS ================= -->
 <section class="block soft" id="news">
   <div class="wrap">
-    <div class="sec-head reveal">
+    <div class="sec-head news-head reveal">
       <h2 class="sec-title">News</h2>
+      <button type="button" class="news-more" id="news-toggle-btn" aria-haspopup="dialog" aria-controls="news-dialog" aria-expanded="false">All news <span aria-hidden="true">↗</span></button>
     </div>
     <ul class="news-list reveal" id="news-list">
       <li class="news-item">
         <span class="news-date">10/2026</span>
         <span class="news-content">XPolicyLab received <strong>Best Tool Paper Award</strong> at <strong>IROS 2026 ScaleInfra Workshop</strong> !</span>
+      </li>
+      <li class="news-item">
+        <span class="news-date">09/2026</span>
+        <span class="news-content">We released <a href="https://xsparkai.com/spark-0" target="_blank" rel="noopener">Spark-0</a>, <a href="https://arxiv.org/abs/2609.20649" target="_blank" rel="noopener">DexTouch-WM</a>, and <a href="https://mm-abc.github.io/" target="_blank" rel="noopener">MM-ABC</a> !</span>
       </li>
       <li class="news-item">
         <span class="news-date">09/2026</span>
@@ -1864,144 +2013,159 @@
         <span class="news-date">04/2026</span>
         <span class="news-content">RoboTwin 2.0 is accepted to <strong>ICML 2026</strong> !</span>
       </li>
-      <li class="news-item news-hidden">
+      <li class="news-item">
+        <span class="news-date">03/2026</span>
+        <span class="news-content">Serving as <strong>Co-Founder &amp; CTO</strong> at <a href="https://xsparkai.com/" target="_blank" rel="noopener">Xspark AI</a>.</span>
+      </li>
+      <li class="news-item">
         <span class="news-date">03/2026</span>
         <span class="news-content">We released <a href="https://manitwin.github.io/" target="_blank">ManiTwin</a>, which is a large-scale annotated assets dataset !</span>
       </li>
-      <li class="news-item news-hidden">
+      <li class="news-item">
         <span class="news-date">03/2026</span>
         <span class="news-content">We released <a href="https://rmbench.github.io/" target="_blank">RMBench</a>, which is a memory-dependent manipulation benchmark !</span>
       </li>
-      <li class="news-item news-hidden">
+      <li class="news-item">
         <span class="news-date">01/2026</span>
         <span class="news-content">Three papers are accepted to <strong>ICRA 2026</strong> !</span>
       </li>
-      <li class="news-item news-hidden">
+      <li class="news-item">
         <span class="news-date">01/2026</span>
         <span class="news-content">Four papers are accepted to <strong>ICLR 2026</strong> !</span>
       </li>
-      <li class="news-item news-hidden">
+      <li class="news-item">
         <span class="news-date">12/2025</span>
         <span class="news-content"><a href="https://github.com/TianxingChen/Embodied-AI-Guide" target="_blank">Embodied-AI-Guide</a> received over <strong>10k Github stars</strong> and became the most popular CN EAI tutorial !</span>
       </li>
-      <li class="news-item news-hidden">
+      <li class="news-item">
         <span class="news-date">11/2025</span>
         <span class="news-content">We won the <strong><em>Champion</em></strong> of NeurIPS 2025 MARS Challenge Manipulation Track !</span>
       </li>
-      <li class="news-item news-hidden">
+      <li class="news-item">
         <span class="news-date">11/2025</span>
         <span class="news-content">Selected as <strong>2025 D-Robotics Developer Star</strong> !</span>
       </li>
-      <li class="news-item news-hidden">
+      <li class="news-item">
         <span class="news-date">11/2025</span>
         <span class="news-content">Received "深圳大学名校深造奖学金" (ranking 1st), <strong><em>CNY 100,000</em></strong> !</span>
       </li>
-      <li class="news-item news-hidden">
+      <li class="news-item">
         <span class="news-date">10/2025</span>
         <span class="news-content">RoboTwin 2.0 received <strong><em>Best Poster Award</em></strong> at IROS 2025 RoDGE Workshop !</span>
       </li>
-      <li class="news-item news-hidden">
+      <li class="news-item">
         <span class="news-date">10/2025</span>
         <span class="news-content">AutoBio received <strong><em>Best Poster Award</em></strong> at IROS 2025 AIR4S Workshop !</span>
       </li>
-      <li class="news-item news-hidden">
+      <li class="news-item">
         <span class="news-date">10/2025</span>
         <span class="news-content">Received the Third Runner-up Award in the Manipulation Track at the AGiBot World Challenge @ IROS 2025 !</span>
       </li>
-      <li class="news-item news-hidden">
+      <li class="news-item">
         <span class="news-date">10/2025</span>
         <span class="news-content">LeHome received <strong><em>Best Poster Award</em></strong> at IROS 2025 RoMaDo Workshop !</span>
       </li>
-      <li class="news-item news-hidden">
+      <li class="news-item">
         <span class="news-date">09/2025</span>
         <span class="news-content">RoboTwin 2.0 has been selected as <strong><em>Best Paper Finalist</em></strong> at IROS 2025 RoboGen Workshop !</span>
       </li>
-      <li class="news-item news-hidden">
+      <li class="news-item">
         <span class="news-date">08/2025</span>
         <span class="news-content">I am organizing the <a href="https://trifusion.b12sites.com/" target="_blank">TriFusion Workshop</a> @ SIGGRAPH ASIA 2025, which is now calling for papers !</span>
       </li>
-      <li class="news-item news-hidden">
+      <li class="news-item">
         <span class="news-date">07/2025</span>
         <span class="news-content">Interviewed by MIT Technical Review China (《麻省理工科技评论》中国), "Next Gen" Series <a href="https://www.mittrchina.com/news/detail/15038" target="_blank">[Report]</a> !</span>
       </li>
-      <li class="news-item news-hidden">
+      <li class="news-item">
         <span class="news-date">07/2025</span>
         <span class="news-content">RoboTwin 2.0 received <strong><em>Outstanding Poster</em></strong> at ChinaSI 2025 (Ranking 1st) !</span>
       </li>
-      <li class="news-item news-hidden">
+      <li class="news-item">
         <span class="news-date">07/2025</span>
         <span class="news-content">Graduated with a bachelor's degree from Shenzhen University !</span>
       </li>
-      <li class="news-item news-hidden">
+      <li class="news-item">
         <span class="news-date">07/2025</span>
         <span class="news-content">We released RoboTwin Dual-Arm Collaboration Challenge Technical Report @ CVPR 2025 MEIS Workshop <a href="https://arxiv.org/abs/2506.23351" target="_blank">[arXiv]</a> !</span>
       </li>
-      <li class="news-item news-hidden">
+      <li class="news-item">
         <span class="news-date">05/2025</span>
         <span class="news-content">My Rednote (小红书) has reached <strong><em>10k followers</em></strong> !</span>
       </li>
-      <li class="news-item news-hidden">
+      <li class="news-item">
         <span class="news-date">05/2025</span>
         <span class="news-content">Text2World and HiAgent are accepted to <strong>ACL 2025</strong> !</span>
       </li>
-      <li class="news-item news-hidden">
+      <li class="news-item">
         <span class="news-date">04/2025</span>
         <span class="news-content">My graduation thesis is graded A+ and selected as one of the university's top 100 outstanding theses. <a href="./blog/posts/2025-bachelor-acknowledgement.html">[Acknowledgements]</a></span>
       </li>
-      <li class="news-item news-hidden">
+      <li class="news-item">
         <span class="news-date">04/2025</span>
         <span class="news-content">CordViP is accepted to <strong>RSS 2025</strong> !</span>
       </li>
-      <li class="news-item news-hidden">
+      <li class="news-item">
         <span class="news-date">04/2025</span>
         <span class="news-content">RoboTwin is selected as <strong><em>Highlight (13.5%)</em></strong> !</span>
       </li>
-      <li class="news-item news-hidden">
+      <li class="news-item">
         <span class="news-date">02/2025</span>
         <span class="news-content">3 Papers (G3Flow, RoboTwin and DexHandDiff) are accepted to <strong>CVPR 2025</strong> !</span>
       </li>
-      <li class="news-item news-hidden">
+      <li class="news-item">
         <span class="news-date">12/2024</span>
         <span class="news-content">Serving as an Organizer for the 2nd MEIS Workshop at CVPR 2025.</span>
       </li>
-      <li class="news-item news-hidden">
+      <li class="news-item">
         <span class="news-date">09/2024</span>
         <span class="news-content">RoboTwin (Early Version) received the <strong><em>Best Paper Award</em></strong> at the ECCV 2024 MAAS Workshop !</span>
       </li>
-      <li class="news-item news-hidden">
+      <li class="news-item">
         <span class="news-date">04/2024</span>
         <span class="news-content">One paper is accepted to <strong>ICARM 2024</strong>, which is my first paper !</span>
       </li>
-      <li class="news-item news-hidden">
+      <li class="news-item">
         <span class="news-date">04/2024</span>
         <span class="news-content">We won the <strong>National Gold Medal, Provincial Runner-up</strong> of China Collegiate Computing Contest !</span>
       </li>
-      <li class="news-item news-hidden">
+      <li class="news-item">
         <span class="news-date">01/2024</span>
         <span class="news-content">Joined <a href="https://www.shlab.org.cn/" target="_blank">Shanghai AI Laboratory</a> as Intern Researcher. Started doing research on Robotics !</span>
       </li>
-      <li class="news-item news-hidden">
+      <li class="news-item">
         <span class="news-date">10/2023</span>
         <span class="news-content">I received the highest honor for undergraduate students at Shenzhen University, <strong><em>"Excellent Star of SZU"</em></strong>, ranked 2nd among the 30,000 undergraduates in the school (top <strong>0.0067%</strong>) ! <a href="https://mp.weixin.qq.com/s/JQpr91qI14_ukdfJMDalTw" target="_blank">[Report]</a></span>
       </li>
-      <li class="news-item news-hidden">
+      <li class="news-item">
         <span class="news-date">10/2023</span>
         <span class="news-content">I received <strong><em>CCF Elite Collegiate Award</em></strong>, which is awarded by China Computer Federation, to the top <strong><em>99</em></strong> students nationwide in 2023 ! <a href="https://mp.weixin.qq.com/s/JQpr91qI14_ukdfJMDalTw" target="_blank">[Report]</a></span>
       </li>
-      <li class="news-item news-hidden">
+      <li class="news-item">
         <span class="news-date">08/2023</span>
         <span class="news-content">Our team won the <strong>National Runner-up of RAICOM</strong> !</span>
       </li>
-      <li class="news-item news-hidden">
+      <li class="news-item">
         <span class="news-date">06/2023</span>
         <span class="news-content">I started to lead the SZU Algorithm Training Team !</span>
       </li>
-      <li class="news-item news-hidden">
+      <li class="news-item">
         <span class="news-date">01/2023</span>
         <span class="news-content">Our team (SZU_Tencent) won <strong>Silver Medal in 46th ICPC Asia</strong>, Hong Kong !</span>
       </li>
     </ul>
-    <button class="toggle-btn reveal" id="news-toggle-btn" onclick="toggleNews()">Show more ↓</button>
+    <dialog class="news-dialog" id="news-dialog" aria-labelledby="news-dialog-title">
+      <div class="news-dialog-header">
+        <div>
+          <h2 class="news-dialog-title" id="news-dialog-title">All news</h2>
+          <p class="news-dialog-subtitle">Updates &amp; milestones, newest first.</p>
+        </div>
+        <button type="button" class="news-dialog-close" id="news-dialog-close" aria-label="Close news" autofocus>×</button>
+      </div>
+      <div class="news-dialog-scroll" id="news-dialog-scroll" role="region" aria-label="News archive" tabindex="0">
+        <ul class="news-list" id="news-archive-list"></ul>
+      </div>
+    </dialog>
   </div>
 </section>
 
@@ -2051,8 +2215,7 @@
         <div class="vent-logo vent-logo--xspark"><img src="assets/files/institute/xsparkai-en-1.png" alt="Xspark AI" onerror="this.parentElement.style.display='none'" /></div>
         <div class="vent-main">
           <h3 class="vent-role">Co-Founder &amp; CTO, <a href="https://xsparkai.com/" target="_blank">Xspark AI</a></h3>
-          <div class="vent-sub">Lead of <a href="https://xsparkai.com/en/sparklab" target="_blank">SparkLab@Xspark AI</a></div>
-          <p class="vent-tagline">The Spark Behind Trusted Embodied Intelligence.</p>
+          <p class="vent-tagline">Lead <strong>frontier research</strong> in tactile dexterous and mobile manipulation, alongside <strong>FDE</strong> for real-world applications and <strong>egocentric data collection</strong>.</p>
         </div>
         <div class="vent-side">
           <div class="vent-years">Mar. 2026 — Present</div>
@@ -2460,6 +2623,7 @@
                   <a class="pub-link" href="https://xsparkai.com/spark-0" target="_blank">Project Page</a>
                   <a class="pub-link" href="https://arxiv.org/pdf/2610.22342" target="_blank">Paper</a>
                   <a class="pub-link" href="https://arxiv.org/abs/2610.22342" target="_blank">arXiv</a>
+                  <a class="pub-link" href="https://github.com/XsparkAI/Spark-0" target="_blank">Code</a>
                 </div>
               </div>
             </li>
@@ -3260,8 +3424,57 @@
   </div>
 </section>
 
+<!-- ================= BLOG ================= -->
+<section class="block" id="blog" aria-labelledby="blog-title">
+  <div class="wrap">
+    <div class="sec-head blog-section-head reveal">
+      <div>
+        <h2 class="sec-title" id="blog-title">Blog</h2>
+      </div>
+      <a class="blog-index-link" href="./blog/index.html">All posts <span aria-hidden="true">→</span></a>
+    </div>
+    <div class="blog-grid" lang="zh-CN">
+      <a class="blog-feature reveal" href="./blog/posts/eai-definition-first.html">
+        <div>
+          <p class="blog-feature-meta">最新文章 <time datetime="2026-11-05">2026.11.05</time></p>
+          <h3>具身智能，进入「大定义时代」</h3>
+          <p class="blog-feature-summary">通用基模的生态位挤压之下，从定义团队优势与场景，到对齐技术布局、提升效率，再发现新的场景机会。</p>
+          <span class="blog-read-link">阅读全文 <span aria-hidden="true">→</span></span>
+        </div>
+        <img class="blog-feature-art" src="./blog/assets/eai-definition/thinking-between-worlds-v3-alpha.webp" width="1672" height="941" alt="" loading="lazy" decoding="async">
+      </a>
+      <ul class="blog-post-list reveal" aria-label="往期文章">
+        <li>
+          <a href="./blog/posts/2025-bachelor-acknowledgement.html">
+            <span class="blog-post-title">本科毕业致谢</span>
+            <time class="blog-post-date" datetime="2025-04-27">2025.04.27</time>
+          </a>
+        </li>
+        <li>
+          <a href="./blog/posts/2025-phd-application.html">
+            <span class="blog-post-title">本科升学回忆帖</span>
+            <time class="blog-post-date" datetime="2025-04-10">2025.04.10</time>
+          </a>
+        </li>
+        <li>
+          <a href="./blog/posts/2023-ACM-silver-medal.html">
+            <span class="blog-post-title">ACM-ICPC香港站银牌小记</span>
+            <time class="blog-post-date" datetime="2023-01-14">2023.01.14</time>
+          </a>
+        </li>
+        <li>
+          <a href="./blog/posts/2022-about-future.html">
+            <span class="blog-post-title">我的理想与初心</span>
+            <time class="blog-post-date" datetime="2022-02-22">2022.02.22</time>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
 <!-- ================= OPEN SOURCE ================= -->
-<section class="block" id="opensource">
+<section class="block soft" id="opensource">
   <div class="wrap">
     <div class="sec-head reveal">
       <h2 class="sec-title">Open Source</h2>
@@ -3308,7 +3521,7 @@
 </section>
 
 <!-- ================= ACADEMIC SERVICES ================= -->
-<section class="block soft" id="services">
+<section class="block" id="services">
   <div class="wrap">
     <div class="sec-head reveal">
       <h2 class="sec-title">Academic Services</h2>
@@ -3396,7 +3609,7 @@
 </section>
 
 <!-- ================= INVITED TALKS ================= -->
-<section class="block" id="talks">
+<section class="block soft" id="talks">
   <div class="wrap">
     <div class="sec-head reveal">
       <h2 class="sec-title">Invited Talks</h2>
@@ -3603,9 +3816,9 @@
         const start = briefs[1].getBoundingClientRect();
         const end = briefs[2].getBoundingClientRect();
         const listTop = list.getBoundingClientRect().top;
-        const top = start.top - listTop + start.height * 0.5;
+        const top = Math.max(0, start.top - listTop - 8);
         veil.style.top = top + 'px';
-        veil.style.height = Math.max(0, end.bottom - listTop - top) + 'px';
+        veil.style.height = Math.max(0, end.bottom - listTop - top + 12) + 'px';
       };
       const setOpen = (open) => {
         list.classList.toggle('is-briefs-open', open);
@@ -3712,12 +3925,50 @@
     setActive();
   })();
 
-  function toggleNews() {
+  (function initNewsDialog() {
     const list = document.getElementById('news-list');
     const btn = document.getElementById('news-toggle-btn');
-    list.classList.toggle('news-expanded');
-    btn.textContent = list.classList.contains('news-expanded') ? 'Show less ↑' : 'Show more ↓';
-  }
+    const dialog = document.getElementById('news-dialog');
+    const archive = document.getElementById('news-archive-list');
+    const scroll = document.getElementById('news-dialog-scroll');
+    const close = document.getElementById('news-dialog-close');
+    if (!list || !btn || !dialog || !archive || !scroll || !close) return;
+
+    // Keep the homepage and archive in sync from one list of updates.
+    archive.replaceChildren(...Array.from(list.children, item => item.cloneNode(true)));
+    btn.addEventListener('click', () => {
+      if (dialog.open) return;
+      dialog.showModal();
+      document.body.classList.add('news-open');
+      btn.setAttribute('aria-expanded', 'true');
+      scroll.scrollTop = 0;
+    });
+    close.addEventListener('click', () => dialog.close());
+    dialog.addEventListener('keydown', event => {
+      if (event.key !== 'Tab') return;
+      const focusable = [...dialog.querySelectorAll('a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])')];
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    });
+    dialog.addEventListener('click', event => {
+      if (event.target !== dialog) return;
+      const rect = dialog.getBoundingClientRect();
+      if (event.clientX < rect.left || event.clientX > rect.right ||
+          event.clientY < rect.top || event.clientY > rect.bottom) dialog.close();
+    });
+    dialog.addEventListener('close', () => {
+      document.body.classList.remove('news-open');
+      btn.setAttribute('aria-expanded', 'false');
+      btn.focus({ preventScroll: true });
+    });
+  })();
   // Publications right TOC
   (function initResearchToc() {
     const toc = document.getElementById('research-toc');
