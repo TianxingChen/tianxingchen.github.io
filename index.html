@@ -463,6 +463,18 @@
     gap: 12px 24px;
   }
   .blog-tagline { margin-top: 8px; color: var(--ink-soft); font-size: 13.5px; }
+  .blog-total { margin-top: 8px; color: var(--ink-faint); font-size: 12px; }
+  .blog-total [data-blog-total] { color: var(--ink-soft); font-variant-numeric: tabular-nums; }
+  .blog-post-copy { min-width: 0; }
+  .blog-post-title { display: block; }
+  .blog-stats {
+    display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px;
+    margin-top: 6px; color: var(--ink-faint); font: 400 12px/1.6 var(--font);
+  }
+  .blog-stats > span { white-space: nowrap; }
+  .blog-stats > span + span::before { content: '·'; margin-right: 10px; }
+  .blog-stats [data-blog-views] { font-variant-numeric: tabular-nums; }
+  .blog-feature .blog-stats { margin-top: 12px; }
   .blog-index-link { font-size: 13px; font-weight: 500; white-space: nowrap; }
   .blog-grid {
     display: grid;
@@ -1823,6 +1835,7 @@
     html { scroll-behavior: auto; }
   }
 </style>
+  <script src="blog/assets/stats.js?v=1" defer></script>
 </head>
 <body>
 
@@ -3430,6 +3443,7 @@
     <div class="sec-head blog-section-head reveal">
       <div>
         <h2 class="sec-title" id="blog-title">Blog</h2>
+        <p class="blog-total">Total article views <span data-blog-total aria-label="Loading total views">—</span></p>
       </div>
       <a class="blog-index-link" href="./blog/index.html">All posts <span aria-hidden="true">→</span></a>
     </div>
@@ -3439,6 +3453,7 @@
           <p class="blog-feature-meta">最新文章 <time datetime="2026-11-05">2026.11.05</time></p>
           <h3>具身智能，进入「大定义时代」</h3>
           <p class="blog-feature-summary">通用基模的生态位挤压之下，从定义团队优势与场景，到对齐技术布局、提升效率，再发现新的场景机会。</p>
+          <span class="blog-stats"><span data-reading-time="eai-definition-first" data-reading-language="zh">约 9 分钟</span><span><span data-blog-views="eai-definition-first" aria-label="正在加载访问量">—</span> 次访问</span></span>
           <span class="blog-read-link">阅读全文 <span aria-hidden="true">→</span></span>
         </div>
         <img class="blog-feature-art" src="./blog/assets/eai-definition/thinking-between-worlds-v3-alpha.webp" width="1672" height="941" alt="" loading="lazy" decoding="async">
@@ -3446,25 +3461,25 @@
       <ul class="blog-post-list reveal" aria-label="往期文章">
         <li>
           <a href="blog/2025-bachelor-acknowledgement.html">
-            <span class="blog-post-title">本科毕业致谢</span>
+            <span class="blog-post-copy"><span class="blog-post-title">本科毕业致谢</span><span class="blog-stats"><span data-reading-time="2025-bachelor-acknowledgement" data-reading-language="zh">约 5 分钟</span><span><span data-blog-views="2025-bachelor-acknowledgement" aria-label="正在加载访问量">—</span> 次访问</span></span></span>
             <time class="blog-post-date" datetime="2025-04-27">2025.04.27</time>
           </a>
         </li>
         <li>
           <a href="blog/2025-phd-application.html">
-            <span class="blog-post-title">本科升学回忆帖</span>
+            <span class="blog-post-copy"><span class="blog-post-title">本科升学回忆帖</span><span class="blog-stats"><span data-reading-time="2025-phd-application" data-reading-language="zh">约 7 分钟</span><span><span data-blog-views="2025-phd-application" aria-label="正在加载访问量">—</span> 次访问</span></span></span>
             <time class="blog-post-date" datetime="2025-04-10">2025.04.10</time>
           </a>
         </li>
         <li>
           <a href="blog/2023-ACM-silver-medal.html">
-            <span class="blog-post-title">ACM-ICPC香港站银牌小记</span>
+            <span class="blog-post-copy"><span class="blog-post-title">ACM-ICPC香港站银牌小记</span><span class="blog-stats"><span data-reading-time="2023-ACM-silver-medal" data-reading-language="zh">约 3 分钟</span><span><span data-blog-views="2023-ACM-silver-medal" aria-label="正在加载访问量">—</span> 次访问</span></span></span>
             <time class="blog-post-date" datetime="2023-01-14">2023.01.14</time>
           </a>
         </li>
         <li>
           <a href="blog/2022-about-future.html">
-            <span class="blog-post-title">我的理想与初心</span>
+            <span class="blog-post-copy"><span class="blog-post-title">我的理想与初心</span><span class="blog-stats"><span data-reading-time="2022-about-future" data-reading-language="zh">约 7 分钟</span><span><span data-blog-views="2022-about-future" aria-label="正在加载访问量">—</span> 次访问</span></span></span>
             <time class="blog-post-date" datetime="2022-02-22">2022.02.22</time>
           </a>
         </li>

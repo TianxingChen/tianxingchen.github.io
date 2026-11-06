@@ -118,7 +118,7 @@ html[lang="en"] .byline { margin-bottom: 0.85rem; }
 
 html[lang="en"] .essay-page { line-height: 1.8; }
 html[lang="en"] h1, html[lang="en"] h2, html[lang="en"] h3,
-html[lang="en"] .post-list span { font-family: Georgia, "Times New Roman", serif; }
+html[lang="en"] .post-list .post-title { font-family: Georgia, "Times New Roman", serif; }
 html[lang="en"] .definition-title span { display: inline; }
 html[lang="en"] .article-toc a { line-height: 1.5; }
 
@@ -206,9 +206,30 @@ html[lang="en"] .article-toc a { line-height: 1.5; }
   text-decoration: none;
 }
 
-.post-list span { font: 600 1.15rem/1.55 var(--serif); }
+.post-list .post-title { font: 600 1.15rem/1.55 var(--serif); }
 .post-list time { flex-shrink: 0; }
-.post-list a:hover span { text-decoration: underline; }
+.post-list a:hover .post-title { text-decoration: underline; }
+.post-copy { min-width: 0; }
+.post-title { display: block; }
+
+.masthead .blog-summary {
+  display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.35em;
+  margin-top: 0.75rem; font-size: 0.76rem;
+}
+.blog-summary > [aria-hidden] { margin: 0 0.25rem; }
+[data-blog-views], [data-blog-total] { font-variant-numeric: tabular-nums; }
+.post-stats, .article-stats {
+  display: inline-flex; flex-wrap: wrap; align-items: baseline;
+  gap: 0.3rem 0.75rem; color: var(--secondary);
+  font: 400 0.75rem/1.6 var(--sans);
+}
+.post-stats { display: flex; margin-top: 0.35rem; }
+.feature-copy > .post-stats { margin-top: 0.85rem; }
+.post-stats > span, .article-stats > span { white-space: nowrap; }
+.post-stats > span + span::before, .article-stats > span + span::before {
+  content: '·'; margin-right: 0.75rem; color: #a0a3a3;
+}
+.stats-note { margin-top: 1.15rem; color: var(--secondary); font-size: 0.72rem; line-height: 1.7; }
 
 .essay-page {
   max-width: calc(44rem + 2 * var(--gutter));
@@ -233,7 +254,8 @@ html[lang="en"] .article-toc a { line-height: 1.5; }
   font-size: 0.875rem;
 }
 
-.byline { margin-bottom: 2rem; }
+.byline { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.3rem 1rem; margin-bottom: 2rem; }
+.byline .article-stats { font-size: inherit; }
 .byline a { color: var(--accent); }
 .essay-page .definition-title { font-size: clamp(1.8rem, 8vw, 3rem); }
 .definition-title span { display: inline-block; }
@@ -416,7 +438,7 @@ footer button {
   .masthead { padding-bottom: 1rem; }
   .feature-copy h2 br { display: initial; }
   .essay-page h1 span { display: inline-block; }
-  .post-list span { font-size: 1.04rem; }
+  .post-list .post-title { font-size: 1.04rem; }
   .post-list time { font-size: 0.7rem; }
   figcaption strong { display: block; }
   .article-intro { padding: 0.9rem 1rem; font-size: 0.95rem; }
