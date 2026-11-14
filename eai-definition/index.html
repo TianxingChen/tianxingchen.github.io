@@ -2,12 +2,81 @@
 <html lang="zh-CN">
 <script data-domain-redirect>
 (function () {
-  if (location.hostname.toLowerCase() === "tianxingchen.github.io") {
-    location.replace("https://tianxingchen.com" + location.pathname + location.search + location.hash);
+  if (location.hostname.toLowerCase() !== "tianxingchen.github.io") return;
+  var target = "https://tianxingchen.com" + location.pathname + location.search + location.hash;
+  var n = 2;
+  var copy = {
+    zh: function (n) { return "页面将在 " + n + " 秒后跳转到 tianxingchen.com"; },
+    en: function (n) { return "This page will redirect to tianxingchen.com in " + n + " second" + (n === 1 ? "" : "s"); },
+    fr: function (n) { return "Cette page sera redirigée vers tianxingchen.com dans " + n + " seconde" + (n === 1 ? "" : "s"); },
+    ja: function (n) { return "このページは " + n + " 秒後に tianxingchen.com へ移動します"; },
+    ko: function (n) { return "이 페이지는 " + n + "초 후에 tianxingchen.com으로 이동합니다"; },
+    de: function (n) { return "Diese Seite wird in " + n + " Sekunde" + (n === 1 ? "" : "n") + " zu tianxingchen.com weitergeleitet"; }
+  };
+  var order = [["中文", "zh", "zh-CN"], ["English", "en", "en"], ["Français", "fr", "fr"], ["日本語", "ja", "ja"], ["한국어", "ko", "ko"], ["Deutsch", "de", "de"]];
+  var style = document.createElement("style");
+  style.textContent = "#domain-redirect{position:fixed!important;inset:0!important;z-index:2147483647!important;display:flex!important;align-items:center!important;justify-content:center!important;box-sizing:border-box!important;margin:0!important;padding:28px 22px!important;background:#fff!important;color:#121317!important;text-align:center!important;overflow:auto!important;font-family:\"Avenir Next\",\"PingFang SC\",\"Hiragino Sans\",\"Noto Sans CJK SC\",\"Noto Sans CJK JP\",\"Noto Sans CJK KR\",\"Segoe UI\",sans-serif!important}html.domain-redirecting,html.domain-redirecting body{overflow:hidden!important}#domain-redirect *{box-sizing:border-box!important}#domain-redirect .domain-redirect-panel{width:100%!important;max-width:640px!important}#domain-redirect .domain-redirect-count{margin:0!important;font-size:84px!important;line-height:.9!important;font-weight:600!important;letter-spacing:-.06em!important;font-variant-numeric:tabular-nums!important;color:#121317!important}#domain-redirect .domain-redirect-link{display:inline-block!important;margin:14px 0 0!important;color:#0b57d0!important;font-size:18px!important;font-weight:500!important;text-decoration:underline!important;text-underline-offset:4px!important}#domain-redirect .domain-redirect-bar{width:120px!important;height:2px!important;margin:22px auto 0!important;background:#e6eaf0!important;overflow:hidden!important}#domain-redirect .domain-redirect-bar span{display:block!important;height:100%!important;width:100%!important;background:#0b57d0!important;transform-origin:left center!important;animation:domain-redirect-shrink 2s linear forwards!important}@keyframes domain-redirect-shrink{to{transform:scaleX(0)}}#domain-redirect ul{list-style:none!important;margin:28px auto 0!important;padding:0!important;text-align:left!important}#domain-redirect li{margin:0 0 12px!important;padding:0!important;font-size:15px!important;line-height:1.55!important;color:#45474d!important}#domain-redirect .domain-redirect-lang{display:block!important;margin:0 0 1px!important;font-size:11px!important;letter-spacing:.04em!important;color:#7a7e87!important}@media(max-width:640px){#domain-redirect .domain-redirect-count{font-size:68px!important}#domain-redirect li{font-size:14px!important}}";
+  var panel = document.createElement("div");
+  panel.className = "domain-redirect-panel";
+  var count = document.createElement("p");
+  count.className = "domain-redirect-count";
+  count.setAttribute("role", "status");
+  count.setAttribute("aria-live", "polite");
+  count.textContent = String(n);
+  var link = document.createElement("a");
+  link.className = "domain-redirect-link";
+  link.href = target;
+  link.textContent = "tianxingchen.com";
+  var bar = document.createElement("div");
+  bar.className = "domain-redirect-bar";
+  bar.appendChild(document.createElement("span"));
+  var list = document.createElement("ul");
+  var msgs = [];
+  order.forEach(function (item) {
+    var li = document.createElement("li");
+    li.lang = item[2];
+    var lang = document.createElement("span");
+    lang.className = "domain-redirect-lang";
+    lang.textContent = item[0];
+    var msg = document.createElement("span");
+    msg.textContent = copy[item[1]](n);
+    li.appendChild(lang);
+    li.appendChild(msg);
+    list.appendChild(li);
+    msgs.push([item[1], msg]);
+  });
+  panel.appendChild(count);
+  panel.appendChild(link);
+  panel.appendChild(bar);
+  panel.appendChild(list);
+  var root = document.createElement("div");
+  root.id = "domain-redirect";
+  root.appendChild(panel);
+  document.documentElement.classList.add("domain-redirecting");
+  document.documentElement.appendChild(style);
+  document.documentElement.appendChild(root);
+  document.title = n + " · tianxingchen.com";
+  function render(next) {
+    n = next;
+    count.textContent = String(n);
+    document.title = n + " · tianxingchen.com";
+    msgs.forEach(function (pair) { pair[1].textContent = copy[pair[0]](n); });
   }
+  var gone = false;
+  function go() {
+    if (gone) return;
+    gone = true;
+    location.replace(target);
+  }
+  link.addEventListener("click", function (event) {
+    event.preventDefault();
+    go();
+  });
+  setTimeout(function () { render(1); }, 1000);
+  setTimeout(go, 2000);
 })();
 </script>
-<noscript><meta http-equiv="refresh" data-domain-redirect content="0; url=https://tianxingchen.com/eai-definition/"></noscript>
+<noscript><meta http-equiv="refresh" data-domain-redirect content="2; url=https://tianxingchen.com/eai-definition/"></noscript>
 
 <head>
   <meta charset="utf-8">
